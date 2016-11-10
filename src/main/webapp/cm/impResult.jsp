@@ -34,7 +34,7 @@
 						<div class="row-fluid">
 						<c:choose>
 							<c:when test="${result.success}">
-								导入成功,其中新增${result.object.addCount}条,更新${result.object.updateCount}条.
+								导入成功,其中新增${result.object.addCount}条,更新${result.object.updateCount}条,过滤${result.object.filterCount}条.
 							</c:when>
 							<c:otherwise>
 								${result.message}
