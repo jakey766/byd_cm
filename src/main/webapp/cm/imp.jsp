@@ -44,9 +44,9 @@
 									</select>
 									<label><input type="radio" name="type" value="0" />本系统</label>
 									--%>
-									<label><input type="radio" name="type" value="1" checked="checked" />金融公司</label>
-									<label><input type="radio" name="type" value="2" />八部系统</label>
-									<label><input type="radio" name="type" value="3" />销服系统</label>
+									<label class="radio_label"><input type="radio" name="type" value="1" checked="checked" />金融公司</label>
+									<label class="radio_label"><input type="radio" name="type" value="2" />八部系统</label>
+									<label class="radio_label"><input type="radio" name="type" value="3" />销服系统</label>
 								</div>
 							</div>
 							<div class="control-group">

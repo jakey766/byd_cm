@@ -117,6 +117,9 @@ public class CmInfoService extends BaseService {
             int userId = UserInfoContext.getId();
             if(userId<1)
                 throw new RuntimeException("没有登录信息");
+            List<String> orgCodes = sysOrgService.getUserOrgCodes(userId);
+            if(orgCodes==null||orgCodes.size()<1)
+                return new PageResultVO(0, 1, 1, null);
             svo.setOrgCodes(sysOrgService.getUserOrgCodes(userId));
         }
         return cmInfoDao.list(svo);
@@ -358,7 +361,10 @@ public class CmInfoService extends BaseService {
                 List<String> data = new ArrayList<>();
                 for(int j=row.getFirstCellNum(),len=row.getLastCellNum();j<len;j++){
                     cell = row.getCell(j);
-                    val = getCellVal(cell);
+                    if(cell==null)
+                        val = "";
+                    else
+                        val = getCellVal(cell);
                     
                     if(first){
                         //金融公司的表格中有两个电话
@@ -459,10 +465,12 @@ public class CmInfoService extends BaseService {
         svo.setMap(new HashMap<String, String>());
         
         if(type==1){
-        	//dksqhm
+        	//dksqhm->htbh
         	for(CmInfo vo:list){
         		if(StringUtils.isEmpty(vo.getDksqhm())){
-        			filterCount ++;
+                    buildOtherField(vo);
+                    cmInfoDao.insert(vo);
+                    insertCount ++;
         			continue;
         		}
         		exist = null;
