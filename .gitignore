@@ -1,1 +1,5 @@
 /target
+.idea
+.DS_Store
+.settings
+byd_cm.iml
