@@ -38,6 +38,23 @@ var trimChar = function(str, char){
 	return str;
 };
 
+//grid全选
+function choseAll(obj){
+    var trigger = $(obj),
+        other_checkboxs = trigger.closest('table').find('tbody').find('[type=checkbox]');
+    if(trigger.prop('checked')){
+        other_checkboxs.each(function(){
+            if(!this.disabled){
+                this.checked = true;
+            }
+        });
+    } else{
+        other_checkboxs.each(function(){
+            this.checked = false;
+        });
+    }
+}
+
 //时间工具
 var DateTools = {
 	//快速时间段变更事件

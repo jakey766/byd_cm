@@ -171,6 +171,9 @@
 						<table id="tb_list" class="table table-bordered table-striped table-hover">
 							<thead>
 								<tr>
+									<th style="width:30px;">
+										<input type="checkbox" id="J_checkAll" />
+									</th>
 									<c:forEach var="vo" items="${fields}">
 										<c:if test="${vo.list==1}">
 											<th>${vo.name}</th>
@@ -183,6 +186,7 @@
 								<script id="listTmpl" type="text/html">
                 				{{each list as v i}}
                 					<tr>
+										<td><input type="checkbox" name="ckb" value="{{v.id}}"/></td>
 										<c:forEach var="vo" items="${fields}">
 											<c:if test="${vo.list==1}">
 												<td>{{v.${vo.sname}}}</td>
@@ -218,6 +222,11 @@
 	$(document).ready(function() {
 		initDate();
 		search();
+		
+		$('#J_checkAll').on('click', function() {
+	        choseAll(this);
+	        $.uniform.update();
+	    });
 	});
 	
 	function initDate(){
@@ -367,7 +376,6 @@
 					$.alert(data.message);
 				}
 			});
-			refresh();
 		}, function() {
 			return;
 		});
@@ -398,6 +406,45 @@
 			shade: 0.8,
 			area: ['90%', '90%'],
 			content: '${PATH}cm/detail.jspx?id=' + id
+		});
+	}
+	
+	//获取勾选的ID
+	function getCheckedIds(){
+		var ids = '';
+		var cks = $('#tbody').find('input[name="ckb"]:checked');
+		if(cks.length>0){
+			var arr = [];
+			cks.each(function(i, n){
+				arr.push(n.value);
+			});
+			ids = arr.join(',');
+		}
+		return ids;
+	}
+	
+	function batchDelete(){
+		var ids = getCheckedIds();
+		if(ids.length<1){
+			$.alert('请勾选要合并的记录');
+			return;
+		}
+		$.confirm('确认删除所选记录?', function() {
+			Loading.show();
+			$.post("${PATH}cm/deleteBatch.do", "ids=" + ids, function(data) {
+				Loading.hide();
+				if (data.success) {
+					refresh();
+					$.dialog({
+						content : data.message,
+						time : 1000
+					});
+				} else {
+					$.alert(data.message);
+				}
+			});
+		}, function() {
+			return;
 		});
 	}
 </script>
