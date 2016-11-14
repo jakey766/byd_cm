@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="../../common/env.jsp"%>
 <jsp:include page="../../common/hd_frame.jsp"></jsp:include>
-<%--
 <link href="${PATH}r/plugins/zTree_v3/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" />
---%>
 
 <!-- BEGIN PAGE -->
 <div class="page-content">
@@ -140,16 +138,6 @@
 							<label class="control-label"><span class="required">*</span> 角色：</label>
 							<div class="controls" id="roleDiv"></div>
 						</div>
-						<%--
-						<div class="control-group">
-							<label class="control-label"><span class="required">*</span> 组织机构：</label>
-							<div class="controls">
-								<input type="hidden" id="orgId" name="orgId"/>
-								<input type="text" id="orgShow" name="orgShow" class="span8" placeholder="点击选择组织机构" style="cursor:auto;position: relative;" readonly="readonly" onclick="openOrgTree();" />
-								<ul id="orgTree" class="ztree" style="display:none;width:250px;border:1px solid #ccc;position:absolute;background-color:white;z-index:3000;max-height: 300px;overflow: auto;left: 5px; top: 35px;"></ul>
-							</div>
-						</div>
-						--%>
 						<div class="control-group">
 							<label class="control-label">手机：</label>
 							<div class="controls">
@@ -165,7 +153,10 @@
 						<div class="control-group">
 							<label class="control-label">查询权限：</label>
 							<div class="controls">
+								<%--
 								<select id="orgs" name="orgs" class="span8" multiple="multiple"></select>
+								--%>
+								<ul id="dataTree" class="ztree" style="max-height: 300px;overflow: auto;"></ul>
 							</div>
 						</div>
 						<div class="form-actions">
@@ -185,13 +176,13 @@
 
 <jsp:include page="../../common/ft_frame.jsp"></jsp:include>
 <script src="${PATH}r/plugins/jquery.md5.js"></script>
-<%--
 <script src="${PATH}r/plugins/zTree_v3/js/jquery.ztree.core-3.5.js"></script>
 <script src="${PATH}r/plugins/zTree_v3/js/jquery.ztree.excheck-3.5.js"></script>
---%>
+
 <script>
 	var orgInited = false;
 	var roleInited = false;
+	var treeObj = null;
 	var zNodes = [];
 	$(document).ready(function() {
 		initTemplateFunc();
@@ -273,21 +264,18 @@
 
 		/*
 		if(!orgInited){
-			initOrgTree(function(){
-				$('#orgId').val('');
-				$('#orgShow').val('');
-			});
-		}else{
-			$('#orgId').val('');
-			$('#orgShow').val('');
-		}
-		*/
-		if(!orgInited){
 			initOrgSelect(function(){
 				$('#orgs').val('').trigger("change");
 			});
 		}else{
 			$('#orgs').val('').trigger("change");
+		}
+		*/
+
+		if(!orgInited){
+			initOrgTree();
+		}else{
+			treeObj.checkAllNodes(false);
 		}
 	}
 	
@@ -346,28 +334,24 @@
 			});
 			editType = 'edit';
 
-			/*
-			var orgId = vo.orgId||'';
-			if(!orgInited){
-				initOrgTree(function(){
-					$('#orgId').val(orgId);
-					var show = getOrgNodeNameTrace(orgId);
-					$('#orgShow').val(show);
-				});
-			}else{
-				$('#orgId').val(orgId);
-				var show = getOrgNodeNameTrace(orgId);
-				$('#orgShow').val(show);
-			}
-			*/
-
 			var orgIds = vo.orgIds||'';
+			/*
 			if(!orgInited){
 				initOrgSelect(function(){
 					$('#orgs').val(trimChar(orgIds).split(',')).trigger("change");
 				});
 			}else{
 				$('#orgs').val(trimChar(orgIds).split(',')).trigger("change");
+			}
+			*/
+
+			if(!orgInited){
+				initOrgTree(function(){
+					setOrgTreeSelect(orgIds);
+				});
+			}else{
+				treeObj.checkAllNodes(false);
+				setOrgTreeSelect(orgIds);
 			}
 		});
 	}
@@ -390,13 +374,6 @@
 			$.alert('请选择角色!');
 			return;
 		}
-		/*
-		var orgId = $('#orgId').val();
-		if(orgId==''){
-			$.alert('请选择组织机构!');
-			return;
-		}
-		*/
 		var username = $.trim($('#username').val());
 		var password = $('#password').val();
 		password = $.md5(password + '' + username);
@@ -408,8 +385,7 @@
 			email : $.trim($('#email').val()),
 			roleIds : roles[0],
 			roleNames : roles[1]
-			//,orgId: orgId
-			,orgIds: getOrgIds()
+			,orgIds: getOrgTreeIds()
 		};
 		$('#btnSave').attr('disabled', true);
 		Loading.show();
@@ -435,13 +411,6 @@
 			$.alert('请选择角色!');
 			return;
 		}
-		/*
-		var orgId = $('#orgId').val();
-		if(orgId==''){
-			$.alert('请选择组织机构!');
-			return;
-		}
-		*/
 		var param = {
 			id : $('#id').val(),
 			username : $.trim($('#username').val()),
@@ -450,8 +419,7 @@
 			email : $.trim($('#email').val()),
 			roleIds : roles[0],
 			roleNames : roles[1]
-			//,orgId: orgId
-			,orgIds: getOrgIds()
+			,orgIds: getOrgTreeIds()
 		};
 		$('#btnSave').attr('disabled', true);
 		Loading.show();
@@ -535,26 +503,20 @@
 	//初始化组织机构树 BEGIN
 	function initOrgTree(callback){
 		var setting = {
-			data: {
-				simpleData: {
-					enable: true
+			check : {
+				enable : true,
+				chkboxType : {
+					"Y" : "",
+					"N" : ""
 				}
-	        },
-	        view:{
-	            showLine: true,
-	            dblClickExpand: false
-	        },
-	        callback: {
-				onClick: function(e, treeId, treeNode){
-					var zTree = $.fn.zTree.getZTreeObj("orgTree");
-					nodes = zTree.getSelectedNodes();
-					var node = nodes[0];
-					var show = getOrgNodeNameTrace(node.id);
-					$('#orgId').val(node.id);
-					$('#orgShow').val(show);
-					$('#orgTree').hide();
-					$("body").unbind("mousedown", onBodyDown);
+			},
+			data : {
+				simpleData : {
+					enable : true
 				}
+			},
+			view : {
+				showLine : false
 			}
 		};
 		
@@ -569,49 +531,35 @@
 					zNodes.push({id: vo.id, pId:vo.pid, name:vo.name});
 				});
 			}
-			$.fn.zTree.init($("#orgTree"), setting, zNodes);
+			treeObj = $.fn.zTree.init($("#dataTree"), setting, zNodes);
 			orgInited = true;
 			if (callback)
 				callback.call();
 		});
 	}
-
-	function openOrgTree(){
-		var iptObj = $("#orgShow");
-		var iptOffset = $("#orgShow").offset();
-		
-		//$("#orgTree").css({left:iptOffset.left + "px", top:iptOffset.top + iptObj.outerHeight() + 2 + "px"}).slideDown("fast");
-		$("#orgTree").slideDown("fast");
-		//$('#orgTree').show();
-		$("body").bind("mousedown", onBodyDown);
-	}
-
-	function onBodyDown(event) {
-		if (!(event.target.id == "orgTree" || event.target.id == "orgShow" || $(event.target).parents("#orgTree").length>0)) {
-			$('#orgTree').hide();
+	function getOrgTreeIds(){
+		var mid = '';
+		var mids = [];
+		var nodes = treeObj.getCheckedNodes(true);
+		if (nodes.length > 0) {
+			$.each(nodes, function(i, node) {
+				mids.push(node.id);
+			});
+			mid = mids.join(',');
 		}
+		return mid;
 	}
-
-	function getOrgNodeNameTrace(bid){
-		var str = '';
-		var znode1 = getOrgNodeById(bid);
-		if(znode1!=null){
-			str = znode1.name;
-			var znode2 = getOrgNodeById(znode1.pId);
-			if(znode2!=null){
-				str = znode2.name + '->' + str;
-			}
+	function setOrgTreeSelect(orgIds){
+		if (!!orgIds && orgIds.length > 0) {
+			var _orgIds = orgIds.split(',');
+			var _nodes = null;
+			$.each(_orgIds, function(i, mid) {
+				_nodes = treeObj.getNodesByParam("id", mid, null);
+				if (!!_nodes && _nodes.length > 0) {
+					treeObj.checkNode(_nodes[0], true, false);
+				}
+			});
 		}
-		return str;
-	}
-
-	function getOrgNodeById(bid){
-		for(var i=0,len=zNodes.length;i<len;i++){
-			var znode = zNodes[i];
-			if(znode.id==bid)
-				return znode;
-		}
-		return null;
 	}
 	//初始化组织机构树 END
 

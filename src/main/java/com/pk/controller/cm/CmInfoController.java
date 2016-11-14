@@ -9,6 +9,7 @@ import com.pk.model.cm.CmInfo;
 import com.pk.service.admin.SysOrgService;
 import com.pk.service.admin.SysTreeService;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +22,7 @@ import com.pk.framework.vo.Result;
 import com.pk.service.cm.CmInfoService;
 import com.pk.vo.cm.CmInfoSearchVO;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -118,6 +120,25 @@ public class CmInfoController {
 	public Result delete(int id) {
 		try{
 			return cmInfoService.delete(id);
+		}catch(Exception e){
+			e.printStackTrace();
+			return Result.FAILURE("后台异常:"+e.getMessage());
+		}
+	}
+
+	@RequestMapping(value = "/cm/deleteBatch.do")
+	@ResponseBody
+	public Result deleteBatch(String ids) {
+		try{
+			if(ids==null||ids.length()<1)
+				return Result.FAILURE("缺少参数");
+			List<Integer> list = new ArrayList<Integer>();
+			String[] splits = StringUtils.split(ids, ",");
+			for(String spl:splits){
+				if(spl.length()>0)
+					list.add(Integer.parseInt(spl));
+			}
+			return cmInfoService.delete(list);
 		}catch(Exception e){
 			e.printStackTrace();
 			return Result.FAILURE("后台异常:"+e.getMessage());

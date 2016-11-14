@@ -232,6 +232,20 @@ public class CmInfoDao{
         jdbcTemplate.update(_sql, id);
     }
 
+	public void delete(List<Integer> ids){
+		StringBuilder sql = new StringBuilder(100);
+		sql.append("UPDATE cm_info SET deleted=1 WHERE id in(");
+		List<Integer> params = new ArrayList<Integer>();
+		for(int i=0,len=ids.size();i<len;i++){
+			if(i>0)
+				sql.append(",");
+			sql.append("?");
+			params.add(ids.get(i));
+		}
+		sql.append(")");
+		jdbcTemplate.update(sql.toString(), params.toArray());
+	}
+
     static Method lookupMethod(Method[] methods,String methodName){
         for(Method method:methods){
             if(method.getName().equalsIgnoreCase(methodName))

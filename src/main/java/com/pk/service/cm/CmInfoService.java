@@ -174,6 +174,12 @@ public class CmInfoService extends BaseService {
         }
     	return Result.SUCCESS();
     }
+
+    @Transactional
+    public Result delete(List<Integer> ids){
+        cmInfoDao.delete(ids);
+        return Result.SUCCESS();
+    }
     
     public CmInfo get(int id){
     	return cmInfoDao.get(id);
@@ -467,16 +473,12 @@ public class CmInfoService extends BaseService {
         if(type==1){
         	//dksqhm->htbh
         	for(CmInfo vo:list){
-        		if(StringUtils.isEmpty(vo.getDksqhm())){
-                    buildOtherField(vo);
-                    cmInfoDao.insert(vo);
-                    insertCount ++;
-        			continue;
+                exists = null;
+        		if(!StringUtils.isEmpty(vo.getDksqhm())){
+                    svo.getMap().clear();
+                    svo.getMap().put("Q^dksqhm^EQ", vo.getDksqhm());
+                    exists = cmInfoDao.list(svo);
         		}
-        		exist = null;
-                svo.getMap().clear();
-                svo.getMap().put("Q^dksqhm^EQ", vo.getDksqhm());
-                exists = cmInfoDao.list(svo);
                 if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
                     for(int i=0;i<exists.getList().size();i++){
                         exist = (CmInfo)exists.getList().get(i);
@@ -486,9 +488,24 @@ public class CmInfoService extends BaseService {
                         updateCount ++;
                     }
                 }else{
-                	buildOtherField(vo);
-                    cmInfoDao.insert(vo);
-                    insertCount ++;
+                    if(!StringUtils.isEmpty(vo.getHtbh())){
+                        svo.getMap().clear();
+                        svo.getMap().put("Q^htbh^EQ", vo.getHtbh());
+                        exists = cmInfoDao.list(svo);
+                    }
+                    if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
+                        for(int i=0;i<exists.getList().size();i++){
+                            exist = (CmInfo)exists.getList().get(i);
+                            copyWithOutNone(exist, vo, fields, methods);
+                            buildOtherField(exist);
+                            cmInfoDao.update(exist);
+                            updateCount ++;
+                        }
+                    }else{
+                        buildOtherField(vo);
+                        cmInfoDao.insert(vo);
+                        insertCount ++;
+                    }
                 }
         	}
         }else if(type==2){

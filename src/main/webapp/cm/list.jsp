@@ -156,6 +156,7 @@
 							<i class="icon-reorder"></i>客户信息列表
 						</div>
 						<div class="tools">
+							<button type="button" class="btn mini red" onclick="toBatchDelete()" style="margin-top: -10px;">批量删除</button>
 							<!--
 							<button type="button" class="btn mini green" onclick="toAdd()" style="margin-top: -10px;">
 								<i class="icon-plus"></i>新增
@@ -347,6 +348,7 @@
 			} else {
 				$('#common_page').hide();
 			}
+			$.uniform.update();
 		});
 		curPage = page;
 	}
@@ -422,8 +424,9 @@
 		}
 		return ids;
 	}
-	
-	function batchDelete(){
+
+	//批量删除
+	function toBatchDelete(){
 		var ids = getCheckedIds();
 		if(ids.length<1){
 			$.alert('请勾选要合并的记录');
