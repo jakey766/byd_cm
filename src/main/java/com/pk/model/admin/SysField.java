@@ -25,6 +25,7 @@ public class SysField implements Serializable {
 	private String jrgsName;	//金融公司表格名
 	private String bbName;		//八部系统表格名
 	private String xfxtName;	//销服系统表格名
+	private String vipName;		//VIP表格名
     
 	public String getFname() {
 		return fname;
@@ -123,5 +124,13 @@ public class SysField implements Serializable {
 
 	public void setXfxtName(String xfxtName) {
 		this.xfxtName = xfxtName;
+	}
+
+	public String getVipName() {
+		return vipName;
+	}
+
+	public void setVipName(String vipName) {
+		this.vipName = vipName;
 	}
 }

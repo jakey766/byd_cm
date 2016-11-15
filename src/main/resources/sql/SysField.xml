@@ -10,7 +10,7 @@
 
 	<select id="loadAll" resultType="SysField" useCache="false">
 		SELECT fname, sname, name, stype, ftype, dist_type AS distType, dist_key AS distKey, tree_level AS treeLevel, list, query, layer_width AS layerWidth, sort_index AS sortIndex,
-		jrgs_name AS jrgsName, bb_name AS bbName, xfxt_name AS xfxtName
+		jrgs_name AS jrgsName, bb_name AS bbName, xfxt_name AS xfxtName, vip_name AS vipName
 		FROM sys_field ORDER BY sort_index
 	</select>
 </mapper>

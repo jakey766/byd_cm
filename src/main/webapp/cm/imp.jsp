@@ -35,18 +35,10 @@
 							<div class="control-group">
 								<label class="control-label"> 来源：</label>
 								<div class="controls">
-									<%-- 
-									<select id="type" name="type" class="m-wrap media">
-										<option value="0">本系统</option>
-										<option value="1">金融公司</option>
-										<option value="2">八部系统</option>
-										<option value="3">销服系统</option>
-									</select>
-									<label><input type="radio" name="type" value="0" />本系统</label>
-									--%>
 									<label class="radio_label"><input type="radio" name="type" value="1" checked="checked" />金融公司</label>
 									<label class="radio_label"><input type="radio" name="type" value="2" />八部系统</label>
 									<label class="radio_label"><input type="radio" name="type" value="3" />销服系统</label>
+									<label class="radio_label"><input type="radio" name="type" value="4" />VIP</label>
 								</div>
 							</div>
 							<div class="control-group">

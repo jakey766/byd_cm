@@ -356,6 +356,9 @@ public class CmInfoService extends BaseService {
             int rows = sheet.getPhysicalNumberOfRows();
             String val = null;
 
+            if(type==4)
+                firstRow = firstRow + 1;
+
             int dhhmCount = 0;
             boolean first = true;
             for(int i=firstRow;i<rows;i++){
@@ -373,12 +376,15 @@ public class CmInfoService extends BaseService {
                         val = getCellVal(cell);
                     
                     if(first){
+                        if(val!=null)
+                            val = val.replaceAll(" ", "");
                         //金融公司的表格中有两个电话
                         if(type==1&&"电话".equals(val)){
                             dhhmCount++;
                             if(dhhmCount>1)
                                 val = "公司电话";
                         }
+                        System.out.println(val);
                     	heads.add(val);
                     }else{
                     	data.add(val);
@@ -423,6 +429,8 @@ public class CmInfoService extends BaseService {
                 impName = field.getBbName();
             }else if(type==3){
                 impName = field.getXfxtName();
+            }else if(type==4){
+                impName = field.getVipName();
             }
 
             if(impName==null||impName.length()<1)
@@ -594,42 +602,33 @@ public class CmInfoService extends BaseService {
             		}
                 }
         	}
-        }
-        
-        /*
-        for(CmInfo vo:list){
-            if(vo.getSqr_zjhm().length()<0 && vo.getSjgcr_zjhm().length()<0){
-                cmInfoDao.insert(vo);
-                insertCount ++ ;
-                continue;
-            }
-            exist = null;
-            svo.getMap().clear();
-            if(vo.getSqr_zjhm().length()>0)
-                svo.getMap().put("Q^sqr_zjhm^EQ", vo.getSqr_zjhm());
-            if(vo.getSjgcr_zjhm().length()>0)
-                svo.getMap().put("Q^sjgcr_zjhm^EQ", vo.getSjgcr_zjhm());
-            exists = cmInfoDao.list(svo);
-            if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
-                for(int i=0;i<exists.getList().size();i++){
-                    CmInfo _vo = (CmInfo)exists.getList().get(i);
-                    if(vo.getSqr_zjhm().equals(_vo.getSqr_zjhm())&&vo.getSjgcr_zjhm().equals(_vo.getSjgcr_zjhm())){
-                        exist = _vo;
+        }else{
+            for(CmInfo vo:list){
+                if(!StringUtils.isEmpty(vo.getSqr_zjhm()) && !StringUtils.isEmpty(vo.getSjgcr_zjhm())){
+                    svo.getMap().clear();
+                    svo.getMap().put("Q^sqr_zjhm^EQ", vo.getSqr_zjhm());
+                    svo.getMap().put("Q^sjgcr_zjhm^EQ", vo.getSjgcr_zjhm());
+                    exists = cmInfoDao.list(svo);
+                    if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
+                        for(int i=0;i<exists.getList().size();i++){
+                            exist = (CmInfo)exists.getList().get(i);
+                            copyWithOutNone(exist, vo, fields, methods);
+                            buildOtherField(exist);
+                            cmInfoDao.update(exist);
+                            updateCount ++;
+                        }
+                    }else{
+                        buildOtherField(vo);
+                        cmInfoDao.insert(vo);
+                        insertCount ++;
                     }
+                }else{
+                    buildOtherField(vo);
+                    cmInfoDao.insert(vo);
+                    insertCount ++;
                 }
             }
-            if(exist==null){
-            	buildOtherField(vo);
-                cmInfoDao.insert(vo);
-                insertCount ++;
-            }else{
-                copyWithOutNone(exist, vo, fields, methods);
-                buildOtherField(exist);
-                cmInfoDao.update(exist);
-                updateCount ++;
-            }
         }
-        */
 
         Map<String, Object> rs = new HashMap<>();
         rs.put("addCount", insertCount);
