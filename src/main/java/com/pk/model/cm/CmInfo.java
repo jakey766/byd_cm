@@ -90,6 +90,8 @@ public class CmInfo implements Serializable {
     private String yyxhsl;      //拥有小孩数量
     private String dygxhnljd;   //第一个小孩年龄阶段
     private String degxhnljd;   //第二个小孩年龄阶段
+    private String bz;          //备注
+    private String yqr;         //邀请人
 
     private int deleted;
 
@@ -850,5 +852,21 @@ public class CmInfo implements Serializable {
 
     public void setXsjg(double xsjg) {
         this.xsjg = xsjg;
+    }
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
+    }
+
+    public String getYqr() {
+        return yqr;
+    }
+
+    public void setYqr(String yqr) {
+        this.yqr = yqr;
     }
 }

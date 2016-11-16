@@ -248,6 +248,7 @@
 	function reset(){
 		$('#queryForm')[0].reset();
 		orgChange($('#org_yxb')[0], 'org_dq');
+		search();
 	}
 
 	function orgChange(target, cid){

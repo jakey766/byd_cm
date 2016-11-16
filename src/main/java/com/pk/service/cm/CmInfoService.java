@@ -374,7 +374,7 @@ public class CmInfoService extends BaseService {
                         val = "";
                     else
                         val = getCellVal(cell);
-                    
+
                     if(first){
                         if(val!=null)
                             val = val.replaceAll(" ", "");
@@ -384,7 +384,6 @@ public class CmInfoService extends BaseService {
                             if(dhhmCount>1)
                                 val = "公司电话";
                         }
-                        System.out.println(val);
                     	heads.add(val);
                     }else{
                     	data.add(val);
