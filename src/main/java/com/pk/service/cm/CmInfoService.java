@@ -748,20 +748,21 @@ public class CmInfoService extends BaseService {
                     pid = 0;
                 }else{
                     SysField ref = fieldRefs.get(field.getFname());
-                    if(ref==null)
-                        return false;
-                    Method refMethod = lookupMethod(methods, "get" + ref.getFname());
-                    Integer obj = (Integer)refMethod.invoke(vo);
-                    if(obj==null)
-                        return false;
-                    pid = obj;
+                    if(ref!=null){
+                    	Method refMethod = lookupMethod(methods, "get" + ref.getFname());
+                    	Integer obj = (Integer)refMethod.invoke(vo);
+                    	if(obj!=null)
+                    		pid = obj;
+                    }
                 }
-                if(pid<0)
-                    return false;
 
-                SysOrg org = getOrgByVal(val, pid, newIfNotExist);
-                if(org==null)
-                    return false;
+                SysOrg org = null;
+                org = getOrgByVal(val, pid, false);
+                if(org == null && pid>-1 && field.getTreeLevel() == 3){
+                	org = getOrgByVal(val, -1, false);
+                }
+                if(org == null)
+                	return false;
                 method.invoke(vo, org.getId());
                 succ = true;
             } catch (Exception e) {
@@ -835,21 +836,24 @@ public class CmInfoService extends BaseService {
             if(list!=null){
                 for(SysOrg org:list){
                     map.put(org.getPid()+":"+org.getName(), org);
+                    if(org.getType()==3){
+                    	map.put("-1:"+org.getName(), org);
+                    }
                 }
             }
             orgCache = map;
         }
-        int type = 1;
-        if(pid>0){
-            SysOrg parent = sysOrgDao.get(pid);
-            if(parent!=null)
-                type = parent.getType()+1;
-            else
-                type = 2;
-        }
         String cacheKey = pid + ":" + val;
         SysOrg org = orgCache.get(cacheKey);
         if(org==null&&newIfNotExist){
+        	int type = 1;
+        	if(pid>0){
+        		SysOrg parent = sysOrgDao.get(pid);
+        		if(parent!=null)
+        			type = parent.getType()+1;
+        		else
+        			type = 2;
+        	}
             org = new SysOrg();
             org.setPid(pid);
             org.setName(val);
@@ -933,6 +937,22 @@ public class CmInfoService extends BaseService {
     		}
     		if(org!=null){
     			vo.setOrg_code(org.getCode());
+    		}
+    	}
+    	if((vo.getOrg_yxb()<1 || vo.getOrg_dq()<1) && vo.getOrg_jxs()>0){
+    		SysOrg org = sysOrgService.getWithCache(vo.getOrg_jxs());
+    		if(org!=null){
+    			org = sysOrgService.getWithCache(org.getPid());
+    			if(org!=null){
+    				if(vo.getOrg_dq()<1){
+    					vo.setOrg_dq(org.getId());
+    				}
+    				if(vo.getOrg_yxb()<1){
+    					org = sysOrgService.getWithCache(org.getPid());
+    					if(org!=null)
+    						vo.setOrg_yxb(org.getId());
+    				}
+    			}
     		}
     	}
     	if((vo.getCsrq()==null||vo.getCsrq().length()<1)&&vo.getNl()>0){

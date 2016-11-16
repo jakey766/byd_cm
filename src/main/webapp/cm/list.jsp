@@ -115,9 +115,9 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<input type="text" class="v-num" id="${vo.fname}_GE" name="Q^${vo.fname}^GE" s="${vo.name}" style="width:50px;"/>
+													<input type="text" class="v-num" id="${vo.fname}_GE" name="Q^${vo.fname}^GE" s="${vo.name}" style="width:50px;" onkeydown="if(event.keyCode==13){search()}"/>
 													&nbsp;至&nbsp;
-													<input type="text" class="v-num" id="${vo.fname}_LE" name="Q^${vo.fname}^LE" s="${vo.name}" style="width:50px;"/>
+													<input type="text" class="v-num" id="${vo.fname}_LE" name="Q^${vo.fname}^LE" s="${vo.name}" style="width:50px;" onkeydown="if(event.keyCode==13){search()}"/>
 												</div>
 											</div>
 										</div>
@@ -127,7 +127,7 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<input type="text" class="span10" id="${vo.fname}" name="Q^${vo.fname}^LK"/>
+													<input type="text" class="span10" id="${vo.fname}" name="Q^${vo.fname}^LK" onkeydown="if(event.keyCode==13){search()}"/>
 												</div>
 											</div>
 										</div>
