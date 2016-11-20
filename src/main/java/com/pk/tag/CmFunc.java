@@ -5,16 +5,21 @@ import com.pk.framework.spring.SpringContextUtil;
 import com.pk.model.admin.SysDist;
 import com.pk.model.admin.SysOrg;
 import com.pk.model.admin.SysTree;
+import com.pk.model.cm.CmInfo;
 import com.pk.service.admin.SysDistService;
 import com.pk.service.admin.SysOrgService;
 import com.pk.service.admin.SysTreeService;
+import org.apache.log4j.Logger;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 /**
  * Created by jiangkunpeng on 16/10/22.
  */
 final public class CmFunc {
+
+    private final static Logger logger = Logger.getLogger(CmFunc.class);
 
     /**
      * 获取字典项
@@ -63,6 +68,30 @@ final public class CmFunc {
         if(sysTreeService!=null)
             list = sysTreeService.loadByTypeAndPid(type, _pid);
         return list;
+    }
+
+    /**
+     * 获取字段显示
+     * @param vo
+     * @param sname
+     * @return
+     */
+    public static String fieldShow(CmInfo vo, String sname){
+        String rs = null;
+        try{
+            String getName = "get" + (sname.substring(0, 1).toUpperCase()) + (sname.length()>1?sname.substring(1, sname.length()):"");
+            Method method = vo.getClass().getMethod(getName, new Class[]{});
+            if(method!=null){
+                Object obj = method.invoke(vo);
+                if(obj!=null){
+                    rs = obj.toString();
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            logger.error("反射获取显示值异常,Field:" + sname, e);
+        }
+        return rs;
     }
 
 }

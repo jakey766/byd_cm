@@ -39,4 +39,14 @@
             ${cm:loadTree("CITY", "0")}
         </example>
     </function>
+
+    <function>
+        <name>fieldShow</name>
+        <function-class>com.pk.tag.CmFunc</function-class>
+        <function-signature>java.lang.String fieldShow(com.pk.model.cm.CmInfo, java.lang.String)</function-signature>
+        <description><![CDATA[获取字段显示]]></description>
+        <example>
+            ${cm:fieldShow(vo, "org_city_show")}
+        </example>
+    </function>
 </taglib>

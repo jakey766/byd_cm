@@ -190,7 +190,7 @@ public class CmInfo implements Serializable {
         return getDistName("JYCD", jycd);
     }
 
-    public String getHyxl_show(){
+    public String getHylx_show(){
         return getTreeName(hylx);
     }
 

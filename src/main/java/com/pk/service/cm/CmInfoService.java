@@ -443,7 +443,18 @@ public class CmInfoService extends BaseService {
         treeCache = null;
         orgCache = null;
 
+        Set<SysField> fieldSet = new HashSet<>();
+        for(Map.Entry<String, SysField> entry:fieldMap.entrySet()){
+            if(!heads.contains(entry.getKey()))
+                continue;
+            fieldSet.add(entry.getValue());
+        }
+
         List<CmInfo> list = new ArrayList<>();
+        List<CmInfo> adds = new ArrayList<>();
+        List<CmInfo> updates = new ArrayList<>();
+        List<CmInfo> filters = new ArrayList<>();
+
         SysField field = null;
         Method[] methods = CmInfo.class.getDeclaredMethods();
         for(List<String> data:datas){
@@ -493,6 +504,7 @@ public class CmInfoService extends BaseService {
                         buildOtherField(exist);
                         cmInfoDao.update(exist);
                         updateCount ++;
+                        updates.add(exist);
                     }
                 }else{
                     if(!StringUtils.isEmpty(vo.getHtbh())){
@@ -507,11 +519,13 @@ public class CmInfoService extends BaseService {
                             buildOtherField(exist);
                             cmInfoDao.update(exist);
                             updateCount ++;
+                            updates.add(exist);
                         }
                     }else{
                         buildOtherField(vo);
                         cmInfoDao.insert(vo);
                         insertCount ++;
+                        adds.add(vo);
                     }
                 }
         	}
@@ -532,6 +546,7 @@ public class CmInfoService extends BaseService {
                         buildOtherField(exist);
                         cmInfoDao.update(exist);
                         updateCount ++;
+                        updates.add(exist);
                     }
                 }else{
             		if(!StringUtils.isEmpty(vo.getSqr_zjhm())){
@@ -547,13 +562,16 @@ public class CmInfoService extends BaseService {
                                 buildOtherField(exist);
                                 cmInfoDao.update(exist);
                                 updateCount ++;
+                                updates.add(exist);
                             }
                         }else{
                         	filterCount ++;
+                            filters.add(vo);
                 			continue;
                         }
             		}else{
             			filterCount ++;
+                        filters.add(vo);
             			continue;
             		}
                 }
@@ -575,6 +593,7 @@ public class CmInfoService extends BaseService {
                         buildOtherField(exist);
                         cmInfoDao.update(exist);
                         updateCount ++;
+                        updates.add(exist);
                     }
                 }else{
             		if(!StringUtils.isEmpty(vo.getSjgcr_zjhm())){
@@ -590,13 +609,16 @@ public class CmInfoService extends BaseService {
                                 buildOtherField(exist);
                                 cmInfoDao.update(exist);
                                 updateCount ++;
+                                updates.add(exist);
                             }
                         }else{
                         	filterCount ++;
-                			continue;
+                            filters.add(vo);
+                            continue;
                         }
             		}else{
             			filterCount ++;
+                        filters.add(vo);
             			continue;
             		}
                 }
@@ -615,16 +637,19 @@ public class CmInfoService extends BaseService {
                             buildOtherField(exist);
                             cmInfoDao.update(exist);
                             updateCount ++;
+                            updates.add(exist);
                         }
                     }else{
                         buildOtherField(vo);
                         cmInfoDao.insert(vo);
                         insertCount ++;
+                        adds.add(vo);
                     }
                 }else{
                     buildOtherField(vo);
                     cmInfoDao.insert(vo);
                     insertCount ++;
+                    adds.add(vo);
                 }
             }
         }
@@ -633,6 +658,10 @@ public class CmInfoService extends BaseService {
         rs.put("addCount", insertCount);
         rs.put("updateCount", updateCount);
         rs.put("filterCount", filterCount);
+        rs.put("adds", adds);
+        rs.put("updates", updates);
+        rs.put("filters", filters);
+        rs.put("fields", fieldSet);
         return Result.SUCCESS(rs);
     }
 
