@@ -717,6 +717,7 @@ public class CmInfoService extends BaseService {
         boolean succ = false;
         String stype = field.getStype();
         String ftype = field.getFtype();
+        String srcName = field.getSrcName();
         if("text".equals(stype)||"date".equals(stype)){
             try {
                 if("int".equals(ftype)){
@@ -733,10 +734,18 @@ public class CmInfoService extends BaseService {
             }
         }else if("dist".equals(stype)){
             try {
-                SysDist dist = getDistByVal(field.getDistType(), val, newIfNotExist);
-                if(dist==null)
-                    return false;
-                method.invoke(vo, dist.getKey());
+                SysDist dist = getDistByVal(field.getDistType(), val, false);
+                if(dist==null){
+                    method.invoke(vo, "-100");
+                    if(srcName!=null&&srcName.length()>0){
+                        Method srcMethod = lookupMethod(methods, "set" + srcName);
+                        if(srcMethod!=null){
+                            srcMethod.invoke(vo, val);
+                        }
+                    }
+                }else{
+                    method.invoke(vo, dist.getKey());
+                }
                 succ = true;
             } catch (Exception e) {
                 e.printStackTrace();

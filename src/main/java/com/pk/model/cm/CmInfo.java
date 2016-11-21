@@ -95,17 +95,38 @@ public class CmInfo implements Serializable {
 
     private int deleted;
 
+    private String sqr_zjlx_src;
+    private String gsqrgx_src;
+    private String hkzt_src;
+    private String xb_src;
+    private String hyzk_src;
+    private String dqzt_src;
+    private String cxi_src;
+    private String cxing_src;
+    private String fkfs_src;
+    private String jtrs_src;
+    private String jycd_src;
+    private String zylx_src;
+    private String fclx_src;
+    private String qyxz_src;
+    private String csys_src;
+    private String dkqs_src;
+    private String yyxhsl_src;
+
     private static SysDistService sysDistService = null;
     private static SysTreeService sysTreeService = null;
     private static SysOrgService sysOrgService = null;
 
-    private String getDistName(String type, String key){
+    private String getDistName(String type, String key, String defVal){
         if(sysDistService==null){
             sysDistService = SpringContextUtil.getBean(SysDistService.class);
         }
+        String val = null;
         if(sysDistService!=null)
-            return sysDistService.getDistName(type, key);
-        return null;
+            val = sysDistService.getDistName(type, key);
+        if(val==null||val.length()<1)
+            val = defVal;
+        return val;
     }
 
     private String getTreeName(int treeId){
@@ -147,47 +168,47 @@ public class CmInfo implements Serializable {
     }
 
     public String getSqr_zjlx_show(){
-        return getDistName("ZJLX", sqr_zjlx);
+        return getDistName("ZJLX", sqr_zjlx, sqr_zjlx_src);
     }
 
     public String getXb_show(){
-        return getDistName("XB", xb);
+        return getDistName("XB", xb, xb_src);
     }
 
     public String getGsqrgx_show(){
-        return getDistName("LZGX", gsqrgx);
+        return getDistName("LZGX", gsqrgx, gsqrgx_src);
     }
 
     public String getHkzt_show(){
-        return getDistName("HKZT", hkzt);
+        return getDistName("HKZT", hkzt, hkzt_src);
     }
 
     public String getHyzk_show(){
-        return getDistName("HYZK", hyzk);
+        return getDistName("HYZK", hyzk, hyzk_src);
     }
 
     public String getDqzt_show(){
-        return getDistName("DQZT", dqzt);
+        return getDistName("DQZT", dqzt, dqzt_src);
     }
 
     public String getCxi_show(){
-        return getDistName("CXI", cxi);
+        return getDistName("CXI", cxi, cxi_src);
     }
 
     public String getCxing_show(){
-        return getDistName("CXING", cxing);
+        return getDistName("CXING", cxing, cxing_src);
     }
 
     public String getFkfs_show(){
-        return getDistName("FKFS", fkfs);
+        return getDistName("FKFS", fkfs, fkfs_src);
     }
 
     public String getJtrs_show(){
-        return getDistName("JTRS", jtrs);
+        return getDistName("JTRS", jtrs, jtrs_src);
     }
 
     public String getJycd_show(){
-        return getDistName("JYCD", jycd);
+        return getDistName("JYCD", jycd, jycd_src);
     }
 
     public String getHylx_show(){
@@ -199,7 +220,7 @@ public class CmInfo implements Serializable {
     }
 
     public String getZylx_show(){
-        return getDistName("ZYLX", zylx);
+        return getDistName("ZYLX", zylx, zylx_src);
     }
 
     public String getJkr_sf_show(){
@@ -211,23 +232,23 @@ public class CmInfo implements Serializable {
     }
 
     public String getFclx_show(){
-        return getDistName("FCLX", fclx);
+        return getDistName("FCLX", fclx, fclx_src);
     }
 
     public String getQyxz_show(){
-        return getDistName("QYXZ", qyxz);
+        return getDistName("QYXZ", qyxz, qyxz_src);
     }
 
     public String getCsys_show(){
-        return getDistName("CXYS", csys);
+        return getDistName("CXYS", csys, csys_src);
     }
 
     public String getDkqs_show(){
-        return getDistName("DKQS", dkqs);
+        return getDistName("DKQS", dkqs, dkqs_src);
     }
 
     public String getYyxhsl_show(){
-        return getDistName("YYHZSL", yyxhsl);
+        return getDistName("YYHZSL", yyxhsl, yyxhsl_src);
     }
 
     public int getDeleted() {
@@ -868,5 +889,141 @@ public class CmInfo implements Serializable {
 
     public void setYqr(String yqr) {
         this.yqr = yqr;
+    }
+
+    public String getSqr_zjlx_src() {
+        return sqr_zjlx_src;
+    }
+
+    public void setSqr_zjlx_src(String sqr_zjlx_src) {
+        this.sqr_zjlx_src = sqr_zjlx_src;
+    }
+
+    public String getGsqrgx_src() {
+        return gsqrgx_src;
+    }
+
+    public void setGsqrgx_src(String gsqrgx_src) {
+        this.gsqrgx_src = gsqrgx_src;
+    }
+
+    public String getHkzt_src() {
+        return hkzt_src;
+    }
+
+    public void setHkzt_src(String hkzt_src) {
+        this.hkzt_src = hkzt_src;
+    }
+
+    public String getXb_src() {
+        return xb_src;
+    }
+
+    public void setXb_src(String xb_src) {
+        this.xb_src = xb_src;
+    }
+
+    public String getHyzk_src() {
+        return hyzk_src;
+    }
+
+    public void setHyzk_src(String hyzk_src) {
+        this.hyzk_src = hyzk_src;
+    }
+
+    public String getDqzt_src() {
+        return dqzt_src;
+    }
+
+    public void setDqzt_src(String dqzt_src) {
+        this.dqzt_src = dqzt_src;
+    }
+
+    public String getCxi_src() {
+        return cxi_src;
+    }
+
+    public void setCxi_src(String cxi_src) {
+        this.cxi_src = cxi_src;
+    }
+
+    public String getCxing_src() {
+        return cxing_src;
+    }
+
+    public void setCxing_src(String cxing_src) {
+        this.cxing_src = cxing_src;
+    }
+
+    public String getFkfs_src() {
+        return fkfs_src;
+    }
+
+    public void setFkfs_src(String fkfs_src) {
+        this.fkfs_src = fkfs_src;
+    }
+
+    public String getJtrs_src() {
+        return jtrs_src;
+    }
+
+    public void setJtrs_src(String jtrs_src) {
+        this.jtrs_src = jtrs_src;
+    }
+
+    public String getJycd_src() {
+        return jycd_src;
+    }
+
+    public void setJycd_src(String jycd_src) {
+        this.jycd_src = jycd_src;
+    }
+
+    public String getZylx_src() {
+        return zylx_src;
+    }
+
+    public void setZylx_src(String zylx_src) {
+        this.zylx_src = zylx_src;
+    }
+
+    public String getFclx_src() {
+        return fclx_src;
+    }
+
+    public void setFclx_src(String fclx_src) {
+        this.fclx_src = fclx_src;
+    }
+
+    public String getQyxz_src() {
+        return qyxz_src;
+    }
+
+    public void setQyxz_src(String qyxz_src) {
+        this.qyxz_src = qyxz_src;
+    }
+
+    public String getCsys_src() {
+        return csys_src;
+    }
+
+    public void setCsys_src(String csys_src) {
+        this.csys_src = csys_src;
+    }
+
+    public String getDkqs_src() {
+        return dkqs_src;
+    }
+
+    public void setDkqs_src(String dkqs_src) {
+        this.dkqs_src = dkqs_src;
+    }
+
+    public String getYyxhsl_src() {
+        return yyxhsl_src;
+    }
+
+    public void setYyxhsl_src(String yyxhsl_src) {
+        this.yyxhsl_src = yyxhsl_src;
     }
 }

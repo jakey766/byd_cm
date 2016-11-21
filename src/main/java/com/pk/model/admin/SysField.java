@@ -12,6 +12,7 @@ public class SysField implements Serializable {
 	
 	private String fname;	//字段名
     private String sname;	//显示字段名
+	private String srcName;	//导入原始值字段名
     private String name;	//显示名
     private String stype;	//显示类型
 	private String ftype;	//数据类型,int/string
@@ -26,6 +27,7 @@ public class SysField implements Serializable {
 	private String bbName;		//八部系统表格名
 	private String xfxtName;	//销服系统表格名
 	private String vipName;		//VIP表格名
+	private int enc;			//是否加密
     
 	public String getFname() {
 		return fname;
@@ -132,5 +134,21 @@ public class SysField implements Serializable {
 
 	public void setVipName(String vipName) {
 		this.vipName = vipName;
+	}
+
+	public String getSrcName() {
+		return srcName;
+	}
+
+	public void setSrcName(String srcName) {
+		this.srcName = srcName;
+	}
+
+	public int getEnc() {
+		return enc;
+	}
+
+	public void setEnc(int enc) {
+		this.enc = enc;
 	}
 }

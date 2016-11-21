@@ -56,6 +56,7 @@
 												<div class="controls">
 													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ">
 														<option value="">所有</option>
+														<option value="-100">其他</option>
 														<c:forEach var="v" items="${cm:loadDist(vo.distType)}">
 															<option value="${v.key}">${v.name}</option>
 														</c:forEach>

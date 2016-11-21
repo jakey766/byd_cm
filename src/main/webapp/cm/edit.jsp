@@ -27,6 +27,7 @@
 									<div class="controls">
 										<select class="span10" id="${vo.fname}" name="${vo.fname}" v="{{v.${vo.fname}}}">
 											<option value="">请选择</option>
+											<option value="-100">其他</option>
 											<c:forEach var="v" items="${cm:loadDist(vo.distType)}">
 												<option value="${v.key}">${v.name}</option>
 											</c:forEach>
