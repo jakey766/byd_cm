@@ -31,16 +31,16 @@ public class CmInfo implements Serializable {
     private String gsqrgx;      //跟申请人关系
     private String hkzt;        //还款状态
     private String xb;          //性别
-    private int nl;             //年龄
+    private int nl = -1;        //年龄
     private String csrq;        //出生日期
     private String hyzk;        //婚姻状况
     private String dqzt;        //当前状态
     private String htbh;        //合同编号
     private String htjhrq;      //合同激活日期
     private String sqtjrq;      //申请提交日期
-    private int yf;             //月份
+    private int yf = -1;        //月份
     private String hzjjrq;      //核准拒绝日期
-    private int zc;             //周次
+    private int zc = -1;        //周次
     private String cxi;         //车系
     private String cxing;       //车型
     private String cphm;        //车牌号码
@@ -58,31 +58,31 @@ public class CmInfo implements Serializable {
     private String hyzlx_code;  //行业子类型编码
     private String zylx;        //职业类型
     private String hkszd;       //户口所在地
-    private int ysr;            //月收入
+    private int ysr = -1;            //月收入
     private int jkr_sf = -1;         //借款人省份
     private int jkr_cs = -1;         //借款人城市
     private String hkdz;        //户口地址
     private String dzlx;        //地址类型
     private String fclx;        //房产类型
-    private int jznx;           //居住年限
+    private int jznx = -1;      //居住年限
     private String gsmc;        //公司名称
     private String qyxz;        //企业性质
     private String zw;          //职位
     private String gsdh;        //公司电话
     private String dzy;         //地址一
-    private int gznx;           //工作年限
-    private double zcjg;        //资产价格
+    private int gznx = -1;      //工作年限
+    private double zcjg = -1;   //资产价格
     private String csys;        //车身颜色
     private String cpz;         //产品组
     private String cplx;        //产品类型
     private String dkqs;        //贷款期数
-    private double xsjg;        //销售价格
-    private double sfkbl;       //首付款比例
-    private double sfkje;       //首付款金额
-    private double dkje;        //贷款金额
-    private double khll;        //客户利率
-    private double lxze;        //利息总额
-    private double gcyhke;      //购车月还款额
+    private double xsjg = -1;   //销售价格
+    private double sfkbl = -1;  //首付款比例
+    private double sfkje = -1;  //首付款金额
+    private double dkje = -1;   //贷款金额
+    private double khll = -1;   //客户利率
+    private double lxze = -1;   //利息总额
+    private double gcyhke = -1; //购车月还款额
     private String khsqbm;      //客户申请编码
     private String jsr_xm;      //介绍人姓名
     private String jsr_lxdh;    //介绍人联系电话
@@ -112,6 +112,12 @@ public class CmInfo implements Serializable {
     private String csys_src;
     private String dkqs_src;
     private String yyxhsl_src;
+    private String hylx_src;
+    private String hyzlx_src;
+    private String city_sf_src;
+    private String city_cs_src;
+    private String jkr_sf_src;
+    private String jkr_cs_src;
 
     private static SysDistService sysDistService = null;
     private static SysTreeService sysTreeService = null;
@@ -129,13 +135,16 @@ public class CmInfo implements Serializable {
         return val;
     }
 
-    private String getTreeName(int treeId){
+    private String getTreeName(int treeId, String defVal){
         if(sysTreeService==null){
             sysTreeService = SpringContextUtil.getBean(SysTreeService.class);
         }
+        String val = null;
         if(sysTreeService!=null)
-            return sysTreeService.getTreeName(treeId);
-        return null;
+            val = sysTreeService.getTreeName(treeId);
+        if(val==null||val.length()<1)
+            val = defVal;
+        return val;
     }
 
     private String getOrgName(int orgId){
@@ -160,11 +169,11 @@ public class CmInfo implements Serializable {
     }
 
     public String getCity_sf_show(){
-        return getTreeName(city_sf);
+        return getTreeName(city_sf, city_sf_src);
     }
 
     public String getCity_cs_show(){
-        return getTreeName(city_cs);
+        return getTreeName(city_cs, city_cs_src);
     }
 
     public String getSqr_zjlx_show(){
@@ -212,11 +221,11 @@ public class CmInfo implements Serializable {
     }
 
     public String getHylx_show(){
-        return getTreeName(hylx);
+        return getTreeName(hylx, hylx_src);
     }
 
     public String getHyzlx_show(){
-        return getTreeName(hyzlx);
+        return getTreeName(hyzlx, hyzlx_src);
     }
 
     public String getZylx_show(){
@@ -224,11 +233,11 @@ public class CmInfo implements Serializable {
     }
 
     public String getJkr_sf_show(){
-        return getTreeName(jkr_sf);
+        return getTreeName(jkr_sf, jkr_sf_src);
     }
 
     public String getJkr_cs_show(){
-        return getTreeName(jkr_cs);
+        return getTreeName(jkr_cs, jkr_cs_src);
     }
 
     public String getFclx_show(){
@@ -1025,5 +1034,53 @@ public class CmInfo implements Serializable {
 
     public void setYyxhsl_src(String yyxhsl_src) {
         this.yyxhsl_src = yyxhsl_src;
+    }
+
+    public String getHylx_src() {
+        return hylx_src;
+    }
+
+    public void setHylx_src(String hylx_src) {
+        this.hylx_src = hylx_src;
+    }
+
+    public String getHyzlx_src() {
+        return hyzlx_src;
+    }
+
+    public void setHyzlx_src(String hyzlx_src) {
+        this.hyzlx_src = hyzlx_src;
+    }
+
+    public String getCity_sf_src() {
+        return city_sf_src;
+    }
+
+    public void setCity_sf_src(String city_sf_src) {
+        this.city_sf_src = city_sf_src;
+    }
+
+    public String getCity_cs_src() {
+        return city_cs_src;
+    }
+
+    public void setCity_cs_src(String city_cs_src) {
+        this.city_cs_src = city_cs_src;
+    }
+
+    public String getJkr_sf_src() {
+        return jkr_sf_src;
+    }
+
+    public void setJkr_sf_src(String jkr_sf_src) {
+        this.jkr_sf_src = jkr_sf_src;
+    }
+
+    public String getJkr_cs_src() {
+        return jkr_cs_src;
+    }
+
+    public void setJkr_cs_src(String jkr_cs_src) {
+        this.jkr_cs_src = jkr_cs_src;
     }
 }

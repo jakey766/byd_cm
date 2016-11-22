@@ -60,6 +60,7 @@
 									<div class="controls">
 										<select class="span10 ${vo.treeLevel!=1?'ctree':''}" id="${vo.fname}" name="${vo.fname}" v="{{v.${vo.fname}}}" onchange="treeChange(this, '${vo.distKey}')">
 											<option value="">请选择</option>
+											<option value="-100">其他</option>
 											<c:if test="${vo.distKey ne null and vo.distKey ne ''}">
 												<c:forEach var="v" items="${cm:loadTree(vo.distType, '0')}">
 													<option value="${v.id}">${v.name}</option>
@@ -202,8 +203,8 @@
 		var defVal = cobj.attr('v');
 		if(!!!defVal)
 			defVal = '';
-		var h = '<option value="">所有</option>';
-		if(!!!val||val==''){
+		var h = '<option value="">请选择</option><option value="-100" '+(defVal=='-100'?'selected="selected"':'')+'>其他</option>';
+		if(!!!val||val==''||val=='-100'){
 			cobj.html(h).change();
 		}else{
 			$.post('${PATH}cm/loadTrees.do', 'pid='+val, function(json) {

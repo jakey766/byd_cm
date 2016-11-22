@@ -89,6 +89,7 @@
 												<div class="controls">
 													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="treeChange(this, '${vo.distKey}')">
 														<option value="">所有</option>
+														<option value="-100">其他</option>
 														<c:if test="${vo.distKey ne null and vo.distKey ne ''}">
 															<c:forEach var="v" items="${cm:loadTree(vo.distType, '0')}">
 																<option value="${v.id}">${v.name}</option>
@@ -288,8 +289,8 @@
 		if(!!!cid||cid=='')
 			return;
 		var val = $(target).val();
-		var h = '<option value="">所有</option>';
-		if(!!!val||val==''){
+		var h = '<option value="">所有</option><option value="-100">其他</option>';
+		if(!!!val||val==''||val=='-100'){
 			$('#'+cid).html(h).change();
 		}else{
 			$.post('${PATH}cm/loadTrees.do', 'pid='+val, function(json) {
@@ -351,12 +352,23 @@
 				$('#common_page').hide();
 			}
 			$.uniform.update();
+			checkAllAuto();
 		});
 		curPage = page;
 	}
 	
 	function refresh() {
 		search(curPage);
+	}
+
+	function checkAllAuto(){
+		var checked = $('#J_checkAll')[0].checked;
+		if(checked){
+			$('[name="ckb"]').attr('checked', 'checked');
+		}else{
+			$('[name="ckb"]').removeAttr('checked');
+		}
+		$.uniform.update();
 	}
 	
 	function exportExcel(){

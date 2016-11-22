@@ -471,7 +471,7 @@ public class CmInfoService extends BaseService {
                 val = data.get(idx);
                 if(val==null||val.length()<1)
                     continue;
-                boolean flag = setFieldVal(vo, field, val, methods, fieldRefs, true);
+                boolean flag = setFieldVal(vo, field, val, methods, fieldRefs, false);
                 if(flag)
                     matchOne = true;
             }
@@ -668,6 +668,7 @@ public class CmInfoService extends BaseService {
     private void copyWithOutNone(CmInfo vo1, CmInfo vo2,List<SysField> fields, Method[] methods){
         Method method = null;
         Object val2 = null;
+        String srcName = null;
         boolean notNone = false;
         for(SysField field:fields){
             if(CmInfoDao.UpdateIgnores.contains(field.getFname()))
@@ -680,30 +681,52 @@ public class CmInfoService extends BaseService {
             }catch(Exception e){
                 e.printStackTrace();
             }
-            if(val2==null)
-                continue;
-            notNone = false;
-            if("string".equals(field.getFtype())){
-                if(val2.toString().length()>0){
-                    notNone = true;
+            if(val2!=null){
+                notNone = false;
+                if("string".equals(field.getFtype())){
+                    if(val2.toString().length()>0){
+                        notNone = true;
+                    }
+                }else if("int".equals(field.getFtype())){
+                    if((int)val2!=-1)
+                        notNone = true;
+                }else if("double".equals(field.getFtype())){
+                    if((double)val2!=-1)
+                        notNone = true;
+                }else{
+                    if(val2!=null)
+                        notNone = true;
                 }
-            }else if("int".equals(field.getFtype())){
-                if((int)val2>0)
-                    notNone = true;
-            }else if("double".equals(field.getFtype())){
-                if((double)val2>0)
-                    notNone = true;
-            }else{
-                if(val2!=null)
-                    notNone = true;
+                if(notNone){
+                    method = lookupMethod(methods, "set" + field.getFname());
+                    if(method!=null){
+                        try{
+                            method.invoke(vo1, val2);
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
             }
-            if(notNone){
-                method = lookupMethod(methods, "set" + field.getFname());
-                if(method!=null){
-                    try{
-                        method.invoke(vo1, val2);
-                    }catch(Exception e){
-                        e.printStackTrace();
+            srcName = field.getSrcName();
+            if(srcName!=null&&srcName.length()>0){
+                method = lookupMethod(methods, "get" + srcName);
+                if(method==null)
+                    continue;
+                String val3 = null;
+                try{
+                    val3 = (String)method.invoke(vo2);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
+                if(val3!=null&&val3.length()>0){
+                    method = lookupMethod(methods, "set" + srcName);
+                    if(method!=null){
+                        try{
+                            method.invoke(vo1, val3);
+                        }catch(Exception e){
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -758,21 +781,28 @@ public class CmInfoService extends BaseService {
                     pid = 0;
                 }else{
                     SysField ref = fieldRefs.get(field.getFname());
-                    if(ref==null)
-                        return false;
-                    Method refMethod = lookupMethod(methods, "get" + ref.getFname());
-                    Integer obj = (Integer)refMethod.invoke(vo);
-                    if(obj==null)
-                        return false;
-                    pid = obj;
+                    if(ref!=null){
+                        Method refMethod = lookupMethod(methods, "get" + ref.getFname());
+                        Integer obj = (Integer)refMethod.invoke(vo);
+                        if(obj!=null)
+                            pid = obj;
+                    }
                 }
-                if(pid<0)
-                    return false;
-
-                SysTree tree = getTreeByVal(field.getDistType(), val, pid, newIfNotExist);
-                if(tree==null)
-                    return false;
-                method.invoke(vo, tree.getId());
+                SysTree tree = getTreeByVal(field.getDistType(), val, pid, false);
+                if(tree==null && pid>-1 && field.getTreeLevel()>1){
+                    tree = getTreeByVal(field.getDistType(), val, -1, false);
+                }
+                if(tree==null){
+                    method.invoke(vo, -100);
+                    if(srcName!=null&&srcName.length()>0){
+                        Method srcMethod = lookupMethod(methods, "set" + srcName);
+                        if(srcMethod!=null){
+                            srcMethod.invoke(vo, val);
+                        }
+                    }
+                }else{
+                    method.invoke(vo, tree.getId());
+                }
                 succ = true;
             } catch (Exception e) {
                 e.printStackTrace();
