@@ -1,0 +1,9 @@
+entrypt
+
+ALTER TABLE `sys_user` CHANGE COLUMN `name` `name` VARBINARY(100) NOT NULL COMMENT '姓名' ;
+ALTER TABLE `sys_user` CHANGE COLUMN `mobile` `mobile` VARBINARY(100) NULL COMMENT '手机' ;
+ALTER TABLE `sys_user` CHANGE COLUMN `email` `email` VARBINARY(500) NULL COMMENT '邮箱' ;
+
+update sys_user set name = AES_ENCRYPT(name, 'Jk,Zh8XW') where id>0;
+update sys_user set mobile = AES_ENCRYPT(mobile, 'Jk,Zh8XW') where id>0 and mobile is not null and mobile <> '';
+update sys_user set email = AES_ENCRYPT(email, 'Jk,Zh8XW') where id>0 and email is not null and email <> '';

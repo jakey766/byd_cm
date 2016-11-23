@@ -13,6 +13,7 @@ public class SysField implements Serializable {
 	private String fname;	//字段名
     private String sname;	//显示字段名
 	private String srcName;	//导入原始值字段名
+	private String tname;	//表字段名
     private String name;	//显示名
     private String stype;	//显示类型
 	private String ftype;	//数据类型,int/string
@@ -150,5 +151,13 @@ public class SysField implements Serializable {
 
 	public void setEnc(int enc) {
 		this.enc = enc;
+	}
+
+	public String getTname() {
+		return tname;
+	}
+
+	public void setTname(String tname) {
+		this.tname = tname;
 	}
 }

@@ -19,13 +19,13 @@
 	<insert id="insert" flushCache="true" parameterType="SysUser">
 		<![CDATA[
 			INSERT INTO sys_user(username, password, name, mobile, email, create_time, update_time, deleted, role_ids, role_names, org_ids)
-			VALUES(#{username}, #{password}, #{name}, #{mobile}, #{email}, now(), now(), 0, #{roleIds}, #{roleNames}, #{orgIds})
+			VALUES(#{username}, #{password}, AES_ENCRYPT(#{name}, 'Jk,Zh8XW'), AES_ENCRYPT(#{mobile}, 'Jk,Zh8XW'), AES_ENCRYPT(#{email}, 'Jk,Zh8XW'), now(), now(), 0, #{roleIds}, #{roleNames}, #{orgIds})
 		]]>
 	</insert>
 
 	<update id="update" flushCache="true" parameterType="SysUser">
 		<![CDATA[
-			UPDATE sys_user SET name = #{name}, mobile = #{mobile}, email = #{email}, role_ids = #{roleIds}, role_names = #{roleNames}, org_ids=#{orgIds}, update_time = now()
+			UPDATE sys_user SET name = AES_ENCRYPT(#{name}, 'Jk,Zh8XW'), mobile = AES_ENCRYPT(#{mobile}, 'Jk,Zh8XW'), email = AES_ENCRYPT(#{email}, 'Jk,Zh8XW'), role_ids = #{roleIds}, role_names = #{roleNames}, org_ids=#{orgIds}, update_time = now()
 			WHERE id = #{id}
 		]]>
 	</update>
@@ -62,19 +62,23 @@
 
 	<sql id="QuerySelect">
 		<![CDATA[
-			id, username, name, mobile, email, role_ids AS roleIds, role_names AS roleNames, org_ids AS orgIds, deleted
+			id, username,
+			CAST(BINARY(AES_DECRYPT(name, 'Jk,Zh8XW')) AS CHAR CHARACTER SET utf8) AS name,
+			CAST(BINARY(AES_DECRYPT(mobile, 'Jk,Zh8XW')) AS CHAR CHARACTER SET utf8) AS mobile,
+			CAST(BINARY(AES_DECRYPT(email, 'Jk,Zh8XW')) AS CHAR CHARACTER SET utf8) AS email,
+			role_ids AS roleIds, role_names AS roleNames, org_ids AS orgIds, deleted
 		]]>
 	</sql>
 
 	<sql id="QueryWhere">
 		<if test="mobile!=null and mobile!=''">
 			<![CDATA[
-				AND mobile = #{mobile}
+				AND mobile = AES_ENCRYPT(#{mobile}, 'Jk,Zh8XW')
 			]]>
 		</if>
         <if test="email!=null and email!=''">
             <![CDATA[
-				AND email = #{email}
+				AND email = AES_ENCRYPT(#{email}, 'Jk,Zh8XW')
 			]]>
         </if>
         <if test="deleted > -1">
@@ -84,7 +88,7 @@
         </if>
 		<if test="keywords!=null and keywords!=''">
 			<![CDATA[
-				AND (username LIKE concat('%',#{keywords},'%') OR name LIKE concat('%',#{keywords},'%'))
+				AND (username LIKE concat('%',#{keywords},'%') OR name = AES_ENCRYPT(#{keywords}, 'Jk,Zh8XW'))
 			]]>
 		</if>
 	</sql>
