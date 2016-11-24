@@ -13,6 +13,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import com.pk.model.admin.SysField;
+import com.pk.service.admin.SysFieldService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +35,38 @@ public class CmInfoDao{
 	
 	private final static Logger logger = Logger.getLogger(CmInfoDao.class);
 
+	private final static String EncKey = "Jk,Zh8XW";
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+	@Autowired
+	private SysFieldService sysFieldService;
+
+	private String getSelectSql(List<SysField> fields){
+		StringBuilder sb = new StringBuilder(100);
+		sb.append("id");
+		String srcName = null;
+		for(SysField f:fields){
+			srcName = f.getSrcName();
+			sb.append(",");
+			if(f.getEnc()==1){
+				sb.append("CAST(BINARY(AES_DECRYPT(").append(f.getTname()).append(", '").append(EncKey).append("')) AS CHAR CHARACTER SET utf8) AS ").append(f.getFname());
+			}else{
+				sb.append(f.getTname()).append(" AS ").append(f.getFname());
+			}
+			if(!StringUtils.isEmpty(srcName)){
+				sb.append(",").append(srcName);
+			}
+//			if(!StringUtils.isEmpty(srcName)){
+//				sb.append(",CAST(BINARY(AES_DECRYPT(").append(srcName).append(", '").append(EncKey).append("')) AS CHAR CHARACTER SET utf8) AS ").append(srcName);
+//			}
+		}
+		return sb.toString();
+	}
+
     public CmInfo get(int id){
-		String sql = "SELECT * FROM cm_info WHERE id=?";
+		String sql = "SELECT " + getSelectSql(sysFieldService.loadAllWithCache()) + " FROM cm_info WHERE id=?";
 		List<Object> params = new ArrayList<Object>();
 		params.add(id);
 		List<CmInfo> list = jdbcTemplate.query(sql, params.toArray(), CmInfoRowMapper);
@@ -49,6 +78,14 @@ public class CmInfoDao{
     public PageResultVO list(CmInfoSearchVO svo){
         StringBuilder sql = new StringBuilder(200);
         List<Object> params = new ArrayList<Object>();
+
+		List<SysField> fields = sysFieldService.loadAllWithCache();
+		Map<String, SysField> fieldMap = new HashMap<>();
+		for(SysField f:fields){
+			fieldMap.put(f.getFname(), f);
+		}
+
+		SysField field = null;
 
 		sql.append(" AND deleted=?");
 		params.add(0);
@@ -75,25 +112,39 @@ public class CmInfoDao{
 					op = splits[2].toUpperCase();
 				else
 					op = "EQ";
-				sql.append(" AND ").append(fname);
+
+				field = fieldMap.get(fname);
+				if(field==null)
+					continue;
+
+				sql.append(" AND ").append(field.getTname());
 				if("LK".equals(op)){
-					sql.append(" LIKE ?");
-					params.add("%" + val + "%");
+					sql.append(" LIKE ");
+					if(field.getEnc()==1)
+						params.add(val);
+					else
+						params.add("%" + val + "%");
 				}else if("GE".equals(op)){
-					sql.append(" >= ?");
+					sql.append(" >= ");
 					params.add(val);
 				}else if("LE".equals(op)){
-					sql.append(" <= ?");
+					sql.append(" <= ");
 					params.add(val);
 				}else if("GT".equals(op)){
-					sql.append(" > ?");
+					sql.append(" > ");
 					params.add(val);
 				}else if("LT".equals(op)){
-					sql.append(" < ?");
+					sql.append(" < ");
 					params.add(val);
 				}else{
-					sql.append(" = ?");
+					sql.append(" = ");
 					params.add(val);
+				}
+
+				if(field.getEnc()==1){
+					sql.append("AES_ENCRYPT(?, '").append(EncKey).append("')");
+				}else{
+					sql.append("?");
 				}
 			}
 		}
@@ -116,7 +167,7 @@ public class CmInfoDao{
         int count = jdbcTemplate.queryForInt(_sql, _params);
         int totalPage = svo.getSize() < 1 ? 1 : (count + svo.getSize() - 1) / svo.getSize();
         if(count > 0){
-            _sql = "SELECT * FROM cm_info WHERE 1=1" + sql.toString() + " LIMIT " + svo.getStart() + "," + svo.getSize();
+            _sql = "SELECT " + getSelectSql(fields) + " FROM cm_info WHERE 1=1" + sql.toString() + " LIMIT " + svo.getStart() + "," + svo.getSize();
             List<CmInfo> list = jdbcTemplate.query(_sql, _params, CmInfoRowMapper);
             page.setList(list);
         }
@@ -130,13 +181,71 @@ public class CmInfoDao{
         List<Object> params = new ArrayList<Object>();
         StringBuilder fieldNames = new StringBuilder(100);
 		StringBuilder fieldValues = new StringBuilder(100);
+
+		List<SysField> sfields = sysFieldService.loadAllWithCache();
 		
 		String fieldName = null;
 		Method method = null;
 		Object val = null;
 		Method[] methods = CmInfo.class.getDeclaredMethods();
 		Field[] fields = CmInfo.class.getDeclaredFields();
+		String srcName = null;
+		SysField sfield = null;
 		int idx = 0;
+
+		for(int i=0,len=sfields.size();i<len;i++){
+			sfield = sfields.get(i);
+			fieldName = sfield.getFname();
+			method = lookupMethod(methods, "get" + fieldName);
+			if(method==null)
+				continue;
+			try {
+				val = method.invoke(vo);
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("Bean反射转换SQL异常,CLASS:"+(CmInfo.class.getSimpleName())+",FIELD:"+fieldName, e);
+			}
+			if(val!=null){
+				if(idx>0){
+					fieldNames.append(",");
+					fieldValues.append(",");
+				}
+				fieldNames.append(sfield.getTname());
+				if(sfield.getEnc()==1){
+					fieldValues.append("AES_ENCRYPT(?, '").append(EncKey).append("')");
+				}else{
+					fieldValues.append("?");
+				}
+				params.add(val);
+				idx++;
+			}
+			srcName = sfield.getSrcName();
+			if(srcName!=null&&srcName.length()>0){
+				method = lookupMethod(methods, "get" + srcName);
+				if(method==null)
+					continue;
+				try {
+					val = method.invoke(vo);
+				} catch (Exception e) {
+					e.printStackTrace();
+					logger.error("Bean反射转换SQL异常,CLASS:"+(CmInfo.class.getSimpleName())+",FIELD:"+srcName, e);
+				}
+				if(val==null||val.toString().length()<1)
+					continue;
+				if(idx>0){
+					fieldNames.append(",");
+					fieldValues.append(",");
+				}
+				fieldNames.append(srcName);
+//				fieldValues.append("AES_ENCRYPT(?, '").append(EncKey).append("')");
+				fieldValues.append("?");
+				params.add(val);
+				idx++;
+			}
+
+		}
+
+		/*
 		for(int i=0,len=fields.length;i<len;i++){
 			fieldName = fields[i].getName();
 			if("id".equals(fieldName))
@@ -161,6 +270,7 @@ public class CmInfoDao{
 			params.add(val);
 			idx++;
 		}
+		*/
 		
 		StringBuilder sql = new StringBuilder(100);
 		sql.append("INSERT INTO cm_info (").append(fieldNames.toString()).append(") VALUES (").append(fieldValues).append(")");
@@ -184,13 +294,68 @@ public class CmInfoDao{
     public void update(CmInfo vo){
     	List<Object> params = new ArrayList<Object>();
         StringBuilder fieldNames = new StringBuilder(100);
+
+		List<SysField> sfields = sysFieldService.loadAllWithCache();
 		
 		String fieldName = null;
 		Method method = null;
 		Object val = null;
 		Method[] methods = CmInfo.class.getDeclaredMethods();
 		Field[] fields = CmInfo.class.getDeclaredFields();
+		String srcName = null;
+		SysField sfield = null;
 		int idx = 0;
+
+		for(int i=0,len=sfields.size();i<len;i++){
+			sfield = sfields.get(i);
+			fieldName = sfield.getFname();
+			method = lookupMethod(methods, "get" + fieldName);
+			if(method==null)
+				continue;
+			try {
+				val = method.invoke(vo);
+			} catch (Exception e) {
+				e.printStackTrace();
+				logger.error("Bean反射转换SQL异常,CLASS:"+(CmInfo.class.getSimpleName())+",FIELD:"+fieldName, e);
+			}
+			if(val!=null){
+				if(idx>0){
+					fieldNames.append(",");
+				}
+				fieldNames.append(sfield.getTname()).append("=");
+				if(sfield.getEnc()==1){
+					fieldNames.append("AES_ENCRYPT(?, '").append(EncKey).append("')");
+				}else{
+					fieldNames.append("?");
+				}
+				params.add(val);
+				idx++;
+			}
+			srcName = sfield.getSrcName();
+			if(srcName!=null&&srcName.length()>0){
+				method = lookupMethod(methods, "get" + srcName);
+				if(method==null)
+					continue;
+				try {
+					val = method.invoke(vo);
+				} catch (Exception e) {
+					e.printStackTrace();
+					logger.error("Bean反射转换SQL异常,CLASS:"+(CmInfo.class.getSimpleName())+",FIELD:"+srcName, e);
+				}
+				if(val==null||val.toString().length()<1)
+					continue;
+				if(idx>0){
+					fieldNames.append(",");
+				}
+				fieldNames.append(srcName).append("=");
+//				fieldNames.append("AES_ENCRYPT(?, '").append(EncKey).append("')");
+				fieldNames.append("?");
+				params.add(val);
+				idx++;
+			}
+		}
+
+		/*
 		for(int i=0,len=fields.length;i<len;i++){
 			fieldName = fields[i].getName();
 			if(UpdateIgnores.contains(fieldName))
@@ -213,6 +378,7 @@ public class CmInfoDao{
 			params.add(val);
 			idx++;
 		}
+		*/
 		
 		StringBuilder sql = new StringBuilder(100);
 		sql.append("UPDATE cm_info SET ").append(fieldNames).append(" WHERE id=?");
@@ -261,7 +427,7 @@ public class CmInfoDao{
 		Map<String, String> columnName = new HashMap<String, String>();
 		ResultSetMetaData md = rs.getMetaData();
 		for (int j = 0; j < md.getColumnCount(); j++) {
-			columnName.put(String.valueOf(j), md.getColumnName(j + 1));
+			columnName.put(String.valueOf(j), md.getColumnLabel(j + 1));
 		}
 
 		Method[] methods = CmInfo.class.getDeclaredMethods();
