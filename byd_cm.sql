@@ -37,101 +37,101 @@ CREATE TABLE `cm_info` (
   `AI` varchar(50) DEFAULT NULL COMMENT 'ç”³è¯·äººè¯ä»¶ç±»åž‹',
   `AJ` varbinary(200) DEFAULT NULL COMMENT 'ç”³è¯·äººè¯ä»¶å·ç ',
   `AK` varbinary(200) DEFAULT NULL COMMENT 'ç”³è¯·äººç”µè¯å·ç ',
-  `sjgcr_xm` varchar(50) DEFAULT NULL COMMENT 'å®žé™…è´­è½¦äººå§“å',
-  `sjgcr_zjhm` varchar(50) DEFAULT NULL COMMENT 'å®žé™…è´­è½¦äººè¯ä»¶å·ç ',
-  `sjgcr_dhhm` varchar(50) DEFAULT NULL COMMENT 'å®žé™…è´­è½¦äººç”µè¯å·ç ',
-  `gsqrgx` varchar(50) DEFAULT NULL COMMENT 'è·Ÿç”³è¯·äººå…³ç³»',
-  `hkzt` varchar(50) DEFAULT NULL COMMENT 'è¿˜æ¬¾çŠ¶æ€',
-  `xb` varchar(50) DEFAULT NULL COMMENT 'æ€§åˆ«',
-  `nl` int(11) DEFAULT NULL COMMENT 'å¹´é¾„',
+  `AL` varbinary(200) DEFAULT NULL COMMENT 'å®žé™…è´­è½¦äººå§“å',
+  `AM` varbinary(200) DEFAULT NULL COMMENT 'å®žé™…è´­è½¦äººè¯ä»¶å·ç ',
+  `AN` varbinary(200) DEFAULT NULL COMMENT 'å®žé™…è´­è½¦äººç”µè¯å·ç ',
+  `AO` varchar(50) DEFAULT NULL COMMENT 'è·Ÿç”³è¯·äººå…³ç³»',
+  `AP` varchar(50) DEFAULT NULL COMMENT 'è¿˜æ¬¾çŠ¶æ€',
+  `AQ` varchar(50) DEFAULT NULL COMMENT 'æ€§åˆ«',
+  `AR` int(11) DEFAULT NULL COMMENT 'å¹´é¾„',
   `csrq` date DEFAULT NULL COMMENT 'å‡ºç”Ÿæ—¥æœŸ',
-  `hyzk` varchar(50) DEFAULT NULL COMMENT 'å©šå§»çŠ¶å†µ',
-  `dqzt` varchar(50) DEFAULT NULL COMMENT 'å½“å‰çŠ¶æ€',
-  `htbh` varchar(50) DEFAULT NULL COMMENT 'åˆåŒç¼–å·',
-  `htjhrq` date DEFAULT NULL COMMENT 'åˆåŒæ¿€æ´»æ—¥æœŸ',
-  `sqtjrq` date DEFAULT NULL COMMENT 'ç”³è¯·æäº¤æ—¥æœŸ',
-  `yf` int(11) DEFAULT NULL COMMENT 'æœˆä»½',
-  `hzjjrq` date DEFAULT NULL COMMENT 'æ ¸å‡†æ‹’ç»æ—¥æœŸ',
-  `zc` int(11) DEFAULT NULL COMMENT 'å‘¨æ¬¡',
-  `cxi` varchar(50) DEFAULT NULL COMMENT 'è½¦ç³»',
-  `cxing` varchar(50) DEFAULT NULL COMMENT 'è½¦åž‹',
-  `cphm` varchar(50) DEFAULT NULL COMMENT 'è½¦ç‰Œå·ç ',
-  `vin` varchar(100) DEFAULT NULL COMMENT 'VINå·',
-  `gcrq` date DEFAULT NULL COMMENT 'è´­è½¦æ—¥æœŸ',
-  `jcrq` date DEFAULT NULL COMMENT 'äº¤è½¦æ—¥æœŸ',
-  `fkfs` varchar(50) DEFAULT NULL COMMENT 'ä»˜æ¬¾æ–¹å¼',
-  `jszbh` varchar(50) DEFAULT NULL COMMENT 'é©¾é©¶è¯ç¼–å·',
-  `jzdqr` date DEFAULT NULL COMMENT 'é©¾ç…§åˆ°æœŸæ—¥',
-  `jtrs` varchar(50) DEFAULT NULL COMMENT 'å®¶åº­äººæ•°',
-  `jycd` varchar(50) DEFAULT NULL COMMENT 'æ•™è‚²ç¨‹åº¦',
-  `dksqhm` varchar(50) DEFAULT NULL COMMENT 'è´·æ¬¾ç”³è¯·å·ç ',
-  `hylx` int(11) DEFAULT NULL COMMENT 'è¡Œä¸šç±»åž‹',
-  `hyzlx` int(11) DEFAULT NULL COMMENT 'è¡Œä¸šå­ç±»åž‹',
+  `AT` varchar(50) DEFAULT NULL COMMENT 'å©šå§»çŠ¶å†µ',
+  `AU` varchar(50) DEFAULT NULL COMMENT 'å½“å‰çŠ¶æ€',
+  `AV` varchar(50) DEFAULT NULL COMMENT 'åˆåŒç¼–å·',
+  `AW` date DEFAULT NULL COMMENT 'åˆåŒæ¿€æ´»æ—¥æœŸ',
+  `AX` date DEFAULT NULL COMMENT 'ç”³è¯·æäº¤æ—¥æœŸ',
+  `AY` int(11) DEFAULT NULL COMMENT 'æœˆä»½',
+  `AZ` date DEFAULT NULL COMMENT 'æ ¸å‡†æ‹’ç»æ—¥æœŸ',
+  `BA` int(11) DEFAULT NULL COMMENT 'å‘¨æ¬¡',
+  `BB` varchar(50) DEFAULT NULL COMMENT 'è½¦ç³»',
+  `BC` varchar(50) DEFAULT NULL COMMENT 'è½¦åž‹',
+  `BD` varbinary(200) DEFAULT NULL COMMENT 'è½¦ç‰Œå·ç ',
+  `BE` varbinary(200) DEFAULT NULL COMMENT 'VINå·',
+  `BF` date DEFAULT NULL COMMENT 'è´­è½¦æ—¥æœŸ',
+  `BG` date DEFAULT NULL COMMENT 'äº¤è½¦æ—¥æœŸ',
+  `BH` varchar(50) DEFAULT NULL COMMENT 'ä»˜æ¬¾æ–¹å¼',
+  `BI` varbinary(200) DEFAULT NULL COMMENT 'é©¾é©¶è¯ç¼–å·',
+  `BJ` date DEFAULT NULL COMMENT 'é©¾ç…§åˆ°æœŸæ—¥',
+  `BK` varchar(50) DEFAULT NULL COMMENT 'å®¶åº­äººæ•°',
+  `BL` varchar(50) DEFAULT NULL COMMENT 'æ•™è‚²ç¨‹åº¦',
+  `BM` varbinary(200) DEFAULT NULL COMMENT 'è´·æ¬¾ç”³è¯·å·ç ',
+  `BN` int(11) DEFAULT NULL COMMENT 'è¡Œä¸šç±»åž‹',
+  `BO` int(11) DEFAULT NULL COMMENT 'è¡Œä¸šå­ç±»åž‹',
   `hyzlx_code` varchar(500) DEFAULT NULL COMMENT 'è¡Œä¸šå­ç±»åž‹ç¼–å·',
-  `zylx` varchar(100) DEFAULT NULL COMMENT 'èŒä¸šç±»åž‹',
-  `hkszd` varchar(50) DEFAULT NULL COMMENT 'æˆ·å£æ‰€åœ¨åœ°',
-  `ysr` int(11) DEFAULT NULL COMMENT 'æœˆæ”¶å…¥',
-  `jkr_sf` int(11) DEFAULT NULL COMMENT 'å€Ÿæ¬¾äººçœä»½',
-  `jkr_cs` int(11) DEFAULT NULL COMMENT 'å€Ÿæ¬¾äººåŸŽå¸‚',
-  `hkdz` varchar(200) DEFAULT NULL COMMENT 'æˆ·å£åœ°å€',
-  `dzlx` varchar(50) DEFAULT NULL COMMENT 'åœ°å€ç±»åž‹',
-  `fclx` varchar(50) DEFAULT NULL COMMENT 'æˆ¿äº§ç±»åž‹',
-  `jznx` int(11) DEFAULT NULL COMMENT 'å±…ä½å¹´é™',
-  `gsmc` varchar(100) DEFAULT NULL COMMENT 'å…¬å¸åç§°',
-  `qyxz` varchar(50) DEFAULT NULL COMMENT 'ä¼ä¸šæ€§è´¨',
-  `zw` varchar(50) DEFAULT NULL COMMENT 'èŒä½',
-  `gsdh` varchar(50) DEFAULT NULL COMMENT 'å…¬å¸ç”µè¯',
-  `dzy` varchar(200) DEFAULT NULL COMMENT 'åœ°å€ä¸€',
-  `gznx` int(11) DEFAULT NULL COMMENT 'å·¥ä½œå¹´é™',
-  `zcjg` double DEFAULT NULL COMMENT 'èµ„äº§ä»·æ ¼',
-  `csys` varchar(50) DEFAULT NULL COMMENT 'è½¦èº«é¢œè‰²',
-  `cpz` varchar(50) DEFAULT NULL COMMENT 'äº§å“ç»„',
-  `cplx` varchar(50) DEFAULT NULL COMMENT 'äº§å“ç±»åž‹',
-  `dkqs` varchar(50) DEFAULT NULL COMMENT 'è´·æ¬¾æœŸæ•°',
-  `xsjg` double DEFAULT NULL COMMENT 'é”€å”®ä»·æ ¼',
-  `sfkbl` double DEFAULT NULL COMMENT 'é¦–ä»˜æ¬¾æ¯”ä¾‹',
-  `sfkje` double DEFAULT NULL COMMENT 'é¦–ä»˜æ¬¾é‡‘é¢',
-  `dkje` double DEFAULT NULL COMMENT 'è´·æ¬¾é‡‘é¢',
-  `khll` double DEFAULT NULL COMMENT 'å®¢æˆ·åˆ©çŽ‡',
-  `lxze` double DEFAULT NULL COMMENT 'åˆ©æ¯æ€»é¢',
-  `gcyhke` double DEFAULT NULL COMMENT 'è´­è½¦æœˆè¿˜æ¬¾é¢',
-  `khsqbm` varchar(50) DEFAULT NULL COMMENT 'å®¢æˆ·ç”³è¯·ç¼–ç ',
-  `jsr_xm` varchar(50) DEFAULT NULL COMMENT 'ä»‹ç»äººå§“å',
-  `jsr_lxdh` varchar(50) DEFAULT NULL COMMENT 'ä»‹ç»äººè”ç³»ç”µè¯',
-  `xqah` varchar(100) DEFAULT NULL COMMENT 'å…´è¶£çˆ±å¥½',
-  `yyxhsl` varchar(50) DEFAULT NULL COMMENT 'æ‹¥æœ‰å°å­©æ•°é‡',
-  `dygxhnljd` varchar(50) DEFAULT NULL COMMENT 'ç¬¬ä¸€ä¸ªå°å­©å¹´é¾„é˜¶æ®µ',
-  `degxhnljd` varchar(50) DEFAULT NULL COMMENT 'ç¬¬äºŒä¸ªå°å­©å¹´é¾„é˜¶æ®µ',
-  `bz` varchar(200) DEFAULT NULL COMMENT 'å¤‡æ³¨',
-  `yqr` varchar(50) DEFAULT NULL COMMENT 'é‚€è¯·äºº',
+  `BQ` varchar(100) DEFAULT NULL COMMENT 'èŒä¸šç±»åž‹',
+  `BR` varbinary(300) DEFAULT NULL COMMENT 'æˆ·å£æ‰€åœ¨åœ°',
+  `BS` int(11) DEFAULT NULL COMMENT 'æœˆæ”¶å…¥',
+  `BT` int(11) DEFAULT NULL COMMENT 'å€Ÿæ¬¾äººçœä»½',
+  `BU` int(11) DEFAULT NULL COMMENT 'å€Ÿæ¬¾äººåŸŽå¸‚',
+  `BV` varbinary(300) DEFAULT NULL COMMENT 'æˆ·å£åœ°å€',
+  `BW` varchar(50) DEFAULT NULL COMMENT 'åœ°å€ç±»åž‹',
+  `BX` varchar(50) DEFAULT NULL COMMENT 'æˆ¿äº§ç±»åž‹',
+  `BY` int(11) DEFAULT NULL COMMENT 'å±…ä½å¹´é™',
+  `BZ` varbinary(300) DEFAULT NULL COMMENT 'å…¬å¸åç§°',
+  `CA` varchar(50) DEFAULT NULL COMMENT 'ä¼ä¸šæ€§è´¨',
+  `CB` varbinary(100) DEFAULT NULL COMMENT 'èŒä½',
+  `CC` varbinary(100) DEFAULT NULL COMMENT 'å…¬å¸ç”µè¯',
+  `CD` varbinary(300) DEFAULT NULL COMMENT 'åœ°å€ä¸€',
+  `CE` int(11) DEFAULT NULL COMMENT 'å·¥ä½œå¹´é™',
+  `CF` double DEFAULT NULL COMMENT 'èµ„äº§ä»·æ ¼',
+  `CG` varchar(50) DEFAULT NULL COMMENT 'è½¦èº«é¢œè‰²',
+  `CH` varbinary(200) DEFAULT NULL COMMENT 'äº§å“ç»„',
+  `CI` varchar(50) DEFAULT NULL COMMENT 'äº§å“ç±»åž‹',
+  `CJ` varchar(50) DEFAULT NULL COMMENT 'è´·æ¬¾æœŸæ•°',
+  `CK` double DEFAULT NULL COMMENT 'é”€å”®ä»·æ ¼',
+  `CL` double DEFAULT NULL COMMENT 'é¦–ä»˜æ¬¾æ¯”ä¾‹',
+  `CM` double DEFAULT NULL COMMENT 'é¦–ä»˜æ¬¾é‡‘é¢',
+  `CN` double DEFAULT NULL COMMENT 'è´·æ¬¾é‡‘é¢',
+  `CO` double DEFAULT NULL COMMENT 'å®¢æˆ·åˆ©çŽ‡',
+  `CP` double DEFAULT NULL COMMENT 'åˆ©æ¯æ€»é¢',
+  `CQ` double DEFAULT NULL COMMENT 'è´­è½¦æœˆè¿˜æ¬¾é¢',
+  `CR` varbinary(200) DEFAULT NULL COMMENT 'å®¢æˆ·ç”³è¯·ç¼–ç ',
+  `CS` varbinary(200) DEFAULT NULL COMMENT 'ä»‹ç»äººå§“å',
+  `CT` varbinary(200) DEFAULT NULL COMMENT 'ä»‹ç»äººè”ç³»ç”µè¯',
+  `CU` varbinary(200) DEFAULT NULL COMMENT 'å…´è¶£çˆ±å¥½',
+  `CV` varchar(50) DEFAULT NULL COMMENT 'æ‹¥æœ‰å°å­©æ•°é‡',
+  `CW` varchar(50) DEFAULT NULL COMMENT 'ç¬¬ä¸€ä¸ªå°å­©å¹´é¾„é˜¶æ®µ',
+  `CX` varchar(50) DEFAULT NULL COMMENT 'ç¬¬äºŒä¸ªå°å­©å¹´é¾„é˜¶æ®µ',
+  `CY` varbinary(300) DEFAULT NULL COMMENT 'å¤‡æ³¨',
+  `CZ` varbinary(200) DEFAULT NULL COMMENT 'é‚€è¯·äºº',
   `deleted` int(1) NOT NULL DEFAULT '0',
-  `sqr_zjlx_src` varchar(100) DEFAULT NULL COMMENT 'ç”³è¯·äººè¯ä»¶ç±»åž‹å¯¼å…¥å€¼',
-  `gsqrgx_src` varchar(100) DEFAULT NULL COMMENT 'è·Ÿç”³è¯·äººå…³ç³»å¯¼å…¥å€¼',
-  `hkzt_src` varchar(100) DEFAULT NULL COMMENT 'è¿˜æ¬¾çŠ¶æ€å¯¼å…¥å€¼',
-  `xb_src` varchar(100) DEFAULT NULL COMMENT 'æ€§åˆ«å¯¼å…¥å€¼',
-  `hyzk_src` varchar(100) DEFAULT NULL COMMENT 'å©šå§»çŠ¶å†µå¯¼å…¥å€¼',
-  `dqzt_src` varchar(100) DEFAULT NULL COMMENT 'å½“å‰çŠ¶æ€å¯¼å…¥å€¼',
-  `cxi_src` varchar(100) DEFAULT NULL COMMENT 'è½¦ç³»å¯¼å…¥å€¼',
-  `cxing_src` varchar(100) DEFAULT NULL COMMENT 'è½¦åž‹å¯¼å…¥å€¼',
-  `fkfs_src` varchar(100) DEFAULT NULL COMMENT 'ä»˜æ¬¾æ–¹å¼å¯¼å…¥å€¼',
-  `jtrs_src` varchar(100) DEFAULT NULL COMMENT 'å®¶åº­äººæ•°å¯¼å…¥å€¼',
-  `jycd_src` varchar(100) DEFAULT NULL COMMENT 'æ•™è‚²ç¨‹åº¦å¯¼å…¥å€¼',
-  `zylx_src` varchar(100) DEFAULT NULL COMMENT 'èŒä¸šç±»åž‹å¯¼å…¥å€¼',
-  `fclx_src` varchar(100) DEFAULT NULL COMMENT 'æˆ¿äº§ç±»åž‹å¯¼å…¥å€¼',
-  `qyxz_src` varchar(100) DEFAULT NULL COMMENT 'ä¼ä¸šæ€§è´¨å¯¼å…¥å€¼',
-  `csys_src` varchar(100) DEFAULT NULL COMMENT 'è½¦èº«é¢œè‰²å¯¼å…¥å€¼',
-  `dkqs_src` varchar(100) DEFAULT NULL COMMENT 'è´·æ¬¾æœŸæ•°å¯¼å…¥å€¼',
-  `yyxhsl_src` varchar(100) DEFAULT NULL COMMENT 'æ‹¥æœ‰å°å­©æ•°é‡å¯¼å…¥å€¼',
-  `hylx_src` varchar(100) DEFAULT NULL COMMENT 'è¡Œä¸šç±»åž‹åŽŸå§‹å€¼',
-  `hyzlx_src` varchar(100) DEFAULT NULL COMMENT 'è¡Œä¸šå­ç±»åž‹åŽŸå§‹å€¼',
-  `city_sf_src` varchar(100) DEFAULT NULL,
-  `city_cs_src` varchar(100) DEFAULT NULL,
-  `jkr_sf_src` varchar(100) DEFAULT NULL,
-  `jkr_cs_src` varchar(100) DEFAULT NULL,
+  `sqr_zjlx_src` varbinary(200) DEFAULT NULL COMMENT 'ç”³è¯·äººè¯ä»¶ç±»åž‹å¯¼å…¥å€¼',
+  `gsqrgx_src` varbinary(200) DEFAULT NULL COMMENT 'è·Ÿç”³è¯·äººå…³ç³»å¯¼å…¥å€¼',
+  `hkzt_src` varbinary(200) DEFAULT NULL COMMENT 'è¿˜æ¬¾çŠ¶æ€å¯¼å…¥å€¼',
+  `xb_src` varbinary(200) DEFAULT NULL COMMENT 'æ€§åˆ«å¯¼å…¥å€¼',
+  `hyzk_src` varbinary(200) DEFAULT NULL COMMENT 'å©šå§»çŠ¶å†µå¯¼å…¥å€¼',
+  `dqzt_src` varbinary(200) DEFAULT NULL COMMENT 'å½“å‰çŠ¶æ€å¯¼å…¥å€¼',
+  `cxi_src` varbinary(200) DEFAULT NULL COMMENT 'è½¦ç³»å¯¼å…¥å€¼',
+  `cxing_src` varbinary(200) DEFAULT NULL COMMENT 'è½¦åž‹å¯¼å…¥å€¼',
+  `fkfs_src` varbinary(200) DEFAULT NULL COMMENT 'ä»˜æ¬¾æ–¹å¼å¯¼å…¥å€¼',
+  `jtrs_src` varbinary(200) DEFAULT NULL COMMENT 'å®¶åº­äººæ•°å¯¼å…¥å€¼',
+  `jycd_src` varbinary(200) DEFAULT NULL COMMENT 'æ•™è‚²ç¨‹åº¦å¯¼å…¥å€¼',
+  `zylx_src` varbinary(200) DEFAULT NULL COMMENT 'èŒä¸šç±»åž‹å¯¼å…¥å€¼',
+  `fclx_src` varbinary(200) DEFAULT NULL COMMENT 'æˆ¿äº§ç±»åž‹å¯¼å…¥å€¼',
+  `qyxz_src` varbinary(200) DEFAULT NULL COMMENT 'ä¼ä¸šæ€§è´¨å¯¼å…¥å€¼',
+  `csys_src` varbinary(200) DEFAULT NULL COMMENT 'è½¦èº«é¢œè‰²å¯¼å…¥å€¼',
+  `dkqs_src` varbinary(200) DEFAULT NULL COMMENT 'è´·æ¬¾æœŸæ•°å¯¼å…¥å€¼',
+  `yyxhsl_src` varbinary(200) DEFAULT NULL COMMENT 'æ‹¥æœ‰å°å­©æ•°é‡å¯¼å…¥å€¼',
+  `hylx_src` varbinary(200) DEFAULT NULL COMMENT 'è¡Œä¸šç±»åž‹åŽŸå§‹å€¼',
+  `hyzlx_src` varbinary(200) DEFAULT NULL COMMENT 'è¡Œä¸šå­ç±»åž‹åŽŸå§‹å€¼',
+  `city_sf_src` varbinary(200) DEFAULT NULL,
+  `city_cs_src` varbinary(200) DEFAULT NULL,
+  `jkr_sf_src` varbinary(200) DEFAULT NULL,
+  `jkr_cs_src` varbinary(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `sqr_zjhm` (`AI`),
-  KEY `sjgcr_zjhm` (`sjgcr_zjhm`)
-) ENGINE=InnoDB AUTO_INCREMENT=245 DEFAULT CHARSET=utf8;
+  KEY `sjgcr_zjhm` (`AM`)
+) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +140,7 @@ CREATE TABLE `cm_info` (
 
 LOCK TABLES `cm_info` WRITE;
 /*!40000 ALTER TABLE `cm_info` DISABLE KEYS */;
-INSERT INTO `cm_info` VALUES (244,104,119,182,NULL,197,198,NULL,'^8-\é\äRŸ^7M|Át\Æ\Ð','1','[ŸÆžÜ¿¼\Ñ3\îÃšb','\Þp2˜>4U¸:©Û¹I4\Û','å“ˆå“ˆ','dddde','ldflsdf','FQ',NULL,NULL,-1,NULL,NULL,NULL,NULL,NULL,NULL,-1,NULL,-1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,-1,-1,NULL,NULL,NULL,-1,-1,-1,NULL,NULL,NULL,-1,NULL,NULL,NULL,NULL,NULL,-1,-1,NULL,NULL,NULL,NULL,-1,-1,-1,-1,-1,-1,-1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `cm_info` VALUES (247,112,658,659,NULL,493,494,NULL,':8y\'}þ\ÓR0},¡³5\\‚','1','g™…\Í:ÿÊº¦yi\Ö?O8\Ç ÝŒ¦«µþK–>\Z²Mˆ','®7UfcwÎŠfŸ\Z\Ð\Åò²','œ.|h»`\ÉqC\Å\Ðzaªl','ò™d²¢o\å¿Û™\Ôt','D//öt¹L\ßóŽº+','PY','4','2',36,NULL,'2','3','BZ100001','2015-03-23','2015-03-20',3,'2015-03-23',12,'QIJIAN','QIN','\å|\Å–\\|5C!Ð»Î’','n©yžf:È˜šk\Îjdù±\'','2015-04-23','2016-11-25','1','O=X¡|Ÿô·\ètL˜ªü','2017-01-02','3','5','\ÛG¦·„û¨]+¾!K ',31,32,NULL,'5','J\Ø\à·ds\×v\É=Œ˜òü',12500,493,494,'[­’\Þp&,\Öþ®D>p#ªnÓ¦\ÞGj\'†®^aXö½:a*%\áhtMòË’ùŽ×–\áö\æKI”\æ\ÐŽ','abc','6',8,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','¨ˆ´C¡O†øù¯m+\Ï(V2©\æf\Åt¶Ð©\æ\í7','n\\³Z*žø)\"k®Ú»\Å\r','M \ÊLŸvçûq/©\å',6,209800,'MLC','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬é‡‘ï¼ˆä¸ªäººï¼‰','36',146800,-1,29360,14.49,117440,26234.47,4041.83,'\î7·›W’0\Ä\0c,tY','õ/-ý³r9÷KM1\05~{','hï¿¿:\Û8\Õ\Ç<\æ\Ì','µ“?òÈŽ}õu\ÈL{b¦\Z','1','2',NULL,'Àvv‘” \ã¦4ýŠÀ\Ø_','RqoCÿOƒµ¦$A@\ï‡',0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(248,112,658,659,NULL,493,494,NULL,'³k…E‘C\ÅÏ¤-z>\ë }§','1','\ÕÎ \ä\ë¥nB\Ë\è\ÓTwY®\ä\é‘œnyxK~\Ç\ÛK','h\Û>r`×™-\ç\å… ',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'4','2',31,NULL,'2','3','BZ100002','2015-03-23','2015-03-20',3,'2015-03-23',12,'HAOHUA','QIN',NULL,NULL,'2015-04-23',NULL,'2',':wýºò\Æ\èûˆAj^®\Í\Þ','2017-02-02','5','5','™ºô¡\é\ÜP¤\Ñx7\ì¶]',31,32,NULL,'3','J\Ø\à·ds\×v\É=Œ˜òü',9800,493,494,'[­’\Þp&,\Öþ®D>p#ªnÓ¦\ÞGj\'†®^aXö½:a*%\áhtMòË’ùŽ×–\áö\æKI”\æ\ÐŽ',NULL,'6',10,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','ð|a&<\×2d81\ÆX«\ìÇ¥-¢^m-o½EKP°\Ë?M¢\Û\È/\Ød\Ô\ä\0ø*h',NULL,NULL,6,209800,'TSB','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬é‡‘ï¼ˆä¸ªäººï¼‰','36',146800,-1,29360,14.49,117440,26234.47,4041.83,'“\Ú\Ðk\Z}\ÞVx7	“4\n','«{œY\ê\â\Ùy\ÇtvUL','\Ì|Ü¥©cŸm\êKÝ ¨®\Ã','D\n\ßC§Z‚j	','1','1',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(249,106,660,661,NULL,495,496,NULL,'œ.|h»`\ÉqC\Å\Ðzaªl','1','r—s÷\Ðb\ê¬L7™ ñ2y¢\Ú\Ä\Ä{,&\à&õ:/;y','“\Ôÿ»\Ô\nôý\Ö:\Ë\Ë\Ô',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',25,NULL,'5','3','BZ100003','2015-05-04','2015-04-23',4,'2015-04-24',17,'ZUNGUI','G5',NULL,NULL,'2015-06-04',NULL,'2','\ÛwòCÖ¾û™„\É,/£ˆ:®','2017-03-02','4','5','•¡E+\Z·»ö\Ë¡}\\]N',15,33,NULL,'2','sRŸ\ß/\ï°@Vcv;\Üt\Ã',12000,495,496,'†µ\Ì\ZMÊ¨r`r\í\"¢\0«y‡%Ù½÷]ª²¾5m±\ÙüŽrÎº\Ó\×\é5ªpÓ»\ÔuGð0\Õ(	\Ý\n\ä6\Ô',NULL,'8',12,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','¿wˆª\"F” x±²<Â¶Ç¥-¢^m-o½EKP°\Ë?M¢\Û\È/\Ød\Ô\ä\0ø*h',NULL,NULL,1,85900,'HYY','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',76900,-1,30760,14.49,46140,11026.56,1587.96,'ªŒ\Â\Þü6Ôƒ\Ò\ÌF‰\Ë3”','·\Èb•\é^+g±«]ð \ê','˜\ïy¼v%W8ž¢0…r\á','\Çù\Í{`¨z>\Ë\Öp—\ä(E','-100',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'\Ê.\Æ·x‚:x\Ë\Ëzs',NULL,NULL,NULL,NULL,NULL,NULL),(250,106,660,661,NULL,495,496,NULL,'RqoCÿOƒµ¦$A@\ï‡','1','3\ÚY3:\nMòÃ²ñzª\åø?\æ0—\\1{>Á\È\êo<','\ä\ì¦wX(¸!@Z8f¾¹\é',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',34,NULL,'2','3','BZ100010','2015-05-08','2015-04-24',4,'2015-04-27',17,'ZUNGUI','SURUI',NULL,NULL,'2015-06-08',NULL,'2','¼[”pp¨?˜È¶®³žò\'','2017-04-02','5','2','<¶Q\æ{ü\Òv¾Ef\Ý\0:',13,34,NULL,'2','sRŸ\ß/\ï°@Vcv;\Üt\Ã',7800,495,496,'†µ\Ì\ZMÊ¨r`r\í\"¢\0«y‡%Ù½÷]ª²¾5m±\ÙüŽrÎº\Ó\×\é5ªpÓ»\ÔuGð0\Õ(	\Ý\n\ä6\Ô',NULL,'8',11,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','Bû–ÁmžŸÛ´\Únþ\Ô>\Í€kþ!÷\"zdô\ÚS§ýd0ŒRk‰À\\d\re\Ä\'Z.',NULL,NULL,10,73900,'DLH','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',73000,-1,21900,14.49,51100,12211.76,1758.66,'\rÒ¾TôLU\Þ\ÎzöÝ—#8','\ß\Å-=„£³2‘l¸>D’','Ÿf€¿·={e\èÁ,,\ì\år','« j–\0N>H±”‡€k_\Þ','1','3',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(251,108,662,663,NULL,491,492,NULL,'X\Þ-#›\ÊP\ézI¶…r¡','1','‘bP¤œ\Ìd‰\Z\Ñ\ÊB¥’–q’F¸>º½/8&','DuBt\æð½-\æ\ÅSð:(cõ',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',29,NULL,'2','3','BZ100004','2015-05-04','2015-04-24',4,'2015-04-27',17,'ZUNGUI','F3',NULL,NULL,'2015-06-04',NULL,'2','ZaJ1¤Ý€öp;Ø˜','2017-05-02','5','3','l D±:\Ï\É\êþ\æu\è@m_',18,35,NULL,'3','\Ç\0\ë\íT.\'@E\ÎeN',5000,491,492,'>AöHCµ(\ÔX\Ð4\Ê44\æ¬~v\âù±>²½\ß\ëtú]\n\\X0ò\Ôö \â-öD5',NULL,'7',3,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','bG\Ñ¯\ZÖ‡\ÝT>F~\ß(‘©PŸ2\ë\ír\îk.ViJ°&\Í\ß\ÐÈŒz”\Ón“»\ÂQ\í',NULL,NULL,1,45900,'TSB','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',42900,-1,12900,14.49,30000,7169.28,1032.48,'O\ÒY¹lù™L\ãW©m!ýh','\Öò\n\Å)x¤\Ø5®Ý˜’<\×','7%W6^u‚¸¾\ÎX\Þ\Ë\0m','µ“?òÈŽ}õu\ÈL{b¦\Z','1','2',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(252,113,664,665,NULL,497,498,NULL,'ú²\îú7\ÂQ\Å{7®\Ò\ß[\Ù','1','®VCD$7Ã¯\Ï(°MF4r²¸‚¾1\Ûoµ\Ãþ¦{¾ŒJ','òµ9„7\äjn)H¯€Æ½\É',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',27,NULL,'2','3','BZ100007','2015-05-06','2015-04-27',4,'2015-04-29',17,'QIJIAN','S7',NULL,NULL,'2015-06-06',NULL,'2','sõó\çˆ7TT–\é9Ù±\ÕW','2017-06-02','5','4','”bdµ‰€0{\íjZ\'‡',24,36,NULL,'4','\éŸ\r–\ë\Ï\ägþp»',8600,497,498,'\ØôÇ1É‰A[IX«\í\n¶^<\ìµKZ—s‚wôË›u÷ªÇ¼^5Q2L·½\ã]„',NULL,'7',2,'È¾¼¾w<C\æp`“›‹lc\Û+£\Ùã’eòfPŸA¤`Y\Ù!¸žóaÚki\êK','9','È¾¼¾w<C\æp`“›‹lc\Û+£\Ùã’eòfPŸA¤`òZmk×—½‹Ct•ø;™',NULL,NULL,5,116900,'QKLZ','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',115900,-1,34770,14.49,81130,19388.48,2792.18,'f\ÕQ\ÉÔ£v-3Œþ=Œ]','¤9\'+ü÷’fB{\í±Mtd','ý—\È\éPdMBÀIWGoa\É','D\n\ßC§Z‚j	','1','1',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(253,113,664,665,NULL,497,498,NULL,'ºk\íHô«6ö\â&bð«>','1','#\â…\Ö5\È\È\Z\Ä7„}Z€°NÁ¶\Þþ\í\×2.\"}…\ë','UÎˆY\'ƒo!²’fJ1S',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',29,NULL,'2','3','BZ100008','2015-05-06','2015-04-27',4,'2015-04-28',17,'HAOHUA','S7',NULL,NULL,'2015-06-06',NULL,'2','\è\ä\0E\æ1\â*_¤\×\Ù\â\î\Î','2017-07-02','8','3','¸‘;)p\Ñ\\Gz\é†a?\Z',24,36,NULL,'2','\éŸ\r–\ë\Ï\ägþp»',13000,497,498,'\ØôÇ1É‰A[IX«\í\n¶^<\ìµKZ—s‚wôË›u÷ªÇ¼^5Q2L·½\ã]„',NULL,'1',2,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','\ÙÀ^\ÜMI9\å¢\Ël\èñ™¤±Q\Ì\ì¥=}f\ßF\çó°\î',NULL,NULL,5,116900,'TSB','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',116900,-1,35070,14.49,81830,19555.72,2816.27,'R>\\Ó¿Ç‹\ÎcŸ¢™/\ç$','\Çò’\Â\"\ï\Ä@\ÃP‚‘\í`','\Zz†_Ù‡0\àÆ¸\Äj\Z­Œ','\Çù\Í{`¨z>\Ë\Öp—\ä(E','2','3','1',NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(254,113,664,666,NULL,497,499,NULL,'Î‹¯_…\àžMBe@‰','1','\å\ÐôVe¬¾ Ø æ³…Þ†\Ý }\â/L_\"y·£±e','ÿ¡zC\n[¬Ž-³’Q\ÉM',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',44,NULL,'2','3','BZ100005','2015-05-05','2015-04-27',4,'2015-04-29',17,'HAOHUA','S7',NULL,NULL,'2015-06-05',NULL,'2','tX\Ù$ù¡Ÿ\Z„\Ý:»\ëV','2017-08-02','5','2','L¬\Çd\ÆY\èmó\àðQ„\á¢',13,34,NULL,'2','û1ŒÿüpC\á²8ô¡|¿P',18000,497,499,'\ÍwD5\Ï-\ÎB¹a!Àúù«w#\ã†F]]Ý¥d—ü\å\r Fðªqœq=…6„+t',NULL,'3',2,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','Š²H6Žù+r1-\n:šúf\Èn(ÁZÈ %®_\çZq',NULL,NULL,5,139900,'QKLZ','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',139900,-1,28000,14.49,111900,26741.76,3851.16,']uúÏ‡\à0\Õ\æc@Tm\Õ','D9\áAÈº®@Ž”E','d@ú}hCûòÁŸt\Ö?','« j–\0N>H±”‡€k_\Þ','1','15',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(255,113,664,666,NULL,497,499,NULL,'ÿÆ·šv½Œ¥Œ\ÂX \È','1','5R ³žd6‚*)3—¾zÃ²¸‚¾1\Ûoµ\Ãþ¦{¾ŒJ','%-p¬¼ù\Þm.=ü’@z\ì',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',28,NULL,'2','3','BZ100006','2015-05-05','2015-04-28',4,'2015-04-30',17,'HAOHUA','NEWF3',NULL,NULL,'2015-06-05',NULL,'2','2ÀµE›(2\ÇC°pz \æ8','2017-09-02','4','3','}§{ Æ‰A0±r€£\ã1i',31,32,NULL,'4','û1ŒÿüpC\á²8ô¡|¿P',6700,497,499,'\ÍwD5\Ï-\ÎB¹a!Àúù«w#\ã†F]]Ý¥d—ü\å\r Fðªqœq=…6„+t',NULL,'1',3,'e\îaF{^Ü§„‡	\Öß‰\Äq\Ú\ê[¢Sþ£Š\Û¨\ßv¨³†OŽ‡µ\é\Ûøu	ŽBG“','10','e\îaF{^Ü§„‡	\Öß‰\Äq\Ú\ê[¢Sþ£Š\Û¨\ßvstD”Ïž	ÅŸ\Ë\Ó(Â7;>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,1,51900,'YDY','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','24',45900,-1,14900,14.49,31000,4894.16,1495.59,'\Ô)	M®S\'ö\Ú<ÿˆ',')¢8-\×\ØÁ7¶;*¸­š‰','\'´ù”8ÿ2Sfu7M','µ“?òÈŽ}õu\ÈL{b¦\Z','2','3','1',NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(256,112,658,667,NULL,493,500,NULL,'_-|ù‘œ.%6H¿ˆ.H”','1','[Á$pÄŒJÒ‚ÕŸ\íC\rŽ–)ï–¥\Ó(4BŒ¼zI!²','\ÇB\Þô\Î„S·a57n',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',42,NULL,'2','3','BZ100022','2015-05-20','2015-04-29',4,'2015-04-30',17,'QIJIAN','S6',NULL,NULL,'2015-06-20',NULL,'2','¹t\ÜR¶qÂƒ\ã)O Ù¼','2017-10-02','5','4','\ížŸ·ñùC¢‰xuž',11,111,NULL,'2','/\ä¦Š\ë	›]z(¬:¿',6000,493,500,'½b\àÀŒ_7¾¯\Ù\Ç\î\ÜÊ‹\í™2-\èŠlÿ-ósSŸmÛ±X”Ò¨\"\ÊBM\Þ\ÕSg‰',NULL,'8',8,'‘¶Û¾ME‹y,8˜K³\Ë\ÈG','8','J‹À \ìÁp18Y*>z÷©\â9(R&½û·£oi·ŠŒ\à¶ ',NULL,NULL,8,109900,'TSB','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',103395,-1,31018.5,14.49,72376.5,17296.62,2490.92,'÷\î\"\rL~óŠš3±ž-','ƒõˆ)»(S\ÊUQ] €³\Æ%','‹ÔˆsŸª‡¤¾¶»','D\n\ßC§Z‚j	','1','13',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(257,113,664,666,NULL,497,499,NULL,'º¬Lx§»\r9ôÞ±\Ö\íp','1','\ß`‘—²1‚L\Ûf˜\r€NÁ¶\Þþ\í\×2.\"}…\ë','=¨ž\'\ì–Â–Ø\Ô+±»',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',29,NULL,'2','3','BZ100050','2015-05-27','2015-05-04',5,'2015-05-05',18,'QIJIAN','NEWF3',NULL,NULL,'2015-06-27',NULL,'2','W`s-c,÷$z\ÕÜŠ6\Ö\Í','2017-11-02','4','3','\à†¡½\èe`5,Å½€Ì›\Ñ\Ù',24,36,NULL,'2','û1ŒÿüpC\á²8ô¡|¿P',5900,497,499,'\ÍwD5\Ï-\ÎB¹a!Àúù«w#\ã†F]]Ý¥d—ü\å\r Fðªqœq=…6„+t',NULL,'7',3,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','!øjyF8­©Ê²fÊ««:©ñ³sGH®aßZŠb¦¸.Km¸\â2\ã¬ñs]z	Ì¹ö’\n\Ã#³41 ',NULL,NULL,1,55900,'YDY','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',54900,-1,11900,14.49,43000,10276.04,1479.89,')º1¼dñ„~¥¼ýW\é~:','\Z§¾>N¨\Þf¦\Ö\íEu','y·\åyÚŠ\ä\Ñ[Ë½x\Üa','\Çù\Í{`¨z>\Ë\Öp—\ä(E','1','2',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(258,108,668,669,NULL,501,502,NULL,'`†\Ê\Ô\ì\ì\r’D¢‘\à z·','1','¥•‘§÷‡ÊŒ\Þ\ÒA\Ñ;%°FYx\"\Ë\Êr‹\é\í_’Š','vb19\è\Ô_éµ™°¬\"',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',48,NULL,'2','3','BZ100009','2015-05-14','2015-05-05',5,'2015-05-05',18,'HAOHUA','SURUI',NULL,NULL,'2015-06-14',NULL,'2','L‘\ì\ÈDb‡qYeŸ¾\ÉK^','2017-12-02','5','3','‰‡\Ó,gÿ\ç‘	4\çƒ\Ñ\ê',12,114,NULL,'-100','q])dÁ!\Ø]P\ãÔ‘\îo>',8600,501,502,'ú´O«Gtp¹\Î\Õ\Öe‰4ý\ÞDmÑ†\'\é´ck}\Ó°}‚£$÷–y<%=þœ•ñ\\\é„AW\Ë%\Ñ\ä\"Lò\0„\Å',NULL,'8',4,'x/$ž²þ¨\ÚS¢\í¼\Ýh5BV\Ë\ÂùÊŸq®)¦šD\np,mÁ²ivµª«\ÏgE','11','x/$ž²þ¨\ÚS¢\í¼\Ýh5BV\Ë\ÂùÊŸq®)¦šD\n£m©L\à=o°žxªx‘¤%\ã_¦´/ja\Í\Ñ=¿M',NULL,NULL,1,83900,'RYY','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',75600,-1,23600,14.49,52000,12427.04,1789.64,'m \Æd€‚©\Ã\ä)½°¸«m','S#˜±%™&]~N\Ìs\Ë\â','·P¬=™\ÔU‚¡l ³]W\Ú','« j–\0N>H±”‡€k_\Þ','2','15','9',NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'–®ñÎ¡»\ÍoZ† ¸\îñò(0‘LOdØ¤Í®\ê—\í[#=79\è;Yx©;>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(259,108,668,670,NULL,501,503,NULL,':e.0¢\'|\ÈEk\ÔA:','1','\ßU•Nq\æ\Øw\Í!˜\âh~3„¼v*\Úu¡ú1¥\Öÿ‘','\èƒº\Ö\ë•\"h€\ã5X\ÛW',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',33,NULL,'2','3','BZ100019','2015-05-19','2015-05-05',5,'2015-05-06',18,'ZUNGUI','S6',NULL,NULL,'2015-06-19',NULL,'2','YK\Ó\åilK—\Ï*\Ìf','2018-01-02','5','3','¤µ\å¦c’UG Qñ^c\à',12,116,NULL,'3','\ZGtxJ#Ó„)5\Ü=	*',5600,501,503,'\È\âg\\Ä·Ž€‚b›Vˆ\à§EöÎ§\ÏøI•\ä[KF¾\\§FQ\ÕlU\Å\ÙV	',NULL,'8',5,'÷J›\ÉH–˜Qƒ“‘¢\Â\ÑY¡Ã˜Ag·y‰zr\Ç\íAVµ@\Û\â\Ê{¬S½þ°ûc°,\'','10','÷J›\ÉH–˜Qƒ“‘¢\Â\ÑY¡Ã˜Ag·y‰zr\Ç\íAVµ@+‚·ûD\ÎeX¤ºQ*\És\×\\Wô=\Ë\êxú“ú·',NULL,NULL,3,97900,'DLH','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',97900,-1,29900,14.49,68000,16250.44,2340.29,'35\nD$ë—›i{Ö—¦','S#˜±%™&]~N\Ìs\Ë\â','·P¬=™\ÔU‚¡l ³]W\Ú','µ“?òÈŽ}õu\ÈL{b¦\Z','2','7','5',NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(260,113,664,665,NULL,497,498,NULL,'D·®ú`7+Nwd$','1','Ù­\Érv\æ\nx\ÅõyEl\äÞ†\Ý }\â/L_\"y·£±e','\Z	úgp°æ–‹D2±“^%',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',24,NULL,'5','3','BZ100012','2015-05-14','2015-05-05',5,'2015-05-08',18,'ZUNGUI','G5',NULL,NULL,'2015-06-14',NULL,'2','e3¡d\ÚU\ê\å\\§‡\ÇJ¡t','2018-02-02','7','3','Í¥Á5U\è<„¤Ã?hmù',22,117,NULL,'2','\éŸ\r–\ë\Ï\ägþp»',6000,497,498,'\ØôÇ1É‰A[IX«\í\n¶^<\ìµKZ—s‚wôË›u÷ªÇ¼^5Q2L·½\ã]„',NULL,'8',7,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','\Åj¤F:J9z¾Õº„JY\Î',NULL,NULL,5,102900,'JJB','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',99900,-1,19980,14.49,79920,19099.08,2750.53,'L¹\ê}\êÁ.7\Û\á%½ö','ùþ¾ðR6¨;9|:hu\Ó','õŠû*“†$#/úu8\àÿnü','D\n\ßC§Z‚j	','-100',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'\Ê.\Æ·x‚:x\Ë\Ëzs',NULL,NULL,NULL,NULL,NULL,NULL),(261,106,660,671,NULL,495,504,NULL,'L\ëÇŸ…nxÚŸ\ìx\îÉ¡','1','ŠX9¥Œ“El÷Ta\â8$£‚‡r}¼ºü|œ$/+','pZ\ÜÀG¾p\ÎU\0ô\Ü\éÁ',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',30,NULL,'2','3','BZ100047','2015-05-25','2015-05-06',5,'2015-05-06',18,'ZUNGUI','S7',NULL,NULL,'2015-06-25',NULL,'2','k4HUgk\è»\Ñ\Ëu\Ü7ûŒ\å','2018-03-02','6','3','\Üûp6û\0{\å\Ùm¼Ð†',18,119,NULL,'4','¥\Ä1\æ‘\ï<°6›4ø¦\ï',7800,495,504,'N\èn`ŠÝ©r„$˜!ðÿ>1š\Óü¦oK9|\Ã\Ã<F\ÝM»o\Í\Ç5‡>*e ñ\Ï',NULL,'3',4,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','\Åj¤F:J9z¾Õº„JY\Î',NULL,NULL,8,129900,'QKLZ','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',127900,-1,38370,14.49,89530,21395.72,3081.27,'Ÿ¨\Ñ+À4!\Í\àº6\çnô\Ú','id€M’\ìp]2†\ã–\ß','\ànÏ¢I“\Èo¦\ëÁ\ÈI!b','\Çù\Í{`¨z>\Ë\Öp—\ä(E','2','4','1',NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(262,108,668,672,NULL,505,506,NULL,'\âf5\È\ê‚QŠ“c‚fÞŸ','1','h\ÊCZZ±/U	\n\ÑJ‚1dû2$pª3\èj±‹#v‡&/','Ð¬%Ò¦d‰d	\ÊÔ‚Y†',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','2',32,NULL,'2','3','BZ100025','2015-05-20','2015-05-07',5,'2015-05-08',19,'ZUNGUI','F0',NULL,NULL,'2015-06-20',NULL,'2','s6\Ò\ímû\Ü\èlüY%\Ý','2018-04-02','5','5','õJtHqÓ¡\Æ!\à¨1y\Æ[',18,35,NULL,'4','ó9>ðþb=½\Ë(\ß`\0•tf',4000,505,506,'Š¢-†õ_Ûaž·º#ŽLói\Z$=\È0Ÿ/z7Q`l+u–\ã\Êa¾d\ë)\Ãu\æ\ß\Â\ì«\è¡\Â\ê\Ë\Äôz¤‹',NULL,'6',3,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','\Åj¤F:J9z¾Õº„JY\Î',NULL,NULL,3,42900,'TSB','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',40000,-1,12000,14.49,28000,6691.4,963.65,'\å\Ýb#£\"2\É\äp($´L','\Ùo\ßÌ»\Þ†d\Ä\"ùœZI','¬”\Ï÷e:Žc§cœ6W\ç\Õ','« j–\0N>H±”‡€k_\Þ','1','5',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(263,112,658,667,NULL,493,500,NULL,'n\Ë\Ó=ð[Ž\×p\n\íR±“','1',']<317n Ê®¯&p½U@y¢\Ú\Ä\Ä{,&\à&õ:/;y','X\ìØ€ˆ8>Qk×š\í\Z',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','2',36,NULL,'2','3','BZ100015','2015-05-20','2015-05-07',5,'2015-05-08',19,'QIJIAN','G5',NULL,NULL,'2015-06-20',NULL,'2','!ø\Ã¨|°\n~r¯/l]','2018-05-02','5','4','»;dk‘µ2\Çk7DÙš»',31,32,NULL,'2','/\ä¦Š\ë	›]z(¬:¿',7200,493,500,'½b\àÀŒ_7¾¯\Ù\Ç\î\ÜÊ‹\í™2-\èŠlÿ-ósSŸmÛ±X”Ò¨\"\ÊBM\Þ\ÕSg‰',NULL,'8',4,'\ä‹8H\Ô\ËM•{\â»é‘‹r','9','¹‹r\"˜\ç„d7bmú³qZ°nšœ\n>úø›\èN~4˜',NULL,NULL,0,93900,'TSB','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','24',90000,-1,27000,14.49,63000,9946.08,3039.42,'b\r¯\ÎÈ©>©YD#[U¾0','hn³l“„W)xƒ\×Ú‹¡ø¸','úÁhÀGY-²\é”uyô','µ“?òÈŽ}õu\ÈL{b¦\Z','1','8',NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(264,112,658,667,NULL,493,500,NULL,'5©Ú²H\Í\Ò\Ë\à£\ÒX\Ø\Ó','1','±¾?5h†q¿.Ám¦Ìªô@è‰±\ßú R\ÄÐ±','k‚=‡L\é¹&›#&\Ê-',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'6','1',32,NULL,'2','3','BZ100021','2015-05-20','2015-05-07',5,'2015-05-08',19,'HAOHUA','F3',NULL,NULL,'2015-06-20',NULL,'2','¢€üšC6…{\ÏUÉˆP,\Õ','2018-06-02','4','4','ˆQg%\ï °B\í¤‹ø',14,122,NULL,'3','/\ä¦Š\ë	›]z(¬:¿',4500,493,500,'½b\àÀŒ_7¾¯\Ù\Ç\î\ÜÊ‹\í™2-\èŠlÿ-ósSŸmÛ±X”Ò¨\"\ÊBM\Þ\ÕSg‰',NULL,'8',2,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','Çø\È!\ÚZ\à/\rŽ*ú\á!',NULL,NULL,1,50900,'TSB','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','12',47000,-1,9400,14.49,37600,3016.04,3384.67,'Š÷\éÍde>\ä,@c\æ…','hn³l“„W)xƒ\×Ú‹¡ø¸','úÁhÀGY-²\é”uyô','D\n\ßC§Z‚j	','2','4','2',NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),(265,106,660,661,NULL,495,496,NULL,'•2[RG\ÄHšLYSÚ©g˜','1','vœç¾Fu•j\í ±j\n¹\ï\ÝUd-–M\Ôd$3','ðó¾;\Ö(*!ôC\Ô\Ä÷7',NULL,';>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,'5','1',23,NULL,'5','3','BZ100017','2015-05-19','2015-05-07',5,'2015-05-07',19,'HAOHUA','S7',NULL,NULL,'2015-06-19',NULL,'2','¹·–	®¹\ëÙŒ>Y\á\nŒ','2018-07-02','5','4','#&®\ëKc•\Z»ýÅª\å\0/™',14,123,NULL,'3','sRŸ\ß/\ï°@Vcv;\Üt\Ã',9000,495,496,'†µ\Ì\ZMÊ¨r`r\í\"¢\0«y‡%Ù½÷]ª²¾5m±\ÙüŽrÎº\Ó\×\é5ªpÓ»\ÔuGð0\Õ(	\Ý\n\ä6\Ô',NULL,'3',3,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8',' \Û\är~ŒT¯{\'U¤µ\Ý\Èu°^‹¦£Wº\Ñ\ÚH&£¤\Ñ',NULL,NULL,1,129900,'DLH','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',126900,-1,38070,14.49,88830,21228.48,3057.18,'¤Cÿ1vùúr\"\"wò*ZDO','Û‹–Ëœú\Ùp\ìŠ±\×\æ','¥k©é®ƒ\ã°\Õ\ÙQE6c\Ä','\Çù\Í{`¨z>\Ë\Öp—\ä(E','-100',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'\Ê.\Æ·x‚:x\Ë\Ëzs',NULL,NULL,NULL,NULL,NULL,NULL),(266,106,660,671,NULL,-100,-100,NULL,'mL\Ú\ZB\Ç\Îm\"\Êö7.\ç','1','\ZAf/a\á1˜’\Ðc)†%\ÔrýP:Àp\î )vm\Ô\Í','PUE\Ù<¾ó\è­è¥¤~^','\Â\";<‹\ËÀŒ½sý¼','“½R8®F45¢>“n¼„Q\Óuƒ7ø2‚„i','„\àS\Éz@¬ô¿öú~\ïƒ\Ð','FQ','5','1',23,NULL,'5','3','BZ100041','2015-05-28','2015-05-07',5,'2015-05-07',19,'HAOHUA','NEWF3',NULL,NULL,'2015-06-28',NULL,'2','J\à½\â\â@@¼ž\Þ\ÌJHn\Û','2018-08-02','6','4','Ž·n\rü¬ù»]rX&AŽJ',12,124,NULL,'-100','¥\Ä1\æ‘\ï<°6›4ø¦\ï',8200,495,504,'N\èn`ŠÝ©r„$˜!ðÿ>1š\Óü¦oK9|\Ã\Ã<F\ÝM»o\Í\Ç5‡>*e ñ\Ï',NULL,'5',4,'üM@\0\ã\Ê\ÒGÈ±HŸ1~m_','8','ÿò\é\îŸ{§OUÆ \ç¨¼& \Åý\rkW|\Z\0kO f¡f#A<Aõ›Q.øL',NULL,NULL,2,55900,'DLH','š\ê\Ú\Ø\îV‘XE\Z\ÎX#\ëO¼\ZU š¯„·\Âküf0','æ ‡å‡†è´·æ¬¾-ç­‰é¢æœ¬æ¯ï¼ˆä¸ªäººï¼‰','36',50385,-1,10077,14.49,40308,9632.64,1387.24,'9\nFI±§\Üy…¨ü¼¨g\Øn','k÷\í»û¨N¢\ÊÔ—²bÀ','«\èq«Nod&\"\É!Y¶\Ì','« j–\0N>H±”‡€k_\Þ','-100',NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'–®ñÎ¡»\ÍoZ† ¸\îñò(0‘LOdØ¤Í®\ê—\í[#=79\è;Yx©;>»bÀ™\Õ(zW£q\ç’i',NULL,NULL,NULL,NULL,'\Ê.\Æ·x‚:x\Ë\Ëzs',NULL,NULL,';\r,÷f\í¾Å›.±\Åw÷‘9','ˆð²g\Æ)QQ\"‹7',NULL,NULL);
 /*!40000 ALTER TABLE `cm_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +210,7 @@ CREATE TABLE `sys_field` (
 
 LOCK TABLES `sys_field` WRITE;
 /*!40000 ALTER TABLE `sys_field` DISABLE KEYS */;
-INSERT INTO `sys_field` VALUES ('bz','bz',NULL,'bz','å¤‡æ³¨','text','string',NULL,NULL,0,0,0,1,73,NULL,NULL,NULL,'èƒŒæ™¯è¯´æ˜Ž',0),('city_cs','city_cs_show','city_cs_src','AF','åŸŽå¸‚','tree','int','CITY',NULL,2,1,1,1,5,NULL,NULL,NULL,NULL,0),('city_sf','city_sf_show','city_sf_src','AE','çœä»½','tree','int','CITY','city_cs',1,1,1,1,4,NULL,NULL,NULL,NULL,0),('cphm','cphm',NULL,'cphm','è½¦ç‰Œå·ç ','text','string',NULL,NULL,0,0,0,1,27,NULL,NULL,NULL,NULL,0),('cplx','cplx',NULL,'cplx','äº§å“ç±»åž‹','text','string',NULL,NULL,0,0,0,1,57,NULL,NULL,NULL,NULL,0),('cpz','cpz',NULL,'cpz','äº§å“ç»„','text','string',NULL,NULL,0,0,0,1,56,NULL,NULL,NULL,NULL,0),('csys','csys_show','csys_src','csys','è½¦èº«é¢œè‰²','dist','string','CXYS',NULL,0,0,0,1,55,NULL,NULL,NULL,NULL,0),('cxi','cxi_show','cxi_src','cxi','è½¦ç³»','dist','string','CXI',NULL,0,0,0,1,25,NULL,NULL,NULL,NULL,0),('cxing','cxing_show','cxing_src','cxing','è½¦åž‹','dist','string','CXING',NULL,0,0,0,1,26,NULL,NULL,NULL,NULL,0),('degxhnljd','degxhnljd',NULL,'degxhnljd','ç¬¬äºŒä¸ªå°å­©å¹´é¾„é˜¶æ®µ','text','string',NULL,NULL,0,0,0,1,72,NULL,NULL,NULL,NULL,0),('dkje','dkje',NULL,'dkje','è´·æ¬¾é‡‘é¢','text','double',NULL,NULL,0,0,0,1,62,NULL,NULL,NULL,NULL,0),('dkqs','dkqs_show','dkqs_src','dkqs','è´·æ¬¾æœŸæ•°','dist','string','DKQS',NULL,0,0,0,1,58,'è´·æ¬¾æœŸæ•°ï¼ˆæœˆï¼‰',NULL,NULL,NULL,0),('dksqhm','dksqhm',NULL,'dksqhm','è´·æ¬¾ç”³è¯·å·ç ','text','string',NULL,NULL,0,0,0,1,36,NULL,NULL,NULL,NULL,0),('dqzt','dqzt_show','dqzt_src','dqzt','å½“å‰çŠ¶æ€','dist','string','DQZT',NULL,0,0,0,1,18,NULL,NULL,NULL,NULL,0),('dygxhnljd','dygxhnljd',NULL,'dygxhnljd','ç¬¬ä¸€ä¸ªå°å­©å¹´é¾„é˜¶æ®µ','text','string',NULL,NULL,0,0,0,1,71,NULL,NULL,NULL,NULL,0),('dzlx','dzlx',NULL,'dzlx','åœ°å€ç±»åž‹','text','string',NULL,NULL,0,0,0,1,45,NULL,NULL,NULL,NULL,0),('dzy','dzy',NULL,'dzy','åœ°å€ä¸€','text','string',NULL,NULL,0,0,0,1,52,NULL,NULL,NULL,NULL,0),('fclx','fclx_show','fclx_src','fclx','æˆ¿äº§ç±»åž‹','dist','string','FCLX',NULL,0,0,0,1,46,NULL,NULL,NULL,NULL,0),('fkfs','fkfs_show','fkfs_src','fkfs','ä»˜æ¬¾æ–¹å¼','dist','string','FKFS',NULL,0,0,0,1,31,NULL,NULL,NULL,NULL,0),('gcrq','gcrq',NULL,'gcrq','è´­è½¦æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,29,NULL,NULL,NULL,NULL,0),('gcyhke','gcyhke',NULL,'gcyhke','è´­è½¦æœˆè¿˜æ¬¾é¢','text','double',NULL,NULL,0,0,0,1,65,NULL,NULL,NULL,NULL,0),('gsdh','gsdh',NULL,'gsdh','å…¬å¸ç”µè¯','text','string',NULL,NULL,0,0,0,1,51,NULL,NULL,NULL,NULL,0),('gsmc','gsmc',NULL,'gsmc','å…¬å¸åç§°','text','string',NULL,NULL,0,0,0,1,48,'å…¬å¸åç§°ï¼ˆè‡ªå¡«é¡¹ï¼‰',NULL,NULL,NULL,0),('gsqrgx','gsqrgx_show','gsqrgx_src','gsqrgx','è·Ÿç”³è¯·äººå…³ç³»','dist','string','LZGX',NULL,0,0,0,1,13,NULL,NULL,NULL,NULL,0),('gznx','gznx',NULL,'gznx','å·¥ä½œå¹´é™','text','int',NULL,NULL,0,0,0,1,53,'å·¥ä½œå¹´é™ï¼ˆå¹´ï¼‰',NULL,NULL,NULL,0),('hkdz','hkdz',NULL,'hkdz','æˆ·å£åœ°å€','text','string',NULL,NULL,0,0,0,1,44,NULL,NULL,NULL,NULL,0),('hkszd','hkszd',NULL,'hkszd','æˆ·å£æ‰€åœ¨åœ°','text','string',NULL,NULL,0,0,0,1,40,NULL,NULL,NULL,NULL,0),('hkzt','hkzt_show','hkzt_src','hkzt','è¿˜æ¬¾çŠ¶æ€','dist','string','HKZT',NULL,0,0,0,1,14,NULL,NULL,NULL,NULL,0),('htbh','htbh',NULL,'htbh','åˆåŒç¼–å·','text','string',NULL,NULL,0,0,0,1,19,NULL,NULL,NULL,NULL,0),('htjhrq','htjhrq',NULL,'htjhrq','åˆåŒæ¿€æ´»æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,20,NULL,NULL,NULL,NULL,0),('hylx','hylx_show','hylx_src','hylx','è¡Œä¸šç±»åž‹','tree','int','HYLX','hyzlx',1,0,0,1,37,NULL,NULL,NULL,NULL,0),('hyzk','hyzk_show','hyzk_src','hyzk','å©šå§»çŠ¶å†µ','dist','string','HYZK',NULL,0,0,0,1,17,NULL,NULL,NULL,NULL,0),('hyzlx','hyzlx_show','hyzlx_src','hyzlx','è¡Œä¸šå­ç±»åž‹','tree','int','HYLX',NULL,2,0,0,1,38,NULL,NULL,NULL,NULL,0),('hzjjrq','hzjjrq',NULL,'hzjjrq','æ ¸å‡†æ‹’ç»æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,23,NULL,NULL,NULL,NULL,0),('jcrq','jcrq',NULL,'jcrq','äº¤è½¦æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,30,NULL,NULL,NULL,NULL,0),('jkr_cs','jkr_cs_show','jkr_cs_src','jkr_cs','å€Ÿæ¬¾äººåŸŽå¸‚','tree','int','CITY',NULL,2,0,0,1,43,NULL,NULL,NULL,NULL,0),('jkr_sf','jkr_sf_show','jkr_sf_src','jkr_sf','å€Ÿæ¬¾äººçœä»½','tree','int','CITY','jkr_cs',1,0,0,1,42,NULL,NULL,NULL,NULL,0),('jsr_lxdh','jsr_lxdh',NULL,'jsr_lxdh','ä»‹ç»äººè”ç³»ç”µè¯','text','string',NULL,NULL,0,0,0,1,68,NULL,NULL,NULL,NULL,0),('jsr_xm','jsr_xm',NULL,'jsr_xm','ä»‹ç»äººå§“å','text','string',NULL,NULL,0,0,0,1,67,'ä»‹ç»äºº',NULL,NULL,NULL,0),('jszbh','jszbh',NULL,'jszbh','é©¾é©¶è¯ç¼–å·','text','string',NULL,NULL,0,0,0,1,32,'é©¾é©¶è¯æ¡£æ¡ˆç¼–å·',NULL,NULL,NULL,0),('jtrs','jtrs_show','jtrs_src','jtrs','å®¶åº­äººæ•°','dist','string','JTRS',NULL,0,0,0,1,34,NULL,NULL,NULL,NULL,0),('jycd','jycd_show','jycd_src','jycd','æ•™è‚²ç¨‹åº¦','dist','string','JYCD',NULL,0,0,0,1,35,NULL,NULL,NULL,NULL,0),('jzdqr','jzdqr',NULL,'jzdqr','é©¾ç…§åˆ°æœŸæ—¥','date','date',NULL,NULL,0,0,0,1,33,NULL,NULL,NULL,NULL,0),('jznx','jznx',NULL,'jznx','å±…ä½å¹´é™','text','int',NULL,NULL,0,0,0,1,47,NULL,NULL,NULL,NULL,0),('khll','khll',NULL,'khll','å®¢æˆ·åˆ©çŽ‡','text','double',NULL,NULL,0,0,0,1,63,NULL,NULL,NULL,NULL,0),('khsqbm','khsqbm',NULL,'khsqbm','å®¢æˆ·ç”³è¯·ç¼–ç ','text','string',NULL,NULL,0,0,0,1,66,NULL,NULL,NULL,NULL,0),('lxze','lxze',NULL,'lxze','åˆ©æ¯æ€»é¢','text','double',NULL,NULL,0,0,0,1,64,NULL,NULL,NULL,NULL,0),('nl','nl',NULL,'nl','å¹´é¾„','text','int',NULL,NULL,0,1,1,1,16,'å¹´é¾„ï¼ˆå¹´ï¼‰',NULL,NULL,NULL,0),('org_dq','org_dq_show',NULL,'AB','å¤§åŒº','org','int','-1','org_jxs',2,1,1,1,2,NULL,NULL,NULL,NULL,0),('org_jxs','org_jxs_show',NULL,'AC','ç»é”€å•†','org','int','-1',NULL,3,1,1,1,3,'ç»é”€å•†åç§°','ç»é”€å•†åç§°','ç»é”€å•†åç§°',NULL,0),('org_yxb','org_yxb_show',NULL,'AA','è¥é”€éƒ¨','org','int','0','org_dq',1,1,1,1,1,NULL,NULL,NULL,NULL,0),('qyxz','qyxz_show','qyxz_src','qyxz','ä¼ä¸šæ€§è´¨','dist','string','QYXZ',NULL,0,0,0,1,49,NULL,NULL,NULL,NULL,0),('sfkbl','sfkbl',NULL,'sfkbl','é¦–ä»˜æ¬¾æ¯”ä¾‹','text','double',NULL,NULL,0,0,0,1,60,'é¦–ä»˜æ¬¾æ¯”ä¾‹ %',NULL,NULL,NULL,0),('sfkje','sfkje',NULL,'sfkje','é¦–ä»˜æ¬¾é‡‘é¢','text','double',NULL,NULL,0,0,0,1,61,NULL,NULL,NULL,NULL,0),('sjgcr_dhhm','sjgcr_dhhm',NULL,'sjgcr_dhhm','è´­è½¦äººç”µè¯å·ç ','text','string',NULL,NULL,0,1,1,1,12,NULL,'å®žé™…è´­è½¦äººç”µè¯å·ç ',NULL,'å®žé™…è´­è½¦äººè”ç³»æ–¹å¼',0),('sjgcr_xm','sjgcr_xm',NULL,'sjgcr_xm','è´­è½¦äººå§“å','text','string',NULL,NULL,0,1,1,1,10,NULL,'å®žé™…è´­è½¦äººå§“å','å®¢æˆ·åç§°','å®žé™…è´­è½¦äººå§“å',0),('sjgcr_zjhm','sjgcr_zjhm',NULL,'sjgcr_zjhm','è´­è½¦äººè¯ä»¶å·ç ','text','string',NULL,NULL,0,1,1,1,11,NULL,'å®žé™…è´­è½¦äººè¯ä»¶å·ç ','è¯ä»¶å·ç ','å®žé™…è´­è½¦äººè¯ä»¶å·',0),('sqr_dhhm','sqr_dhhm',NULL,'AK','ç”³è¯·äººç”µè¯å·ç ','text','string',NULL,NULL,0,1,1,1,9,'ç”µè¯','ç”³è¯·äººç”µè¯',NULL,'ç”µè¯',1),('sqr_xm','sqr_xm',NULL,'AH','ç”³è¯·äººå§“å','text','string',NULL,NULL,0,1,1,1,6,'å§“åï¼ˆä¸­æ–‡ï¼‰','ç”³è¯·äººå§“å',NULL,'å—é‚€äººå§“å',1),('sqr_zjhm','sqr_zjhm',NULL,'AJ','ç”³è¯·äººè¯ä»¶å·ç ','text','string',NULL,NULL,0,1,1,1,8,'è¯ä»¶å·ç ','ç”³è¯·äººè¯ä»¶å·ç ',NULL,NULL,1),('sqr_zjlx','sqr_zjlx_show','sqr_zjlx_src','AI','ç”³è¯·äººè¯ä»¶ç±»åž‹','dist','string','ZJLX',NULL,0,0,0,1,7,'è¯ä»¶ç±»åž‹',NULL,NULL,NULL,0),('sqtjrq','sqtjrq',NULL,'sqtjrq','ç”³è¯·æäº¤æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,21,NULL,NULL,NULL,NULL,0),('vin','vin',NULL,'vin','VINå·','text','string',NULL,NULL,0,0,0,1,28,NULL,NULL,NULL,'å·²æè½¦è½¦æž¶å·',0),('xb','xb_show','xb_src','xb','æ€§åˆ«','dist','string','XB',NULL,0,0,0,1,15,NULL,NULL,NULL,NULL,0),('xqah','xqah',NULL,'xqah','å…´è¶£çˆ±å¥½','text','string',NULL,NULL,0,0,0,1,69,NULL,NULL,NULL,NULL,0),('xsjg','xsjg',NULL,'xsjg','é”€å”®ä»·æ ¼','text','double',NULL,NULL,0,0,0,1,59,NULL,NULL,NULL,NULL,0),('yf','yf',NULL,'yf','æœˆä»½','text','int',NULL,NULL,0,0,0,1,22,NULL,NULL,NULL,NULL,0),('yqr','yqr',NULL,'yqr','é‚€è¯·äºº','text','string',NULL,NULL,0,0,0,1,74,NULL,NULL,NULL,'é‚€è¯·äºº',0),('ysr','ysr',NULL,'ysr','æœˆæ”¶å…¥','text','int',NULL,NULL,0,0,0,1,41,NULL,NULL,NULL,NULL,0),('yyxhsl','yyxhsl_show','yyxhsl_src','yyxhsl','æ‹¥æœ‰å°å­©æ•°é‡','dist','string','YYHZSL',NULL,0,0,0,1,70,NULL,NULL,NULL,NULL,0),('zc','zc',NULL,'zc','å‘¨æ¬¡','text','int',NULL,NULL,0,0,0,1,24,NULL,NULL,NULL,NULL,0),('zcjg','zcjg',NULL,'zcjg','èµ„äº§ä»·æ ¼','text','double',NULL,NULL,0,0,0,1,54,NULL,NULL,NULL,NULL,0),('zw','zw',NULL,'zw','èŒä½','text','string',NULL,NULL,0,0,0,1,50,NULL,NULL,NULL,'èŒåŠ¡',0),('zylx','zylx_show','zylx_src','zylx','èŒä¸šç±»åž‹','dist','string','ZYLX',NULL,0,0,0,1,39,NULL,NULL,NULL,NULL,0);
+INSERT INTO `sys_field` VALUES ('bz','bz',NULL,'CY','å¤‡æ³¨','text','string',NULL,NULL,0,0,0,1,73,NULL,NULL,NULL,'èƒŒæ™¯è¯´æ˜Ž',1),('city_cs','city_cs_show','city_cs_src','AF','åŸŽå¸‚','tree','int','CITY',NULL,2,1,1,1,5,NULL,NULL,NULL,NULL,0),('city_sf','city_sf_show','city_sf_src','AE','çœä»½','tree','int','CITY','city_cs',1,1,1,1,4,NULL,NULL,NULL,NULL,0),('cphm','cphm',NULL,'BD','è½¦ç‰Œå·ç ','text','string',NULL,NULL,0,0,0,1,27,NULL,NULL,NULL,NULL,1),('cplx','cplx',NULL,'CI','äº§å“ç±»åž‹','text','string',NULL,NULL,0,0,0,1,57,NULL,NULL,NULL,NULL,0),('cpz','cpz',NULL,'CH','äº§å“ç»„','text','string',NULL,NULL,0,0,0,1,56,NULL,NULL,NULL,NULL,1),('csys','csys_show','csys_src','CG','è½¦èº«é¢œè‰²','dist','string','CXYS',NULL,0,0,0,1,55,NULL,NULL,NULL,NULL,0),('cxi','cxi_show','cxi_src','BB','è½¦ç³»','dist','string','CXI',NULL,0,0,0,1,25,NULL,NULL,NULL,NULL,0),('cxing','cxing_show','cxing_src','BC','è½¦åž‹','dist','string','CXING',NULL,0,0,0,1,26,NULL,NULL,NULL,NULL,0),('degxhnljd','degxhnljd',NULL,'CX','ç¬¬äºŒä¸ªå°å­©å¹´é¾„é˜¶æ®µ','text','string',NULL,NULL,0,0,0,1,72,NULL,NULL,NULL,NULL,0),('dkje','dkje',NULL,'CN','è´·æ¬¾é‡‘é¢','text','double',NULL,NULL,0,0,0,1,62,NULL,NULL,NULL,NULL,0),('dkqs','dkqs_show','dkqs_src','CJ','è´·æ¬¾æœŸæ•°','dist','string','DKQS',NULL,0,0,0,1,58,'è´·æ¬¾æœŸæ•°ï¼ˆæœˆï¼‰',NULL,NULL,NULL,0),('dksqhm','dksqhm',NULL,'BM','è´·æ¬¾ç”³è¯·å·ç ','text','string',NULL,NULL,0,0,0,1,36,NULL,NULL,NULL,NULL,1),('dqzt','dqzt_show','dqzt_src','AU','å½“å‰çŠ¶æ€','dist','string','DQZT',NULL,0,0,0,1,18,NULL,NULL,NULL,NULL,0),('dygxhnljd','dygxhnljd',NULL,'CW','ç¬¬ä¸€ä¸ªå°å­©å¹´é¾„é˜¶æ®µ','text','string',NULL,NULL,0,0,0,1,71,NULL,NULL,NULL,NULL,0),('dzlx','dzlx',NULL,'BW','åœ°å€ç±»åž‹','text','string',NULL,NULL,0,0,0,1,45,NULL,NULL,NULL,NULL,0),('dzy','dzy',NULL,'CD','å•ä½åœ°å€','text','string',NULL,NULL,0,0,0,1,52,'åœ°å€ä¸€',NULL,NULL,NULL,1),('fclx','fclx_show','fclx_src','BX','æˆ¿äº§ç±»åž‹','dist','string','FCLX',NULL,0,0,0,1,46,NULL,NULL,NULL,NULL,0),('fkfs','fkfs_show','fkfs_src','BH','ä»˜æ¬¾æ–¹å¼','dist','string','FKFS',NULL,0,0,0,1,31,NULL,NULL,NULL,NULL,0),('gcrq','gcrq',NULL,'BF','è´­è½¦æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,29,NULL,NULL,NULL,NULL,0),('gcyhke','gcyhke',NULL,'CQ','è´­è½¦æœˆè¿˜æ¬¾é¢','text','double',NULL,NULL,0,0,0,1,65,NULL,NULL,NULL,NULL,0),('gsdh','gsdh',NULL,'CC','å…¬å¸ç”µè¯','text','string',NULL,NULL,0,0,0,1,51,NULL,NULL,NULL,NULL,1),('gsmc','gsmc',NULL,'BZ','å…¬å¸åç§°','text','string',NULL,NULL,0,0,0,1,48,'å…¬å¸åç§°ï¼ˆè‡ªå¡«é¡¹ï¼‰',NULL,NULL,NULL,1),('gsqrgx','gsqrgx_show','gsqrgx_src','AO','è·Ÿç”³è¯·äººå…³ç³»','dist','string','LZGX',NULL,0,0,0,1,13,NULL,NULL,NULL,NULL,0),('gznx','gznx',NULL,'CE','å·¥ä½œå¹´é™','text','int',NULL,NULL,0,0,0,1,53,'å·¥ä½œå¹´é™ï¼ˆå¹´ï¼‰',NULL,NULL,NULL,0),('hkdz','hkdz',NULL,'BV','æˆ·å£åœ°å€','text','string',NULL,NULL,0,0,0,1,44,NULL,NULL,NULL,NULL,1),('hkszd','hkszd',NULL,'BR','æˆ·å£æ‰€åœ¨åœ°','text','string',NULL,NULL,0,0,0,1,40,NULL,NULL,NULL,NULL,1),('hkzt','hkzt_show','hkzt_src','AP','è¿˜æ¬¾çŠ¶æ€','dist','string','HKZT',NULL,0,0,0,1,14,NULL,NULL,NULL,NULL,0),('htbh','htbh',NULL,'AV','åˆåŒç¼–å·','text','string',NULL,NULL,0,0,0,1,19,NULL,NULL,NULL,NULL,0),('htjhrq','htjhrq',NULL,'AW','åˆåŒæ¿€æ´»æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,20,NULL,NULL,NULL,NULL,0),('hylx','hylx_show','hylx_src','BN','è¡Œä¸šç±»åž‹','tree','int','HYLX','hyzlx',1,0,0,1,37,NULL,NULL,NULL,NULL,0),('hyzk','hyzk_show','hyzk_src','AT','å©šå§»çŠ¶å†µ','dist','string','HYZK',NULL,0,0,0,1,17,NULL,NULL,NULL,NULL,0),('hyzlx','hyzlx_show','hyzlx_src','BO','è¡Œä¸šå­ç±»åž‹','tree','int','HYLX',NULL,2,0,0,1,38,NULL,NULL,NULL,NULL,0),('hzjjrq','hzjjrq',NULL,'AZ','æ ¸å‡†æ‹’ç»æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,23,NULL,NULL,NULL,NULL,0),('jcrq','jcrq',NULL,'BG','äº¤è½¦æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,30,NULL,NULL,NULL,NULL,0),('jkr_cs','jkr_cs_show','jkr_cs_src','BU','å€Ÿæ¬¾äººåŸŽå¸‚','tree','int','CITY',NULL,2,0,0,1,43,NULL,NULL,NULL,NULL,0),('jkr_sf','jkr_sf_show','jkr_sf_src','BT','å€Ÿæ¬¾äººçœä»½','tree','int','CITY','jkr_cs',1,0,0,1,42,NULL,NULL,NULL,NULL,0),('jsr_lxdh','jsr_lxdh',NULL,'CT','ä»‹ç»äººè”ç³»ç”µè¯','text','string',NULL,NULL,0,0,0,1,68,NULL,NULL,NULL,NULL,1),('jsr_xm','jsr_xm',NULL,'CS','ä»‹ç»äººå§“å','text','string',NULL,NULL,0,0,0,1,67,'ä»‹ç»äºº',NULL,NULL,NULL,1),('jszbh','jszbh',NULL,'BI','é©¾é©¶è¯ç¼–å·','text','string',NULL,NULL,0,0,0,1,32,'é©¾é©¶è¯æ¡£æ¡ˆç¼–å·',NULL,NULL,NULL,1),('jtrs','jtrs_show','jtrs_src','BK','å®¶åº­äººæ•°','dist','string','JTRS',NULL,0,0,0,1,34,NULL,NULL,NULL,NULL,0),('jycd','jycd_show','jycd_src','BL','æ•™è‚²ç¨‹åº¦','dist','string','JYCD',NULL,0,0,0,1,35,NULL,NULL,NULL,NULL,0),('jzdqr','jzdqr',NULL,'BJ','é©¾ç…§åˆ°æœŸæ—¥','date','date',NULL,NULL,0,0,0,1,33,NULL,NULL,NULL,NULL,0),('jznx','jznx',NULL,'BY','å±…ä½å¹´é™','text','int',NULL,NULL,0,0,0,1,47,NULL,NULL,NULL,NULL,0),('khll','khll',NULL,'CO','å®¢æˆ·åˆ©çŽ‡','text','double',NULL,NULL,0,0,0,1,63,NULL,NULL,NULL,NULL,0),('khsqbm','khsqbm',NULL,'CR','å®¢æˆ·ç”³è¯·ç¼–ç ','text','string',NULL,NULL,0,0,0,1,66,NULL,NULL,NULL,NULL,1),('lxze','lxze',NULL,'CP','åˆ©æ¯æ€»é¢','text','double',NULL,NULL,0,0,0,1,64,NULL,NULL,NULL,NULL,0),('nl','nl',NULL,'AR','å¹´é¾„','text','int',NULL,NULL,0,1,1,1,16,'å¹´é¾„ï¼ˆå¹´ï¼‰',NULL,NULL,NULL,0),('org_dq','org_dq_show',NULL,'AB','å¤§åŒº','org','int','-1','org_jxs',2,1,1,1,2,NULL,NULL,NULL,NULL,0),('org_jxs','org_jxs_show',NULL,'AC','ç»é”€å•†','org','int','-1',NULL,3,1,1,1,3,'ç»é”€å•†åç§°','ç»é”€å•†åç§°','ç»é”€å•†åç§°',NULL,0),('org_yxb','org_yxb_show',NULL,'AA','è¥é”€éƒ¨','org','int','0','org_dq',1,1,1,1,1,NULL,NULL,NULL,NULL,0),('qyxz','qyxz_show','qyxz_src','CA','ä¼ä¸šæ€§è´¨','dist','string','QYXZ',NULL,0,0,0,1,49,NULL,NULL,NULL,NULL,0),('sfkbl','sfkbl',NULL,'CL','é¦–ä»˜æ¬¾æ¯”ä¾‹','text','double',NULL,NULL,0,0,0,1,60,'é¦–ä»˜æ¬¾æ¯”ä¾‹ %',NULL,NULL,NULL,0),('sfkje','sfkje',NULL,'CM','é¦–ä»˜æ¬¾é‡‘é¢','text','double',NULL,NULL,0,0,0,1,61,NULL,NULL,NULL,NULL,0),('sjgcr_dhhm','sjgcr_dhhm',NULL,'AN','è´­è½¦äººç”µè¯å·ç ','text','string',NULL,NULL,0,1,1,1,12,NULL,'å®žé™…è´­è½¦äººç”µè¯å·ç ',NULL,'å®žé™…è´­è½¦äººè”ç³»æ–¹å¼',1),('sjgcr_xm','sjgcr_xm',NULL,'AL','è´­è½¦äººå§“å','text','string',NULL,NULL,0,1,1,1,10,NULL,'å®žé™…è´­è½¦äººå§“å','å®¢æˆ·åç§°','å®žé™…è´­è½¦äººå§“å',1),('sjgcr_zjhm','sjgcr_zjhm',NULL,'AM','è´­è½¦äººè¯ä»¶å·ç ','text','string',NULL,NULL,0,1,1,1,11,NULL,'å®žé™…è´­è½¦äººè¯ä»¶å·ç ','è¯ä»¶å·ç ','å®žé™…è´­è½¦äººè¯ä»¶å·',1),('sqr_dhhm','sqr_dhhm',NULL,'AK','ç”³è¯·äººç”µè¯å·ç ','text','string',NULL,NULL,0,1,1,1,9,'ç”µè¯','ç”³è¯·äººç”µè¯',NULL,'ç”µè¯',1),('sqr_xm','sqr_xm',NULL,'AH','ç”³è¯·äººå§“å','text','string',NULL,NULL,0,1,1,1,6,'å§“åï¼ˆä¸­æ–‡ï¼‰','ç”³è¯·äººå§“å',NULL,'å—é‚€äººå§“å',1),('sqr_zjhm','sqr_zjhm',NULL,'AJ','ç”³è¯·äººè¯ä»¶å·ç ','text','string',NULL,NULL,0,1,1,1,8,'è¯ä»¶å·ç ','ç”³è¯·äººè¯ä»¶å·ç ',NULL,NULL,1),('sqr_zjlx','sqr_zjlx_show','sqr_zjlx_src','AI','ç”³è¯·äººè¯ä»¶ç±»åž‹','dist','string','ZJLX',NULL,0,0,0,1,7,'è¯ä»¶ç±»åž‹',NULL,NULL,NULL,0),('sqtjrq','sqtjrq',NULL,'AX','ç”³è¯·æäº¤æ—¥æœŸ','date','date',NULL,NULL,0,0,0,1,21,NULL,NULL,NULL,NULL,0),('vin','vin',NULL,'BE','VINå·','text','string',NULL,NULL,0,0,0,1,28,NULL,NULL,NULL,'å·²æè½¦è½¦æž¶å·',1),('xb','xb_show','xb_src','AQ','æ€§åˆ«','dist','string','XB',NULL,0,0,0,1,15,NULL,NULL,NULL,NULL,0),('xqah','xqah',NULL,'CU','å…´è¶£çˆ±å¥½','text','string',NULL,NULL,0,0,0,1,69,NULL,NULL,NULL,NULL,1),('xsjg','xsjg',NULL,'CK','é”€å”®ä»·æ ¼','text','double',NULL,NULL,0,0,0,1,59,NULL,NULL,NULL,NULL,0),('yf','yf',NULL,'AY','æœˆä»½','text','int',NULL,NULL,0,0,0,1,22,NULL,NULL,NULL,NULL,0),('yqr','yqr',NULL,'CZ','é‚€è¯·äºº','text','string',NULL,NULL,0,0,0,1,74,NULL,NULL,NULL,'é‚€è¯·äºº',1),('ysr','ysr',NULL,'BS','æœˆæ”¶å…¥','text','int',NULL,NULL,0,0,0,1,41,NULL,NULL,NULL,NULL,0),('yyxhsl','yyxhsl_show','yyxhsl_src','CV','æ‹¥æœ‰å°å­©æ•°é‡','dist','string','YYHZSL',NULL,0,0,0,1,70,NULL,NULL,NULL,NULL,0),('zc','zc',NULL,'BA','å‘¨æ¬¡','text','int',NULL,NULL,0,0,0,1,24,NULL,NULL,NULL,NULL,0),('zcjg','zcjg',NULL,'CF','èµ„äº§ä»·æ ¼','text','double',NULL,NULL,0,0,0,1,54,NULL,NULL,NULL,NULL,0),('zw','zw',NULL,'CB','èŒä½','text','string',NULL,NULL,0,0,0,1,50,NULL,NULL,NULL,'èŒåŠ¡',1),('zylx','zylx_show','zylx_src','BQ','èŒä¸šç±»åž‹','dist','string','ZYLX',NULL,0,0,0,1,39,NULL,NULL,NULL,NULL,0);
 /*!40000 ALTER TABLE `sys_field` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -408,4 +408,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-24 23:12:29
+-- Dump completed on 2016-11-26 17:01:48
