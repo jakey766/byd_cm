@@ -122,7 +122,8 @@
 								</c:forEach>
 							</div>
 							<div class="form-actions">
-								<button type="button" class="btn green" id="btnSave" onclick="save()"><i class="icon-ok"></i> 保存</button>
+								<button type="button" class="btn green" id="btnSave" onclick="save()">保存</button>
+								<a class="btn blue" href="${PATH}cm/list.jspx">返回</a>
 							</div>
 						</form>
 					</div>

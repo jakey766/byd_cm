@@ -377,7 +377,7 @@ public class CmInfoService extends BaseService {
 
                     if(first){
                         if(val!=null)
-                            val = val.replaceAll(" ", "");
+                            val = val.replaceAll(" ", "").replaceAll("\\n", "");
                         //金融公司的表格中有两个电话
                         if(type==1&&"电话".equals(val)){
                             dhhmCount++;

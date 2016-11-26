@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `byd_cm` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `byd_cm`;
 -- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
 -- Host: 127.0.0.1    Database: byd_cm
@@ -131,7 +129,7 @@ CREATE TABLE `cm_info` (
   PRIMARY KEY (`id`),
   KEY `sqr_zjhm` (`AI`),
   KEY `sjgcr_zjhm` (`AM`)
-) ENGINE=InnoDB AUTO_INCREMENT=267 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=273 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -408,4 +406,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-26 17:01:48
+-- Dump completed on 2016-11-26 20:06:59

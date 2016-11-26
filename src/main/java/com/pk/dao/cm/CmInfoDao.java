@@ -55,9 +55,6 @@ public class CmInfoDao{
 			}else{
 				sb.append("`").append(f.getTname()).append("`").append(" AS ").append(f.getFname());
 			}
-//			if(!StringUtils.isEmpty(srcName)){
-//				sb.append(",").append(srcName);
-//			}
 			if(!StringUtils.isEmpty(srcName)){
 				sb.append(",CAST(BINARY(AES_DECRYPT(`").append(srcName).append("`, '").append(EncKey).append("')) AS CHAR CHARACTER SET utf8) AS ").append(srcName);
 			}
@@ -238,7 +235,6 @@ public class CmInfoDao{
 				}
 				fieldNames.append("`").append(srcName).append("`");
 				fieldValues.append("AES_ENCRYPT(?, '").append(EncKey).append("')");
-//				fieldValues.append("?");
 				params.add(val);
 				idx++;
 			}
@@ -274,8 +270,6 @@ public class CmInfoDao{
 		
 		StringBuilder sql = new StringBuilder(100);
 		sql.append("INSERT INTO cm_info (").append(fieldNames.toString()).append(") VALUES (").append(fieldValues).append(")");
-		System.out.println(sql.toString());
-		System.out.println(params);
 
 		jdbcTemplate.update(sql.toString(), params.toArray());
 
@@ -352,7 +346,6 @@ public class CmInfoDao{
 				}
 				fieldNames.append("`").append(srcName).append("`=");
 				fieldNames.append("AES_ENCRYPT(?, '").append(EncKey).append("')");
-//				fieldNames.append("?");
 				params.add(val);
 				idx++;
 			}

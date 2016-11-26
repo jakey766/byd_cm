@@ -43,9 +43,8 @@
 							</div>
 						</div>
 						<div class="form-actions">
-							<button type="button" class="btn green" id="btnSearch" onclick="search()">
-								<i class="icon-search"></i> 查询
-							</button>
+							<button type="button" class="btn green" id="btnSearch" onclick="search()">查询</button>
+							<button type="button" class="btn blue" onclick="reset()">重置</button>
 						</div>
 					</div>
 				</div>
@@ -228,6 +227,11 @@
 	
 	function refresh() {
 		search(curPage);
+	}
+
+	function reset(){
+		$('#keywords').val('');
+		search();
 	}
 	
 	var editType = 'add';

@@ -38,9 +38,11 @@
 	   		系统提醒：<span>${msg}</span>
         </div>
         <div class="dashline"></div>
+        <!--
         <div class="foot">
             <input type="button" class="button" value="返回" onclick="history.back();" />
         </div>
+        -->
     </div>
 </div>
 </body>

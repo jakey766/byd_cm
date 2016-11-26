@@ -230,6 +230,12 @@
 	        choseAll(this);
 	        $.uniform.update();
 	    });
+
+		try{
+			$('#queryForm').find('input[type="text"]')[0].focus();
+		}catch(e){
+			console.error(e);
+		}
 	});
 	
 	function initDate(){
