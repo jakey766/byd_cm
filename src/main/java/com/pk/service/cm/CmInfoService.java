@@ -585,6 +585,10 @@ public class CmInfoService extends BaseService {
         			svo.getMap().clear();
         			svo.getMap().put("Q^vin^EQ", vo.getVin());
         			exists = cmInfoDao.list(svo);
+        		}else{
+        			filterCount ++;
+                    filters.add(vo);
+                    continue;
         		}
                 if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
                     for(int i=0;i<exists.getList().size();i++){
@@ -603,13 +607,25 @@ public class CmInfoService extends BaseService {
             			svo.getMap().put("Q^sjgcr_zjhm^EQ", vo.getSjgcr_zjhm());
             			exists = cmInfoDao.list(svo);
             			if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
+            				boolean updated = false;
                             for(int i=0;i<exists.getList().size();i++){
                                 exist = (CmInfo)exists.getList().get(i);
-                                copyWithOutNone(exist, vo, fields, methods);
-                                buildOtherField(exist);
-                                cmInfoDao.update(exist);
-                                updateCount ++;
-                                updates.add(exist);
+                                if(exist.getVin()==null||exist.getVin().length()<1){
+                                	copyWithOutNone(exist, vo, fields, methods);
+                                	buildOtherField(exist);
+                                	cmInfoDao.update(exist);
+                                	updateCount ++;
+                                	updates.add(exist);
+                                	updated = true;
+                                }
+                            }
+                            if(!updated){
+                            	buildOtherField(vo);
+                            	cmInfoDao.insert(vo);
+                            	
+                            	insertCount ++;
+                                adds.add(vo);
+                                continue;
                             }
                         }else{
                         	filterCount ++;
@@ -876,6 +892,13 @@ public class CmInfoService extends BaseService {
             if(list!=null){
                 for(SysTree tree:list){
                     map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getName(), tree);
+                    if("CITY".equals(tree.getType())){
+                    	if(tree.getLevel()==1){
+                    		map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getName() + "省", tree);
+                    	}else if(tree.getLevel()==2){
+                    		map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getName() + "市", tree);
+                    	}
+                    }
                 }
             }
             treeCache = map;
