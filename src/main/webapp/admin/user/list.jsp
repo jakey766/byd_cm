@@ -159,9 +159,8 @@
 							</div>
 						</div>
 						<div class="form-actions">
-							<button type="button" class="btn green" id="btnSave" onclick="save()">
-								<i class="icon-ok"></i> 保存
-							</button>
+							<button type="button" class="btn green" id="btnSave" onclick="save()">保存</button>
+							<button type="button" class="btn green" onclick="cancel()">取消</button>
 						</div>
 					</div>
 				</form>
@@ -441,6 +440,10 @@
 				$.alert(data.message);
 			}
 		});
+	}
+	
+	function cancel(){
+		$.dialog.get('edit_dialog').close();
 	}
 	
 	function toDelete(id, name) {

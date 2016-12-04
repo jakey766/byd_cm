@@ -70,7 +70,7 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="orgChange(this, '${vo.distKey}')">
+													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="orgChange(this, '${vo.distKey}')" onkeydown="if(event.keyCode==13){search()}">
 														<option value="">所有</option>
 														<c:if test="${vo.distKey ne null and vo.distKey ne ''}">
 															<c:forEach var="v" items="${cm:loadOrg(vo.distType)}">
@@ -87,7 +87,7 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="treeChange(this, '${vo.distKey}')">
+													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="treeChange(this, '${vo.distKey}')" onkeydown="if(event.keyCode==13){search()}">
 														<option value="">所有</option>
 														<option value="-100">其他</option>
 														<c:if test="${vo.distKey ne null and vo.distKey ne ''}">
@@ -105,9 +105,9 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<input type="text" class="laydate-icon" id="${vo.fname}_GE" name="Q^${vo.fname}^GE" style="width:120px;"/>
+													<input type="text" class="laydate-icon" id="${vo.fname}_GE" name="Q^${vo.fname}^GE" style="width:120px;" onkeydown="if(event.keyCode==13){search()}"/>
 													&nbsp;至&nbsp;
-													<input type="text" class="laydate-icon" id="${vo.fname}_LE" name="Q^${vo.fname}^LE" style="width:120px;"/>
+													<input type="text" class="laydate-icon" id="${vo.fname}_LE" name="Q^${vo.fname}^LE" style="width:120px;" onkeydown="if(event.keyCode==13){search()}"/>
 												</div>
 											</div>
 										</div>
@@ -368,12 +368,15 @@
 	}
 
 	function checkAllAuto(){
+		/*
 		var checked = $('#J_checkAll')[0].checked;
 		if(checked){
 			$('[name="ckb"]').attr('checked', 'checked');
 		}else{
 			$('[name="ckb"]').removeAttr('checked');
 		}
+		*/
+		$('#J_checkAll').removeAttr('checked');
 		$.uniform.update();
 	}
 	
