@@ -86,7 +86,7 @@
 								<div class="control-group">
 									<label class="control-label"> ${vo.name}：</label>
 									<div class="controls">
-										<input type="text" class="span10" id="${vo.fname}" name="${vo.fname}" value="{{v.${vo.fname}}}"/>
+										<input type="text" class="span10" id="${vo.fname}" name="${vo.fname}" value="{{valConvert('${vo.stype}', '${vo.ftype}', v.${vo.sname})}}"/>
 									</div>
 								</div>
 							</div>
@@ -104,8 +104,18 @@
 
 <script>
 	$(document).ready(function() {
+		initTemplateFunc();
 		loadCmInfo();
 	});
+	function initTemplateFunc(){
+		template.helper('valConvert',function(stype, ftype, v){
+			if(stype=='text'&&(ftype=='int'||ftype=='double')&&v==-1)
+				return '';
+			if(v==null)
+				return '';
+			return v;
+		});
+	}
 	function loadCmInfo(){
 		Loading.show();
 		$.post('${PATH}cm/get.do', 'id=${param.id}', function(json) {

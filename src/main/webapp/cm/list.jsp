@@ -192,7 +192,7 @@
 										<td><input type="checkbox" name="ckb" value="{{v.id}}"/></td>
 										<c:forEach var="vo" items="${fields}">
 											<c:if test="${vo.list==1}">
-												<td>{{v.${vo.sname}}}</td>
+												<td>{{valConvert('${vo.stype}', '${vo.ftype}', v.${vo.sname})}}</td>
 											</c:if>
 										</c:forEach>
                     					<td>
@@ -223,6 +223,7 @@
 <script type="text/javascript" src="${PATH}r/plugins/layer-v2.3/layer.js"></script>
 <script>
 	$(document).ready(function() {
+		initTemplateFunc();
 		initDate();
 		search();
 		
@@ -237,6 +238,16 @@
 			console.error(e);
 		}
 	});
+
+	function initTemplateFunc(){
+		template.helper('valConvert',function(stype, ftype, v){
+			if(stype=='text'&&(ftype=='int'||ftype=='double')&&v==-1)
+				return '';
+			if(v==null)
+				return '';
+			return v;
+		});
+	}
 	
 	function initDate(){
 		var ds = $('.laydate-icon');
@@ -260,8 +271,10 @@
 	}
 
 	function orgChange(target, cid){
-		if(!!!cid||cid=='')
+		if(!!!cid||cid==''){
+			search();
 			return;
+		}
 		var val = $(target).val();
 		var auth = $(target).find('option:selected').attr('auth');
 		var level = $(target).find('option:selected').attr('level');
@@ -292,8 +305,10 @@
 	}
 
 	function treeChange(target, cid){
-		if(!!!cid||cid=='')
+		if(!!!cid||cid==''){
+			search();
 			return;
+		}
 		var val = $(target).val();
 		var h = '<option value="">所有</option><option value="-100">其他</option>';
 		if(!!!val||val==''||val=='-100'){

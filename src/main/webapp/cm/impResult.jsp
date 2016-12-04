@@ -40,33 +40,33 @@
 						<c:choose>
 							<c:when test="${result.success}">
 								导入成功,其中新增${result.object.addCount}条,更新${result.object.updateCount}条,过滤${result.object.filterCount}条.
+								<c:if test="${result.object.addCount>0}">
+									<p>新增申请人姓名：
+										<c:forEach var="vo" items="${result.object.adds}" varStatus="idx">
+											<c:if test="${idx.index>0}">,</c:if>
+											${vo.sqr_xm}
+										</c:forEach>
+									</p>
+								</c:if>
+								<c:if test="${result.object.updateCount>0}">
+									<p>更新申请人姓名：
+										<c:forEach var="vo" items="${result.object.updates}" varStatus="idx">
+											<c:if test="${idx.index>0}">,</c:if>
+											${vo.sqr_xm}
+										</c:forEach>
+									</p>
+								</c:if>
+								<c:if test="${result.object.filterCount>0}">
+									<p>过滤申请人姓名：
+										<c:forEach var="vo" items="${result.object.filters}" varStatus="idx">
+											<c:if test="${idx.index>0}">,</c:if>
+											${vo.sqr_xm}
+										</c:forEach>
+									</p>
+								</c:if>
 							</c:when>
 							<c:otherwise>
 								<p>${result.message}</p>
-								<c:if test="${result.object.addCount>0}">
-								<p>新增申请人姓名：
-									<c:forEach var="vo" items="${result.object.adds}" varStatus="idx">
-										<c:if test="${idx.index>0}">,</c:if>
-										${vo.sqr_xm}
-									</c:forEach>
-								</p>
-								</c:if>
-								<c:if test="${result.object.updateCount>0}">
-								<p>更新申请人姓名：
-									<c:forEach var="vo" items="${result.object.updates}" varStatus="idx">
-										<c:if test="${idx.index>0}">,</c:if>
-										${vo.sqr_xm}
-									</c:forEach>
-								</p>
-								</c:if>
-								<c:if test="${result.object.filterCount>0}">
-								<p>过滤申请人姓名：
-									<c:forEach var="vo" items="${result.object.filters}" varStatus="idx">
-										<c:if test="${idx.index>0}">,</c:if>
-										${vo.sqr_xm}
-									</c:forEach>
-								</p>
-								</c:if>
 							</c:otherwise>
 						</c:choose>
 						</div>
