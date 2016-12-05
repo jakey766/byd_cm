@@ -54,7 +54,7 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ">
+													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="search();">
 														<option value="">所有</option>
 														<option value="-100">其他</option>
 														<c:forEach var="v" items="${cm:loadDist(vo.distType)}">
@@ -70,7 +70,7 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="orgChange(this, '${vo.distKey}')" onkeydown="if(event.keyCode==13){search()}">
+													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="orgChange(this, '${vo.distKey}')">
 														<option value="">所有</option>
 														<c:if test="${vo.distKey ne null and vo.distKey ne ''}">
 															<c:forEach var="v" items="${cm:loadOrg(vo.distType)}">
@@ -87,7 +87,7 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="treeChange(this, '${vo.distKey}')" onkeydown="if(event.keyCode==13){search()}">
+													<select class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onchange="treeChange(this, '${vo.distKey}')">
 														<option value="">所有</option>
 														<option value="-100">其他</option>
 														<c:if test="${vo.distKey ne null and vo.distKey ne ''}">
@@ -168,7 +168,7 @@
 							</button>
 							<a href="${PATH}cm/imp.jspx" class="btn mini blue" style="margin-top: -10px;margin-left:0px;"><i class="icon-upload-alt"></i> 导入</a>
 							-->
-							<div class="btn-group">
+							<div class="btn-group" style="margin-top: -10px;">
                             	<a class="btn blue mini" href="#" data-toggle="dropdown">显示列<i class="icon-angle-down"></i></a>
                                 <div id="col_show_div" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
 	                                <c:forEach var="vo" items="${fields}">
@@ -252,6 +252,18 @@
 	
 	function initShowColumnTool(){
 		$('#col_show_div input[type="checkbox"]').change(function(){
+			var checked = this.checked;
+			var name = $(this).attr('name');
+			if(checked){
+				$('.' + name).show();
+			}else{
+				$('.' + name).hide();
+			}
+		});
+	}
+
+	function showColumnAuto(){
+		$('#col_show_div input[type="checkbox"]').each(function(){
 			var checked = this.checked;
 			var name = $(this).attr('name');
 			if(checked){
@@ -397,6 +409,7 @@
 			}
 			$.uniform.update();
 			checkAllAuto();
+			showColumnAuto();
 		});
 		curPage = page;
 	}

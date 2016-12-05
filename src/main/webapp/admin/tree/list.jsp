@@ -178,7 +178,7 @@
 			var data = json.object;
 			if(!!data&&data.length>0){
 				$.each(data, function(i, vo){
-					zNodes.push({id: vo.id, pId:vo.pid, name:vo.name, level:vo.level, open:true});
+					zNodes.push({id: vo.id, pId:vo.pid, name:vo.name, level:vo.level, open:false});
 				});
 			}
 			$.fn.zTree.init($("#orgTree"), setting, zNodes);
