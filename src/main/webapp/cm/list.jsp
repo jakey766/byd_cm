@@ -168,6 +168,16 @@
 							</button>
 							<a href="${PATH}cm/imp.jspx" class="btn mini blue" style="margin-top: -10px;margin-left:0px;"><i class="icon-upload-alt"></i> 导入</a>
 							-->
+							<div class="btn-group">
+                            	<a class="btn blue mini" href="#" data-toggle="dropdown">显示列<i class="icon-angle-down"></i></a>
+                                <div id="col_show_div" class="dropdown-menu hold-on-click dropdown-checkboxes pull-right">
+	                                <c:forEach var="vo" items="${fields}">
+										<c:if test="${vo.list==1}">
+											<label><input type="checkbox" name="COL_${vo.sname}" checked>${vo.name}</label>
+										</c:if>
+									</c:forEach>
+                            	</div>
+                        	</div>
 						</div>
 					</div>
 					<div class="portlet-body">
@@ -179,7 +189,7 @@
 									</th>
 									<c:forEach var="vo" items="${fields}">
 										<c:if test="${vo.list==1}">
-											<th>${vo.name}</th>
+											<th class="COL_${vo.sname}">${vo.name}</th>
 										</c:if>
 									</c:forEach>
 									<th>操作</th>
@@ -192,7 +202,7 @@
 										<td><input type="checkbox" name="ckb" value="{{v.id}}"/></td>
 										<c:forEach var="vo" items="${fields}">
 											<c:if test="${vo.list==1}">
-												<td>{{valConvert('${vo.stype}', '${vo.ftype}', v.${vo.sname})}}</td>
+												<td class="COL_${vo.sname}">{{valConvert('${vo.stype}', '${vo.ftype}', v.${vo.sname})}}</td>
 											</c:if>
 										</c:forEach>
                     					<td>
@@ -225,6 +235,7 @@
 	$(document).ready(function() {
 		initTemplateFunc();
 		initDate();
+		initShowColumnTool();
 		search();
 		
 		$('#J_checkAll').on('click', function() {
@@ -238,6 +249,18 @@
 			console.error(e);
 		}
 	});
+	
+	function initShowColumnTool(){
+		$('#col_show_div input[type="checkbox"]').change(function(){
+			var checked = this.checked;
+			var name = $(this).attr('name');
+			if(checked){
+				$('.' + name).show();
+			}else{
+				$('.' + name).hide();
+			}
+		});
+	}
 
 	function initTemplateFunc(){
 		template.helper('valConvert',function(stype, ftype, v){

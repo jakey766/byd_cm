@@ -804,9 +804,9 @@ public class CmInfoService extends BaseService {
                             pid = obj;
                     }
                 }
-                SysTree tree = getTreeByVal(field.getDistType(), val, pid, false);
+                SysTree tree = getTreeByVal(field.getDistType(), val, pid, field.getTreeLevel(), false);
                 if(tree==null && pid>-1 && field.getTreeLevel()>1){
-                    tree = getTreeByVal(field.getDistType(), val, -1, false);
+                    tree = getTreeByVal(field.getDistType(), val, -1, field.getTreeLevel(), false);
                 }
                 if(tree==null){
                     method.invoke(vo, -100);
@@ -883,7 +883,7 @@ public class CmInfoService extends BaseService {
         return dist;
     }
 
-    private SysTree getTreeByVal(String distType, String val, int pid, boolean newIfNotExist){
+    private SysTree getTreeByVal(String distType, String val, int pid, int level, boolean newIfNotExist){
         if(treeCache==null){
             SysTreeSearchVO svo = new SysTreeSearchVO();
             svo.setPid(-1);
@@ -891,12 +891,17 @@ public class CmInfoService extends BaseService {
             Map<String, SysTree> map = new HashMap<>();
             if(list!=null){
                 for(SysTree tree:list){
-                    map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getName(), tree);
+                    map.put(tree.getType() + ":" + tree.getPid() + ":" + level + ":" + tree.getName(), tree);
+                    /**
+                     * 避免文档导入有些以省/市结尾，有些又没有
+                     * update sys_tree set name = SUBSTRING(name, 1, CHARACTER_LENGTH(name)-1) where type = 'CITY' and level=2 and name like '%市'
+                     * update sys_tree set name = SUBSTRING(name, 1, CHARACTER_LENGTH(name)-1) where type = 'CITY' and level=1 and name like '%省'
+                     */
                     if("CITY".equals(tree.getType())){
                     	if(tree.getLevel()==1){
-                    		map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getName() + "省", tree);
+                    		map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getLevel() + ":" + tree.getName() + "省", tree);
                     	}else if(tree.getLevel()==2){
-                    		map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getName() + "市", tree);
+                    		map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getLevel() + ":" + tree.getName() + "市", tree);
                     	}
                     }
                 }
