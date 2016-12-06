@@ -240,6 +240,26 @@ public class CmInfoDao{
 			}
 
 		}
+		if(!StringUtils.isEmpty(vo.getOrg_code())){
+			if(idx>0){
+				fieldNames.append(",");
+				fieldValues.append(",");
+			}
+			fieldNames.append("`org_code`");
+			fieldValues.append("?");
+			params.add(vo.getOrg_code());
+			idx++;
+		}
+		if(!StringUtils.isEmpty(vo.getCity_code())){
+			if(idx>0){
+				fieldNames.append(",");
+				fieldValues.append(",");
+			}
+			fieldNames.append("`city_code`");
+			fieldValues.append("?");
+			params.add(vo.getCity_code());
+			idx++;
+		}
 
 		/*
 		for(int i=0,len=fields.length;i<len;i++){
@@ -349,6 +369,20 @@ public class CmInfoDao{
 				params.add(val);
 				idx++;
 			}
+		}
+		if(!StringUtils.isEmpty(vo.getOrg_code())){
+			if(idx>0)
+				fieldNames.append(",");
+			fieldNames.append("`org_code`=?");
+			params.add(vo.getOrg_code());
+			idx++;
+		}
+		if(!StringUtils.isEmpty(vo.getCity_code())){
+			if(idx>0)
+				fieldNames.append(",");
+			fieldNames.append("`city_code`=?");
+			params.add(vo.getCity_code());
+			idx++;
 		}
 
 		/*
