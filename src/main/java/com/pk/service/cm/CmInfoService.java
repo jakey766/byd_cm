@@ -676,6 +676,15 @@ public class CmInfoService extends BaseService {
                                     	updates.add(exist);
                                     	updated = true;
                                     }
+                                }else if(!StringUtils.isEmpty(exist.getVin())){
+                                    copyWithOutNone(exist, vo, fields, methods);
+                                    if(buildOtherField(exist)){
+                                        exist.setId(0);
+                                        cmInfoDao.insert(exist);
+                                        insertCount ++;
+                                        adds.add(exist);
+                                        updated = true;
+                                    }
                                 }
                             }
             			}
