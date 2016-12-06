@@ -498,13 +498,20 @@ public class CmInfoService extends BaseService {
                     exists = cmInfoDao.list(svo);
         		}
                 if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
+                	boolean updated = false;
                     for(int i=0;i<exists.getList().size();i++){
                         exist = (CmInfo)exists.getList().get(i);
                         copyWithOutNone(exist, vo, fields, methods);
-                        buildOtherField(exist);
-                        cmInfoDao.update(vo);
-                        updateCount ++;
-                        updates.add(exist);
+                        if(buildOtherField(exist)){
+                        	cmInfoDao.update(exist);
+                        	updateCount ++;
+                        	updates.add(exist);
+                        	updated = true;
+                        }
+                    }
+                    if(!updated){
+                    	filterCount ++;
+                        filters.add(vo);
                     }
                 }else{
                     if(!StringUtils.isEmpty(vo.getHtbh())){
@@ -513,19 +520,30 @@ public class CmInfoService extends BaseService {
                         exists = cmInfoDao.list(svo);
                     }
                     if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
+                    	boolean updated = false;
                         for(int i=0;i<exists.getList().size();i++){
                             exist = (CmInfo)exists.getList().get(i);
                             copyWithOutNone(exist, vo, fields, methods);
-                            buildOtherField(exist);
-                            cmInfoDao.update(exist);
-                            updateCount ++;
-                            updates.add(vo);
+                            if(buildOtherField(exist)){
+                            	cmInfoDao.update(exist);
+                            	updateCount ++;
+                            	updates.add(exist);
+                            	updated = true;
+                            }
+                        }
+                        if(!updated){
+                        	filterCount ++;
+                            filters.add(vo);
                         }
                     }else{
-                        buildOtherField(vo);
-                        cmInfoDao.insert(vo);
-                        insertCount ++;
-                        adds.add(vo);
+                        if(buildOtherField(vo)){
+                        	cmInfoDao.insert(vo);
+                        	insertCount ++;
+                        	adds.add(vo);
+                        }else{
+                        	filterCount ++;
+                            filters.add(vo);
+                        }
                     }
                 }
         	}
@@ -540,13 +558,20 @@ public class CmInfoService extends BaseService {
         			exists = cmInfoDao.list(svo);
         		}
                 if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
+                	boolean updated = false;
                     for(int i=0;i<exists.getList().size();i++){
                         exist = (CmInfo)exists.getList().get(i);
                         copyWithOutNone(exist, vo, fields, methods);
-                        buildOtherField(exist);
-                        cmInfoDao.update(exist);
-                        updateCount ++;
-                        updates.add(vo);
+                        if(buildOtherField(exist)){
+                        	cmInfoDao.update(exist);
+                        	updateCount ++;
+                        	updates.add(exist);
+                        	updated = true;
+                        }
+                    }
+                    if(!updated){
+                    	filterCount ++;
+                        filters.add(vo);
                     }
                 }else{
             		if(!StringUtils.isEmpty(vo.getSqr_zjhm())){
@@ -562,11 +587,12 @@ public class CmInfoService extends BaseService {
                                 //已存在的纪录在没有客户申请编码时更新
                                 if(exist.getKhsqbm()==null||exist.getKhsqbm().length()<1){
                                     copyWithOutNone(exist, vo, fields, methods);
-                                    buildOtherField(exist);
-                                    cmInfoDao.update(exist);
-                                    updateCount ++;
-                                    updates.add(vo);
-                                    existed = true;
+                                    if(buildOtherField(exist)){
+                                    	cmInfoDao.update(exist);
+                                    	updateCount ++;
+                                    	updates.add(exist);
+                                    	existed = true;
+                                    }
                                 }
                             }
                             if(!existed){
@@ -577,12 +603,10 @@ public class CmInfoService extends BaseService {
                         }else{
                         	filterCount ++;
                             filters.add(vo);
-                			continue;
                         }
             		}else{
-            			filterCount ++;
+                    	filterCount ++;
                         filters.add(vo);
-            			continue;
             		}
                 }
         	}
@@ -595,59 +619,72 @@ public class CmInfoService extends BaseService {
         			svo.getMap().clear();
         			svo.getMap().put("Q^vin^EQ", vo.getVin());
         			exists = cmInfoDao.list(svo);
-        		}else{
-        			filterCount ++;
-                    filters.add(vo);
-                    continue;
         		}
+//        		else{
+//        			filterCount ++;
+//                    filters.add(vo);
+//                    continue;
+//        		}
+        		boolean updated = false;
                 if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
                     for(int i=0;i<exists.getList().size();i++){
                         exist = (CmInfo)exists.getList().get(i);
                         copyWithOutNone(exist, vo, fields, methods);
-                        buildOtherField(exist);
-                        cmInfoDao.update(exist);
-                        updateCount ++;
-                        updates.add(vo);
+                        if(buildOtherField(exist)){
+                        	cmInfoDao.update(exist);
+                        	updateCount ++;
+                        	updates.add(exist);
+                        	updated = true;
+                        }
                     }
-                }else{
-            		if(!StringUtils.isEmpty(vo.getSjgcr_zjhm())){
-            			exist = null;
-            			exists = null;
-            			svo.getMap().clear();
-            			svo.getMap().put("Q^sjgcr_zjhm^EQ", vo.getSjgcr_zjhm());
-            			exists = cmInfoDao.list(svo);
-            			if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
-            				boolean updated = false;
-                            for(int i=0;i<exists.getList().size();i++){
-                                exist = (CmInfo)exists.getList().get(i);
-                                if(exist.getVin()==null||exist.getVin().length()<1){
-                                	copyWithOutNone(exist, vo, fields, methods);
-                                	buildOtherField(exist);
+                }
+                if(updated)
+                	continue;
+        		if(!StringUtils.isEmpty(vo.getSjgcr_zjhm())){
+        			exist = null;
+        			exists = null;
+        			svo.getMap().clear();
+        			svo.getMap().put("Q^sjgcr_zjhm^EQ", vo.getSjgcr_zjhm());
+        			exists = cmInfoDao.list(svo);
+        			updated = false;
+        			if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
+                        for(int i=0;i<exists.getList().size();i++){
+                            exist = (CmInfo)exists.getList().get(i);
+                            if(StringUtils.isEmpty(exist.getVin())||(!StringUtils.isEmpty(exist.getVin())&&exist.getVin().equals(vo.getVin()))){
+                            	copyWithOutNone(exist, vo, fields, methods);
+                            	if(buildOtherField(exist)){
                                 	cmInfoDao.update(exist);
                                 	updateCount ++;
-                                	updates.add(vo);
+                                	updates.add(exist);
                                 	updated = true;
                                 }
                             }
-                            if(!updated){
-                            	buildOtherField(vo);
-                            	cmInfoDao.insert(vo);
-                            	
-                            	insertCount ++;
-                                adds.add(vo);
-                                continue;
-                            }
-                        }else{
-                        	filterCount ++;
-                            filters.add(vo);
-                            continue;
                         }
-            		}else{
-            			filterCount ++;
-                        filters.add(vo);
-            			continue;
-            		}
-                }
+                    }
+        			if(!updated){
+        				svo.getMap().clear();
+            			svo.getMap().put("Q^sqr_zjhm^EQ", vo.getSjgcr_zjhm());
+            			exists = cmInfoDao.list(svo);
+            			if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
+            				for(int i=0;i<exists.getList().size();i++){
+                                exist = (CmInfo)exists.getList().get(i);
+                                if(StringUtils.isEmpty(exist.getVin())||(!StringUtils.isEmpty(exist.getVin())&&exist.getVin().equals(vo.getVin()))){
+                                	copyWithOutNone(exist, vo, fields, methods);
+                                	if(buildOtherField(exist)){
+                                    	cmInfoDao.update(exist);
+                                    	updateCount ++;
+                                    	updates.add(exist);
+                                    	updated = true;
+                                    }
+                                }
+                            }
+            			}
+        			}
+        		}
+        		if(!updated){
+        			filterCount ++;
+                	filters.add(vo);
+        		}
         	}
         }else{
             for(CmInfo vo:list){
@@ -661,10 +698,10 @@ public class CmInfoService extends BaseService {
                             exist = (CmInfo)exists.getList().get(i);
                             copyWithOutNone(exist, vo, fields, methods);
                             buildOtherField(exist);
-                            cmInfoDao.update(exist);
-                            updateCount ++;
-                            updates.add(vo);
-                            updated = true;
+                        	cmInfoDao.update(exist);
+                        	updateCount ++;
+                        	updates.add(vo);
+                        	updated = true;
                         }
                     }
                 }
@@ -693,55 +730,6 @@ public class CmInfoService extends BaseService {
                     insertCount ++;
                     adds.add(vo);
                 }
-                /*
-                if((!StringUtils.isEmpty(vo.getSqr_zjhm()) && !StringUtils.isEmpty(vo.getSjgcr_zjhm())) || !StringUtils.isEmpty(vo.getVin())){
-                    svo.getMap().clear();
-                    if(!StringUtils.isEmpty(vo.getSqr_zjhm())){
-                        svo.getMap().put("Q^sqr_zjhm^EQ", vo.getSqr_zjhm());
-                    }
-                    if(!StringUtils.isEmpty(vo.getSjgcr_zjhm())){
-                        svo.getMap().put("Q^sjgcr_zjhm^EQ", vo.getSjgcr_zjhm());
-                    }
-                    if(!StringUtils.isEmpty(vo.getVin())){
-                        svo.getMap().put("Q^vin^EQ", vo.getVin());
-                    }
-                    exists = cmInfoDao.list(svo);
-                    if(exists!=null&&exists.getList()!=null&&exists.getList().size()>0){
-                        if(!StringUtils.isEmpty(vo.getVin())){
-                            //如果VIN不为空
-                            for(int i=0;i<exists.getList().size();i++){
-                                exist = (CmInfo)exists.getList().get(i);
-                                if(vo.getVin().equals(exist.getVin())||StringUtils.isEmpty(exist.getVin())){
-                                    copyWithOutNone(exist, vo, fields, methods);
-                                    buildOtherField(exist);
-                                    cmInfoDao.update(exist);
-                                    updateCount ++;
-                                    updates.add(exist);
-                                }
-                            }
-                        }else{
-                            for(int i=0;i<exists.getList().size();i++){
-                                exist = (CmInfo)exists.getList().get(i);
-                                copyWithOutNone(exist, vo, fields, methods);
-                                buildOtherField(exist);
-                                cmInfoDao.update(exist);
-                                updateCount ++;
-                                updates.add(exist);
-                            }
-                        }
-                    }else{
-                        buildOtherField(vo);
-                        cmInfoDao.insert(vo);
-                        insertCount ++;
-                        adds.add(vo);
-                    }
-                }else{
-                    buildOtherField(vo);
-                    cmInfoDao.insert(vo);
-                    insertCount ++;
-                    adds.add(vo);
-                }
-                */
             }
         }
 
@@ -835,7 +823,7 @@ public class CmInfoService extends BaseService {
         if("text".equals(stype)||"date".equals(stype)){
             try {
                 if("int".equals(ftype)){
-                    method.invoke(vo, Integer.parseInt(val));
+                    method.invoke(vo, (int)Double.parseDouble(val));
                 }else if("double".equals(ftype)){
                     method.invoke(vo, Double.parseDouble(val));
                 }else{
@@ -1076,7 +1064,7 @@ public class CmInfoService extends BaseService {
         return null;
     }
     
-    private void buildOtherField(CmInfo vo){
+    private boolean buildOtherField(CmInfo vo){
     	if(vo.getCity_code()==null||vo.getCity_code().length()<1){
     		SysTree tree = null;
     		if(vo.getCity_cs()>0){
@@ -1131,6 +1119,9 @@ public class CmInfoService extends BaseService {
     		c.set(Calendar.DAY_OF_YEAR, 1);
     		vo.setCsrq(DATE_FORMAT.format(c.getTime()));
     	}
+    	if(vo.getOrg_yxb()<1&&vo.getOrg_dq()<1&&vo.getOrg_jxs()<1)
+    		return false;
+    	return true;
     }
 
 }
