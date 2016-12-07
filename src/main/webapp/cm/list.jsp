@@ -190,7 +190,7 @@
 									</th>
 									<c:forEach var="vo" items="${fields}">
 										<c:if test="${vo.list==1}">
-											<th class="COL_${vo.sname}" style="min-width: 80px;width:auto;">${vo.name}</th>
+											<th class="COL_${vo.sname}" style="white-space: nowrap;">${vo.name}</th>
 										</c:if>
 									</c:forEach>
 									<th style="min-width: 150px;">操作</th>
@@ -203,7 +203,7 @@
 										<td><input type="checkbox" name="ckb" value="{{v.id}}"/></td>
 										<c:forEach var="vo" items="${fields}">
 											<c:if test="${vo.list==1}">
-												<td class="COL_${vo.sname}">{{valConvert('${vo.stype}', '${vo.ftype}', v.${vo.sname})}}</td>
+												<td class="COL_${vo.sname}" style="white-space: nowrap;">{{valConvert('${vo.stype}', '${vo.ftype}', v.${vo.sname})}}</td>
 											</c:if>
 										</c:forEach>
                     					<td>
