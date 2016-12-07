@@ -181,7 +181,8 @@
 						</div>
 					</div>
 					<div class="portlet-body">
-						<table id="tb_list" class="table table-bordered table-striped table-hover">
+						<div style="width:auto;overflow-x:auto;">
+						<table id="tb_list" class="table table-bordered table-striped table-hover" style="width:auto !important;">
 							<thead>
 								<tr>
 									<th style="width:30px;">
@@ -189,10 +190,10 @@
 									</th>
 									<c:forEach var="vo" items="${fields}">
 										<c:if test="${vo.list==1}">
-											<th class="COL_${vo.sname}">${vo.name}</th>
+											<th class="COL_${vo.sname}" style="min-width: 80px;width:auto;">${vo.name}</th>
 										</c:if>
 									</c:forEach>
-									<th>操作</th>
+									<th style="min-width: 150px;">操作</th>
 								</tr>
 							</thead>
 							<tbody id="tbody">
@@ -215,6 +216,7 @@
               					</script>
 							</tbody>
 						</table>
+						</div>
 						<div id="common_page"></div>
 					</div>
 				</div>
