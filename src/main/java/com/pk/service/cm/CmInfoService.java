@@ -750,6 +750,7 @@ public class CmInfoService extends BaseService {
         rs.put("updates", updates);
         rs.put("filters", filters);
         rs.put("fields", fieldSet);
+        rs.put("type", type);
         return Result.SUCCESS(rs);
     }
 

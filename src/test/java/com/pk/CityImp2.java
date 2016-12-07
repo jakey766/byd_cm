@@ -27,7 +27,7 @@ public class CityImp2 {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/byd_cm?characterEncoding=utf8", "root", "root");
-            is = CityImp.class.getResourceAsStream("/cities.json");
+            is = CityImp2.class.getResourceAsStream("/cities.json");
             br = new BufferedReader(new InputStreamReader(is));
             String line = null;
             StringBuilder sb = new StringBuilder(100);
