@@ -266,6 +266,7 @@ public class CmInfoService extends BaseService {
     			String stype = null;
     			String ftype = null;
     			Object val = null;
+                String strVal = null;
     			for(int i=0;i<dlen;i++){
     				row = sheet.createRow(i+1);
     				vo = list.get(i);
@@ -292,11 +293,20 @@ public class CmInfoService extends BaseService {
                                     cell.setCellValue(val.toString());
                                 }else if("text".equals(stype)){
                                     if("int".equals(ftype)){
+                                        strVal = val.toString();
+                                        if("-1".equals(strVal)){
+                                            strVal = "";
+                                        }
                                         cell.setCellType(XSSFCell.CELL_TYPE_NUMERIC);
-                                        cell.setCellValue(val.toString());
+                                        cell.setCellValue(strVal);
                                     }else if("double".equals(ftype)){
                                         cell.setCellType(XSSFCell.CELL_TYPE_NUMERIC);
-                                        cell.setCellValue(new BigDecimal(val.toString()).setScale(2, BigDecimal.ROUND_HALF_UP).stripTrailingZeros().toPlainString());
+                                        strVal = val.toString();
+                                        if("-1".equals(strVal)||Double.valueOf(strVal)==-1){
+                                            cell.setCellValue("");
+                                        }else{
+                                            cell.setCellValue(new BigDecimal(strVal).setScale(2, BigDecimal.ROUND_HALF_UP).stripTrailingZeros().toPlainString());
+                                        }
                                     }else{
                                         cell.setCellType(XSSFCell.CELL_TYPE_STRING);
                                         cell.setCellValue(val.toString());

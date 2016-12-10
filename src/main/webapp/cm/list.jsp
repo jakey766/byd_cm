@@ -129,7 +129,7 @@
 											<div class="control-group">
 												<label class="control-label"> ${vo.name}：</label>
 												<div class="controls">
-													<input type="text" class="span10" id="${vo.fname}" name="Q^${vo.fname}^LK" onkeydown="if(event.keyCode==13){search()}"/>
+													<input type="text" class="span10" id="${vo.fname}" name="Q^${vo.fname}^EQ" onkeydown="if(event.keyCode==13){search()}"/>
 												</div>
 											</div>
 										</div>
