@@ -56,5 +56,16 @@ public class CommonController {
 			return Result.FAILURE("后台异常");
 		}
 	}
+
+	@RequestMapping(value = "/updateLoginPass.do")
+	@ResponseBody
+	public Result updateUserPass(String uname, String oldPass, String newPass){
+		try{
+			return commonService.updatePass(uname, oldPass, newPass);
+		}catch(Exception e){
+			e.printStackTrace();
+			return Result.FAILURE("后台异常");
+		}
+	}
 	
 }

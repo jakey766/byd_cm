@@ -21,6 +21,7 @@ import com.pk.framework.vo.Result;
 import com.pk.model.admin.SysMenu;
 import com.pk.model.admin.SysUser;
 import com.pk.vo.admin.SysRoleMenuSearchVO;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by jiangkunpeng on 16/9/23.
@@ -55,7 +56,8 @@ public class CommonService extends BaseService{
             CookieUtil cookieUtil = new CookieUtil(request, response);
             cookieUtil.buildDomainByRequest();
             cookieUtil.setCookie(Constants.KEY_USER_ID, user.getId() + "");
-            cookieUtil.setCookie(Constants.KEY_USER_NAME, user.getName() + "");
+            cookieUtil.setCookie(Constants.KEY_USER_ACCOUNT, user.getUsername());
+            cookieUtil.setCookie(Constants.KEY_USER_NAME, user.getName());
             return Result.SUCCESS();
         }catch(Exception e){
             e.printStackTrace();
@@ -74,6 +76,7 @@ public class CommonService extends BaseService{
         CookieUtil cookieUtil = new CookieUtil(request, response);
         cookieUtil.buildDomainByRequest();
         cookieUtil.deleteCookie(Constants.KEY_USER_ID);
+        cookieUtil.deleteCookie(Constants.KEY_USER_ACCOUNT);
         cookieUtil.deleteCookie(Constants.KEY_USER_NAME);
 
         int userId = UserInfoContext.getId();
@@ -81,6 +84,21 @@ public class CommonService extends BaseService{
         removeCache(cacheKey);
         cacheKey = Constants.KEY_USER_URI + "_" +userId;
         removeCache(cacheKey);
+        return Result.SUCCESS();
+    }
+
+    public Result updatePass(String uname, String oldPass, String newPass){
+        SysUser tmp = sysUserDao.getByUsername(uname);
+        if(tmp!=null){
+            if(!tmp.getPassword().equals(oldPass)){
+                return Result.FAILURE("旧密码错误!");
+            }else{
+                tmp.setPassword(newPass);
+                sysUserDao.updatePassword(tmp);
+            }
+        }else{
+            return Result.FAILURE("用户不存在!");
+        }
         return Result.SUCCESS();
     }
     

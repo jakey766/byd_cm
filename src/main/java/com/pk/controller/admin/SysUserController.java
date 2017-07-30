@@ -44,7 +44,7 @@ public class SysUserController {
 		}catch(Exception e){
 			e.printStackTrace();
 			result.setCode(Result.CODE_FAILURE);
-			result.setMessage("后台异常:"+e.getMessage());
+			result.setMessage("后台异常:" + e.getMessage());
 		}
 		return result;
 	}
@@ -65,6 +65,17 @@ public class SysUserController {
 	public Result update(SysUser vo) {
 		try{
 			return sysUserService.update(vo);
+		}catch(Exception e){
+			e.printStackTrace();
+			return Result.FAILURE("后台异常:"+e.getMessage());
+		}
+	}
+
+	@RequestMapping(value = "/admin/user/updatePass.do")
+	@ResponseBody
+	public Result updatePass(SysUser vo) {
+		try{
+			return sysUserService.updatePass(vo);
 		}catch(Exception e){
 			e.printStackTrace();
 			return Result.FAILURE("后台异常:"+e.getMessage());

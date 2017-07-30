@@ -10,7 +10,9 @@
     request.setAttribute("sysName", "客户管理系统");
     
     CookieUtil cookieUtil = new CookieUtil(request, response);
+    String userAccount = cookieUtil.getString(Constants.KEY_USER_ACCOUNT);
     String username = cookieUtil.getString(Constants.KEY_USER_NAME);
+    request.setAttribute("curUserAccount", userAccount);
     request.setAttribute("curUserName", username);
 %>
 
@@ -69,6 +71,7 @@
             <li><a href="#"><i class="icon-map-marker"></i> IP:127.0.0.1</a></li>
              -->
             <li><a href="javascript:;" id="trigger_fullscreen"><i class="icon-move"></i> 全屏</a></li>
+            <li><a href="javascript:;" onclick="toEditLoginPassword()"><i class="icon-edit"></i> 修改密码</a></li>
             <li><a href="javascript:;" onclick="logout()"><i class="icon-key"></i> 退出</a></li>
           </ul>
         </li>

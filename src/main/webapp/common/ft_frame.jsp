@@ -10,6 +10,42 @@
   </div>
 </div>
 <!-- END FOOTER -->
+
+<!-- BEGIN 弹窗 -->
+<div class="row-fluid">
+    <!-- BEGIN 新增/编辑 弹窗 -->
+    <div id="editLoginPassDialog" class="hide">
+        <div class="span8" style="margin-left:0px;">
+            <form action="" id="edit_login_pass_form" class="form form-horizontal form-bordered form-row-stripped">
+                <div class="row-fluid">
+                    <div class="control-group">
+                        <label class="control-label"><span class="required">*</span> 旧密码：</label>
+                        <div class="controls">
+                            <input type="password" id="lpassold" name="lpassold" class="span8" maxlength="64" required/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><span class="required">*</span> 新密码：</label>
+                        <div class="controls">
+                            <input type="password" id="lpassnew" name="lpassnew" class="span8" maxlength="64" required/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><span class="required">*</span> 确认新密码：</label>
+                        <div class="controls">
+                            <input type="password" id="lpasscfm" name="lpasscfm" class="span8" maxlength="64" required equalto="#lpassnew"/>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn green" id="btnUpdateLoginPass" onclick="doUpdateLoginPassword()"><i class="icon-ok"></i> 提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- END 新增/编辑 弹窗 -->
+</div>
+<!-- END 弹窗 -->
 </body>
 <script src="${PATH}r/plugins/jquery-1.10.1.min.js"></script>
 <script src="${PATH}r/plugins/jquery-migrate-1.2.1.min.js"></script>
@@ -33,6 +69,7 @@
 <script src="${PATH}r/plugins/laydate-1.0/laydate.js"></script>
 <script src="${PATH}r/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="${PATH}r/plugins/jquery-validation/dist/additional-methods.min.js"></script>
+<script src="${PATH}r/plugins/jquery.md5.js"></script>
 
 <!-- 前端框架组件 -->
 <script src="${PATH}r/js/app.js"></script>
@@ -140,5 +177,39 @@
 		  });
 	  }, function(){
 	  });
+  }
+
+  function toEditLoginPassword(){
+      $.dialog({
+          title: '修改用户密码',
+          content: $('#editLoginPassDialog')[0],
+          padding: 0,
+          id:'edit_login_pass_dialog'
+      });
+  }
+
+  function doUpdateLoginPassword(){
+      var editForm = $('#edit_login_pass_form');
+      editForm.validate();
+      if(!editForm.valid())
+          return;
+      var uname = '${curUserAccount}';
+      var oldPass = $.md5($('#lpassold').val() + '' + uname);
+      var newPass = $.md5($('#lpassnew').val() + '' + uname);
+      var params = {
+          uname: uname,
+          oldPass: oldPass,
+          newPass: newPass
+      };
+      var btnObj = $('#btnUpdateLoginPass');
+      btnObj.attr('disabled', true);
+      $.post('${PATH}updateLoginPass.do', params, function(json) {
+          btnObj.removeAttr('disabled');
+          $.alert(json.message, function(){
+              if(!!json&&json.success){
+                  $.dialog.get('edit_login_pass_dialog').close();
+              }
+          });
+      });
   }
 </script>

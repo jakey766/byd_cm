@@ -59,4 +59,16 @@ public class SysUserService {
     	return sysUserDao.get(id);
     }
 
+    @Transactional
+    public Result updatePass(SysUser vo){
+        SysUser tmp = sysUserDao.getByUsername(vo.getUsername());
+        if(tmp!=null){
+            tmp.setPassword(vo.getPassword());
+            sysUserDao.updatePassword(tmp);
+        }else{
+            return Result.FAILURE("不存在的用户");
+        }
+        return Result.SUCCESS();
+    }
+
 }

@@ -88,6 +88,7 @@
 										<td>{{v.email}}</td>
                     					<td>
                         					<button class="btn mini blue" onclick="toEdit('{{v.id}}')">编辑</button>
+											<button class="btn mini yellow" onclick="toEditPass('{{v.username}}', '{{v.name}}')">修改密码</button>
                         					<button class="btn mini red" onclick="toDelete('{{v.id}}', '{{v.name}}')">删除</button>
                     					</td>
                 					</tr>
@@ -167,6 +168,43 @@
 			</div>
 		</div>
 		<!-- END 新增/编辑 弹窗 -->
+		<!-- BEGIN 修改密码 弹窗 -->
+		<div id="editPassDialog" class="hide">
+			<div class="span8" style="margin-left:0px;">
+				<form action="" id="edit_pass_form" class="form form-horizontal form-bordered form-row-stripped">
+					<div class="row-fluid">
+						<div class="control-group">
+							<label class="control-label"><span class="required">*</span> 用户名：</label>
+							<div class="controls">
+								<input type="text" id="pass_name" name="pass_name" class="span8" readonly="readonly"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label"><span class="required">*</span> 姓名：</label>
+							<div class="controls">
+								<input type="text" id="pass_name_cn" name="pass_name_cn" class="span8" readonly="readonly"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label"><span class="required">*</span> 新密码：</label>
+							<div class="controls">
+								<input type="password" id="pass_new_pass" name="pass_new_pass" class="span8" required maxlength="100"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label"><span class="required">*</span> 确认密码：</label>
+							<div class="controls">
+								<input type="password" id="pass_new_pass_cfm" name="pass_new_pass_cfm" class="span8" required maxlength="100" equalto="#pass_new_pass"/>
+							</div>
+						</div>
+						<div class="form-actions">
+							<button type="button" class="btn green" id="btnUpdatePass" onclick="updatePass()"><i class="icon-ok"></i> 保存</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- END 修改密码 弹窗 -->
 	</div>
 	<!-- END 弹窗 -->
 </div>
@@ -620,5 +658,41 @@
 		return '';
 	}
 	//组织机构select2 END
+
+	function toEditPass(name, name_cn){
+		$('#pass_name').val(name);
+		$('#pass_name_cn').val(name_cn);
+		$('#pass_new_pass').val('');
+		$('#pass_new_pass_cfm').val('');
+		$.dialog({
+			title: '修改用户密码['+name_cn+']',
+			content: $('#editPassDialog')[0],
+			padding: 0,
+			id:'edit_pass_dialog'
+		});
+	}
+
+	function updatePass(){
+		var editForm = $('#edit_pass_form');
+		editForm.validate();
+		if(!editForm.valid())
+			return;
+		var uname = $('#pass_name').val();
+		var newPass = $.md5($('#pass_new_pass').val() + '' + uname);
+		var params = {
+			username: uname,
+			password: newPass
+		};
+		var btnObj = $('#btnUpdatePass');
+		btnObj.attr('disabled', true);
+		$.post('${PATH}admin/user/updatePass.do', params, function(json) {
+			btnObj.removeAttr('disabled');
+			$.alert(json.message, function(){
+				if(!!json&&json.success){
+					$.dialog.get('edit_pass_dialog').close();
+				}
+			});
+		});
+	}
 </script>
 </html>
