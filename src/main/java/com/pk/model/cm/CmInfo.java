@@ -88,8 +88,8 @@ public class CmInfo implements Serializable {
     private String jsr_lxdh;    //介绍人联系电话
     private String xqah;        //兴趣爱好
     private String yyxhsl;      //拥有小孩数量
-    private String dygxhnljd;   //第一个小孩年龄阶段
-    private String degxhnljd;   //第二个小孩年龄阶段
+    private int dygxhnljd;   //第一个小孩年龄阶段
+    private int degxhnljd;   //第二个小孩年龄阶段
     private String bz;          //备注
     private String yqr;         //邀请人
 
@@ -860,23 +860,23 @@ public class CmInfo implements Serializable {
         this.yyxhsl = yyxhsl;
     }
 
-    public String getDygxhnljd() {
-        return dygxhnljd;
-    }
+    public int getDygxhnljd() {
+		return dygxhnljd;
+	}
 
-    public void setDygxhnljd(String dygxhnljd) {
-        this.dygxhnljd = dygxhnljd;
-    }
+	public void setDygxhnljd(int dygxhnljd) {
+		this.dygxhnljd = dygxhnljd;
+	}
 
-    public String getDegxhnljd() {
-        return degxhnljd;
-    }
+	public int getDegxhnljd() {
+		return degxhnljd;
+	}
 
-    public void setDegxhnljd(String degxhnljd) {
-        this.degxhnljd = degxhnljd;
-    }
+	public void setDegxhnljd(int degxhnljd) {
+		this.degxhnljd = degxhnljd;
+	}
 
-    public double getXsjg() {
+	public double getXsjg() {
         return xsjg;
     }
 

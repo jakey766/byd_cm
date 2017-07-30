@@ -965,9 +965,15 @@ public class CmInfoService extends BaseService {
         }
         return dist;
     }
-
+    
     private SysTree getTreeByVal(String distType, String val, int pid, int level, boolean newIfNotExist){
         if(treeCache==null){
+        	Set<String> bigCities = new HashSet<String>();
+        	bigCities.add("北京");
+        	bigCities.add("上海");
+        	bigCities.add("重庆");
+        	bigCities.add("天津");
+        	
             SysTreeSearchVO svo = new SysTreeSearchVO();
             svo.setPid(-1);
             List<SysTree> list = sysTreeDao.list(svo);
@@ -982,7 +988,11 @@ public class CmInfoService extends BaseService {
                      */
                     if("CITY".equals(tree.getType())){
                     	if(tree.getLevel()==1){
-                    		map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getLevel() + ":" + tree.getName() + "省", tree);
+                    		if(bigCities.contains(tree.getName())){
+                    			map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getLevel() + ":" + tree.getName() + "市", tree);
+                    		}else{
+                    			map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getLevel() + ":" + tree.getName() + "省", tree);
+                    		}
                     	}else if(tree.getLevel()==2){
                     		map.put(tree.getType() + ":" + tree.getPid() + ":" + tree.getLevel() + ":" + tree.getName() + "市", tree);
                     	}
